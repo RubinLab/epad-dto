@@ -12,7 +12,7 @@ import com.google.gson.Gson;
  * <p>
  * Example query:
  * <p>
- * <code>curl -b JSESSIONID=[session_key] -X GET "http:[host:port]/epad/projects/[project_id]/subjects/"</code>
+ * <code>curl -b JSESSIONID=[session_key] -X GET "http:[host:port]/XNAT/projects/[project_id]/subjects/"</code>
  * <p>
  * Redirects to the XNAT call <code>/xnat/data/projects/..</code>, which returns a JSON-specified list of subjects for
  * the specified project, e.g.,
@@ -22,7 +22,7 @@ import com.google.gson.Gson;
  * "ResultSet":
  *  { "Result":
  *    [ 
- *      {"project":"PRJ1","insert_user":"bob","ID":"EPAD_S00002","insert_date":"...","label":"SID1","URI":"/data/subjects/EPAD_S00002", "src": ""},
+ *      {"project":"PRJ1","insert_user":"bob","ID":"XNAT_S00002","insert_date":"...","label":"SID1","URI":"/data/subjects/XNAT_S00002", "src": ""},
  *    ], 
  *    "totalRecords": "1"
  *  }
@@ -47,6 +47,11 @@ public class XNATSubjectList implements Serializable
 		this.ResultSet = new XNATSubjectResultSet();
 	}
 
+	public void addXNATSubject(XNATSubject xnatSubject)
+	{
+		this.ResultSet.addXNATSubject(xnatSubject);
+	}
+
 	public static XNATSubjectList emptySubjects()
 	{
 		return new XNATSubjectList();
@@ -55,7 +60,7 @@ public class XNATSubjectList implements Serializable
 	public class XNATSubjectResultSet
 	{
 		public final List<XNATSubject> Result;
-		public final int totalRecords;
+		public int totalRecords;
 
 		public XNATSubjectResultSet(List<XNATSubject> Result)
 		{
@@ -67,6 +72,12 @@ public class XNATSubjectList implements Serializable
 		{
 			this.Result = new ArrayList<XNATSubject>();
 			this.totalRecords = 0;
+		}
+
+		public void addXNATSubject(XNATSubject xnatSubject)
+		{
+			this.Result.add(xnatSubject);
+			this.totalRecords++;
 		}
 	}
 

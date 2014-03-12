@@ -29,6 +29,11 @@ public class EPADImageList implements Serializable
 		this.ResultSet = new EPADImageResultSet();
 	}
 
+	public void addEPADImage(EPADImage epadImage)
+	{
+		this.ResultSet.addEPADImage(epadImage);
+	}
+
 	public static EPADImageList emptyImages()
 	{
 		return new EPADImageList();
@@ -37,7 +42,7 @@ public class EPADImageList implements Serializable
 	public class EPADImageResultSet
 	{
 		public final List<EPADImage> Result;
-		public final int totalRecords;
+		public int totalRecords;
 
 		public EPADImageResultSet(List<EPADImage> Result)
 		{
@@ -49,6 +54,12 @@ public class EPADImageList implements Serializable
 		{
 			this.Result = new ArrayList<EPADImage>();
 			this.totalRecords = 0;
+		}
+
+		public void addEPADImage(EPADImage epadImage)
+		{
+			this.Result.add(epadImage);
+			this.totalRecords++;
 		}
 	}
 

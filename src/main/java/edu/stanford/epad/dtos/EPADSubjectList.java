@@ -23,6 +23,11 @@ public class EPADSubjectList implements Serializable
 		this.ResultSet = new EPADSubjectResultSet();
 	}
 
+	public void addEPADSubject(EPADSubject epadSubject)
+	{
+		this.ResultSet.addEPADSubject(epadSubject);
+	}
+
 	public static EPADSubjectList emptySubjects()
 	{
 		return new EPADSubjectList();
@@ -31,7 +36,7 @@ public class EPADSubjectList implements Serializable
 	public class EPADSubjectResultSet
 	{
 		public final List<EPADSubject> Result;
-		public final int totalRecords;
+		public int totalRecords;
 
 		public EPADSubjectResultSet(List<EPADSubject> Result)
 		{
@@ -43,6 +48,12 @@ public class EPADSubjectList implements Serializable
 		{
 			this.Result = new ArrayList<EPADSubject>();
 			this.totalRecords = 0;
+		}
+
+		public void addEPADSubject(EPADSubject epadSubject)
+		{
+			this.Result.add(epadSubject);
+			this.totalRecords++;
 		}
 	}
 

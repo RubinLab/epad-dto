@@ -46,6 +46,11 @@ public class XNATProjectList implements Serializable
 		this.ResultSet = new XNATProjectResultSet();
 	}
 
+	public void addXNATProject(XNATProject xnatProject)
+	{
+		this.ResultSet.addXNATProject(xnatProject);
+	}
+
 	public static XNATProjectList emptyProjects()
 	{
 		return new XNATProjectList();
@@ -54,7 +59,7 @@ public class XNATProjectList implements Serializable
 	public class XNATProjectResultSet
 	{
 		public final List<XNATProject> Result;
-		public final int totalRecords;
+		public int totalRecords;
 
 		public XNATProjectResultSet(List<XNATProject> Result)
 		{
@@ -67,6 +72,13 @@ public class XNATProjectList implements Serializable
 			this.Result = new ArrayList<XNATProject>();
 			this.totalRecords = 0;
 		}
+
+		public void addXNATProject(XNATProject xnatProject)
+		{
+			this.Result.add(xnatProject);
+			this.totalRecords++;
+		}
+
 	}
 
 	public String toJSON()

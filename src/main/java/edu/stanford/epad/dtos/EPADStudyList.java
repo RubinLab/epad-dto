@@ -23,6 +23,11 @@ public class EPADStudyList implements Serializable
 		this.ResultSet = new EPADStudyResultSet();
 	}
 
+	public void addEPADStudy(EPADStudy epadStudy)
+	{
+		this.ResultSet.addEPADStudy(epadStudy);
+	}
+
 	public static EPADStudyList emptyStudys()
 	{
 		return new EPADStudyList();
@@ -31,7 +36,7 @@ public class EPADStudyList implements Serializable
 	public class EPADStudyResultSet
 	{
 		public final List<EPADStudy> Result;
-		public final int totalRecords;
+		public int totalRecords;
 
 		public EPADStudyResultSet(List<EPADStudy> Result)
 		{
@@ -43,6 +48,12 @@ public class EPADStudyList implements Serializable
 		{
 			this.Result = new ArrayList<EPADStudy>();
 			this.totalRecords = 0;
+		}
+
+		public void addEPADStudy(EPADStudy epadStudy)
+		{
+			this.Result.add(epadStudy);
+			this.totalRecords++;
 		}
 	}
 

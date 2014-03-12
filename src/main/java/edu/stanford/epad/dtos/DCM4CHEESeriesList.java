@@ -29,9 +29,9 @@ public class DCM4CHEESeriesList implements Serializable
 		this.ResultSet = new DCM4CHEESeriesResultSet(Result);
 	}
 
-	public void addDCM4CHEESeriesDescription(DCM4CHEESeries dicomSeriesDescription)
+	public void addDCM4CHEESeries(DCM4CHEESeries dcm4CheeSeries)
 	{
-		ResultSet.Result.add(dicomSeriesDescription);
+		ResultSet.addDCM4CHEESeries(dcm4CheeSeries);
 	}
 
 	public int getNumberOfStudies()
@@ -42,7 +42,7 @@ public class DCM4CHEESeriesList implements Serializable
 	public class DCM4CHEESeriesResultSet
 	{
 		public final List<DCM4CHEESeries> Result;
-		public final int totalRecords;
+		public int totalRecords;
 
 		public DCM4CHEESeriesResultSet(List<DCM4CHEESeries> Result)
 		{
@@ -54,6 +54,12 @@ public class DCM4CHEESeriesList implements Serializable
 		{
 			this.Result = new ArrayList<DCM4CHEESeries>();
 			this.totalRecords = 0;
+		}
+
+		public void addDCM4CHEESeries(DCM4CHEESeries dcm4CheeSeries)
+		{
+			this.Result.add(dcm4CheeSeries);
+			this.totalRecords++;
 		}
 	}
 

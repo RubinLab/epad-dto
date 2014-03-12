@@ -25,7 +25,7 @@ public class DICOMElementList implements Serializable
 
 	public void addDICOMElement(DICOMElement dicomElement)
 	{
-		ResultSet.Result.add(dicomElement);
+		ResultSet.addDICOMElement(dicomElement);
 	}
 
 	public int getNumberOfElements()
@@ -36,7 +36,7 @@ public class DICOMElementList implements Serializable
 	public class DICOMElementResultSet
 	{
 		public final List<DICOMElement> Result;
-		public final int totalRecords;
+		public int totalRecords;
 
 		public DICOMElementResultSet(List<DICOMElement> Result)
 		{
@@ -48,6 +48,12 @@ public class DICOMElementList implements Serializable
 		{
 			this.Result = new ArrayList<DICOMElement>();
 			this.totalRecords = 0;
+		}
+
+		public void addDICOMElement(DICOMElement dicomElement)
+		{
+			this.Result.add(dicomElement);
+			this.totalRecords++;
 		}
 	}
 

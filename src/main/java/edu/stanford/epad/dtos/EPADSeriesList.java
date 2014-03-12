@@ -28,6 +28,11 @@ public class EPADSeriesList implements Serializable
 		this.ResultSet = new EPADSeriesResultSet();
 	}
 
+	public void addEPADSeries(EPADSeries epadSeries)
+	{
+		this.ResultSet.addEPADSeries(epadSeries);
+	}
+
 	public static EPADSeriesList emptySeriess()
 	{
 		return new EPADSeriesList();
@@ -36,7 +41,7 @@ public class EPADSeriesList implements Serializable
 	public class EPADSeriesResultSet
 	{
 		public final List<EPADSeries> Result;
-		public final int totalRecords;
+		public int totalRecords;
 
 		public EPADSeriesResultSet(List<EPADSeries> Result)
 		{
@@ -48,6 +53,12 @@ public class EPADSeriesList implements Serializable
 		{
 			this.Result = new ArrayList<EPADSeries>();
 			this.totalRecords = 0;
+		}
+
+		public void addEPADSeries(EPADSeries epadSeries)
+		{
+			this.Result.add(epadSeries);
+			this.totalRecords++;
 		}
 	}
 

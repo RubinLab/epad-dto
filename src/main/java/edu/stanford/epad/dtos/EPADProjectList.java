@@ -28,6 +28,11 @@ public class EPADProjectList implements Serializable
 		this.ResultSet = new EPADProjectResultSet();
 	}
 
+	public void addEPADProject(EPADProject epadProject)
+	{
+		this.ResultSet.addEPADProject(epadProject);
+	}
+
 	public static EPADProjectList emptyProjects()
 	{
 		return new EPADProjectList();
@@ -36,7 +41,7 @@ public class EPADProjectList implements Serializable
 	public class EPADProjectResultSet
 	{
 		public final List<EPADProject> Result;
-		public final int totalRecords;
+		public int totalRecords;
 
 		public EPADProjectResultSet(List<EPADProject> Result)
 		{
@@ -48,6 +53,12 @@ public class EPADProjectList implements Serializable
 		{
 			this.Result = new ArrayList<EPADProject>();
 			this.totalRecords = 0;
+		}
+
+		public void addEPADProject(EPADProject epadProject)
+		{
+			this.Result.add(epadProject);
+			this.totalRecords++;
 		}
 	}
 
