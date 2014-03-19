@@ -32,17 +32,17 @@ public class XNATSubject implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String project, insert_user, id, insert_date, label, uri, src;
+	public final String project, insert_user, ID, insert_date, label, URI, src;
 
 	public XNATSubject(String project, String insert_user, String id, String insert_date, String label, String uri,
 			String src)
 	{
 		this.project = project;
 		this.insert_user = insert_user;
-		this.id = id;
+		this.ID = id;
 		this.insert_date = insert_date;
 		this.label = label;
-		this.uri = uri;
+		this.URI = uri;
 		this.src = src;
 	}
 

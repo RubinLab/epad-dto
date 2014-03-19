@@ -15,10 +15,11 @@ public class EPADProject implements Serializable
 
 	public final String secondaryID, piLastName, description, name, id, piFirstName, uri;
 	public final int numberOfSubjects;
+	public final int numberOfStudies;
 	public final int numberOfAnnotations;
 
 	public EPADProject(String secondaryID, String piLastName, String description, String name, String id,
-			String piFirstName, String uri, int numberOfSubjects, int numberOfAnnotations)
+			String piFirstName, String uri, int numberOfSubjects, int numberOfStudies, int numberOfAnnotations)
 	{
 		this.secondaryID = secondaryID;
 		this.piLastName = piLastName;
@@ -28,6 +29,7 @@ public class EPADProject implements Serializable
 		this.piFirstName = piFirstName;
 		this.uri = uri;
 		this.numberOfSubjects = numberOfSubjects;
+		this.numberOfStudies = numberOfStudies;
 		this.numberOfAnnotations = numberOfAnnotations;
 	}
 

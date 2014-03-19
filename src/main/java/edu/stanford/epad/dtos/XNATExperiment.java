@@ -32,18 +32,18 @@ public class XNATExperiment implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String project, xsiType, id, insert_date, label, date, uri;
+	public final String project, xsiType, ID, insert_date, label, date, URI;
 
 	public XNATExperiment(String project, String xsiType, String id, String insert_date, String label, String date,
 			String uri)
 	{
 		this.project = project;
 		this.xsiType = xsiType;
-		this.id = id;
+		this.ID = id;
 		this.insert_date = insert_date;
 		this.label = label;
 		this.date = date;
-		this.uri = uri;
+		this.URI = uri;
 	}
 
 	public String toJSON()

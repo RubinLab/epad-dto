@@ -31,18 +31,18 @@ public class XNATProject implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String secondaryID, piLastName, description, name, id, piFirstName, uri;
+	public final String secondary_ID, pi_lastname, description, name, ID, pi_firstname, URI;
 
 	public XNATProject(String secondaryID, String piLastName, String description, String name, String id,
 			String piFirstName, String uri)
 	{
-		this.secondaryID = secondaryID;
-		this.piLastName = piLastName;
+		this.secondary_ID = secondaryID;
+		this.pi_lastname = piLastName;
 		this.description = description;
 		this.name = name;
-		this.id = id;
-		this.piFirstName = piFirstName;
-		this.uri = uri;
+		this.ID = id;
+		this.pi_firstname = piFirstName;
+		this.URI = uri;
 	}
 
 	public String toJSON()
