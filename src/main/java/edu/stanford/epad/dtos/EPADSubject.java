@@ -1,6 +1,8 @@
 package edu.stanford.epad.dtos;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.google.gson.Gson;
 
@@ -12,24 +14,24 @@ public class EPADSubject implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String project, insert_user, id, insert_date, label, uri, src;
+	public final String project, subjectName, insertUser, xnatID, insertDate, label, uri;
 	public final int numberOfStudies;
 	public final int numberOfAnnotations;
+	public final Set<String> examTypes;
 
-	// Set<String> examTypes;
-
-	public EPADSubject(String project, String insert_user, String id, String insert_date, String label, String uri,
-			String src, int numberOfStudies, int numberOfAnnotations)
+	public EPADSubject(String project, String subjectName, String insertUser, String xnatID, String insertDate,
+			String label, String uri, int numberOfStudies, int numberOfAnnotations, Set<String> examTypes)
 	{
 		this.project = project;
-		this.insert_user = insert_user;
-		this.id = id;
-		this.insert_date = insert_date;
+		this.subjectName = subjectName;
+		this.insertUser = insertUser;
+		this.xnatID = xnatID;
+		this.insertDate = insertDate;
 		this.label = label;
 		this.uri = uri;
-		this.src = src;
 		this.numberOfStudies = numberOfStudies;
 		this.numberOfAnnotations = numberOfAnnotations;
+		this.examTypes = new HashSet<String>(examTypes);
 	}
 
 	public String toJSON()
