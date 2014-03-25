@@ -14,7 +14,7 @@ public class EPADProject implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String secondaryID, piLastName, description, name, id, piFirstName, uri;
+	public final String id, name, description, secondaryID, piLastName, piFirstName, uri;
 	public final int numberOfSubjects;
 	public final int numberOfStudies;
 	public final int numberOfAnnotations;
