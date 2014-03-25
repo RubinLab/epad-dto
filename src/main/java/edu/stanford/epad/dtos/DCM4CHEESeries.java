@@ -13,16 +13,18 @@ public class DCM4CHEESeries implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String seriesID, patientID, patientName, seriesDate, examType, thumbnailURL, seriesDescription;
+	public final String studyUID, seriesUID, patientID, patientName, seriesDate, examType, thumbnailURL,
+			seriesDescription;
 	public final int numberOfSeriesRelatedInstances, imagesInSeries, seriesStatus;
 	public final String bodyPart, institution, stationName, department, accessionNumber;
 
-	public DCM4CHEESeries(String seriesID, String patientID, String patientName, String seriesDate, String examType,
-			String thumbnailURL, String seriesDescription, int numberOfSeriesRelatedInstances, int imagesInSeries,
-			int seriesStatus, String bodyPart, String institution, String stationName, String department,
+	public DCM4CHEESeries(String studyUID, String seriesUID, String patientID, String patientName, String seriesDate,
+			String examType, String thumbnailURL, String seriesDescription, int numberOfSeriesRelatedInstances,
+			int imagesInSeries, int seriesStatus, String bodyPart, String institution, String stationName, String department,
 			String accessionNumber)
 	{
-		this.seriesID = seriesID;
+		this.studyUID = studyUID;
+		this.seriesUID = seriesUID;
 		this.patientID = patientID;
 		this.patientName = patientName;
 		this.seriesDate = seriesDate;
