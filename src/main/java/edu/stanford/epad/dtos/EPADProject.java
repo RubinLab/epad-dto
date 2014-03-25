@@ -1,6 +1,7 @@
 package edu.stanford.epad.dtos;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import com.google.gson.Gson;
 
@@ -17,11 +18,11 @@ public class EPADProject implements Serializable
 	public final int numberOfSubjects;
 	public final int numberOfStudies;
 	public final int numberOfAnnotations;
-	public final XNATUserList users;
+	public final Set<String> loginNames;
 
 	public EPADProject(String secondaryID, String piLastName, String description, String name, String id,
 			String piFirstName, String uri, int numberOfSubjects, int numberOfStudies, int numberOfAnnotations,
-			XNATUserList users)
+			Set<String> loginNames)
 	{
 		this.secondaryID = secondaryID;
 		this.piLastName = piLastName;
@@ -33,7 +34,7 @@ public class EPADProject implements Serializable
 		this.numberOfSubjects = numberOfSubjects;
 		this.numberOfStudies = numberOfStudies;
 		this.numberOfAnnotations = numberOfAnnotations;
-		this.users = users;
+		this.loginNames = loginNames;
 	}
 
 	public String toJSON()

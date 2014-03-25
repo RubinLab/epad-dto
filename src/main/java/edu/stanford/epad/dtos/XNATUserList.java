@@ -3,7 +3,9 @@ package edu.stanford.epad.dtos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.google.gson.Gson;
 
@@ -31,6 +33,16 @@ public class XNATUserList implements Serializable
 	public static XNATUserList emptyUsers()
 	{
 		return new XNATUserList();
+	}
+
+	public Set<String> getLoginNames()
+	{
+		Set<String> loginNames = new HashSet<String>();
+
+		for (XNATUser xnatUser : ResultSet.Result)
+			loginNames.add(xnatUser.login);
+
+		return loginNames;
 	}
 
 	public class XNATUserResultSet
