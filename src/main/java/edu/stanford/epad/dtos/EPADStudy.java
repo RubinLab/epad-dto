@@ -1,6 +1,7 @@
 package edu.stanford.epad.dtos;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import com.google.gson.Gson;
 
@@ -11,21 +12,22 @@ public class EPADStudy implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String project, id, insert_date, label, date, uri;
-	public final String examType, studyDescription, studyAccessionNumber;
+	public final String projectID, studyUID, insertDate, date, uri;
+	public final String studyDescription, studyAccessionNumber;
+	public final Set<String> examTypes;
 	public final int numberOfSeries;
 	public final int numberOfAnnotations;
 
-	public EPADStudy(String project, String id, String insert_date, String label, String date, String uri,
-			String examType, String studyDescription, String studyAccessionNumber, int numberOfSeries, int numberOfAnnotations)
+	public EPADStudy(String projectID, String studyUID, String insertDate, String date, String uri,
+			Set<String> examTypes, String studyDescription, String studyAccessionNumber, int numberOfSeries,
+			int numberOfAnnotations)
 	{
-		this.project = project;
-		this.id = id;
-		this.insert_date = insert_date;
-		this.label = label;
+		this.projectID = projectID;
+		this.studyUID = studyUID;
+		this.insertDate = insertDate;
 		this.date = date;
 		this.uri = uri;
-		this.examType = examType;
+		this.examTypes = examTypes;
 		this.studyDescription = studyDescription;
 		this.studyAccessionNumber = studyAccessionNumber;
 		this.numberOfSeries = numberOfSeries;
