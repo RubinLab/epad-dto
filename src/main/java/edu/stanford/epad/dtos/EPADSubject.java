@@ -7,6 +7,7 @@ import java.util.Set;
 import com.google.gson.Gson;
 
 /**
+ * Represents a patient in ePAD
  * 
  * @author martin
  */
@@ -14,7 +15,7 @@ public class EPADSubject implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String projectID, subjectName, insertUser, xnatID, insertDate, label, uri;
+	public final String subjectName, insertUser, xnatID, insertDate, label, uri, projectID;
 	public final int numberOfStudies;
 	public final int numberOfAnnotations;
 	public final Set<String> examTypes;
