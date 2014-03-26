@@ -11,8 +11,7 @@ public enum DCM4CHEEStudySearchType {
 		this.name = type;
 	}
 
-	@Override
-	public String toString()
+	public String getName()
 	{
 		return name;
 	}

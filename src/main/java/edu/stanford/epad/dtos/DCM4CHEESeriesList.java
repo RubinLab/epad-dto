@@ -34,7 +34,7 @@ public class DCM4CHEESeriesList implements Serializable
 		ResultSet.addDCM4CHEESeries(dcm4CheeSeries);
 	}
 
-	public int getNumberOfStudies()
+	public int getNumberOfSeries()
 	{
 		return this.ResultSet.totalRecords;
 	}
