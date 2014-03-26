@@ -5,25 +5,8 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * A description of an XNAT project. This is the default structure returned from an XNAT project query.
- * <p>
- * Example query:
- * <p>
- * <code>curl -b JSESSIONID=[session_key] -X GET "http:[host:port]/epad/projects/"</code>
- * <p>
- * Redirects to the XNAT call <code>/xnat/data/projects</code>, which returns a JSON-specified list of projects, e.g.,
- * <p>
- * <code>
- * {
- * "ResultSet":
- *  { "Result":
- *    [ 
- *     {"secondary_ID":"epad-xnat","pi_lastname":"MrPI","description":"", "name":"XNAT Project","ID":"EPAD_PROJECT","pi_firstname":"An","URI":"/data/projects/EPAD_PROJECT"},
- *    ], 
- *    "totalRecords" : "1"
- *  }
- * }
- * </code>
+ * A description of an XNAT project. This is the default structure returned from an XNAT project query. Designed to be
+ * JSON serializable.
  * 
  * @author martin
  */

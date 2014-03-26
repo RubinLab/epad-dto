@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * Represents an image in the result from a query to the ePAD database.
+ * Represents an image description in the result from a query to the ePAD database. Designed to be JSON serializable.
  * 
  * @author martin
  * 

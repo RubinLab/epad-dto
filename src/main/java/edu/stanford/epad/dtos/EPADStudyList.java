@@ -7,6 +7,12 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
+/**
+ * Designed to be JSON serializable.
+ * 
+ * 
+ * @author martin
+ */
 public class EPADStudyList implements Serializable
 {
 	private static final long serialVersionUID = 1L;

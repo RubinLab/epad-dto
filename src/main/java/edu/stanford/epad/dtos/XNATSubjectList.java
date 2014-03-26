@@ -10,14 +10,7 @@ import com.google.gson.Gson;
 /**
  * A result from XNAT listing a set of subjects. This is the default structure returned from an XNAT subject query.
  * <p>
- * Example query:
- * <p>
- * <code>curl -b JSESSIONID=[session_key] -X GET "http:[host:port]/XNAT/projects/[project_id]/subjects/"</code>
- * <p>
- * Redirects to the XNAT call <code>/xnat/data/projects/..</code>, which returns a JSON-specified list of subjects for
- * the specified project, e.g.,
- * <p>
- * <code>
+ * Example: <code>
  * {
  * "ResultSet":
  *  { "Result":

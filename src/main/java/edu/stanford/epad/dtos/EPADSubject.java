@@ -7,7 +7,7 @@ import java.util.Set;
 import com.google.gson.Gson;
 
 /**
- * Represents a patient in ePAD
+ * Represents a patient in ePAD. Designed to be JSON serializable.
  * 
  * @author martin
  */

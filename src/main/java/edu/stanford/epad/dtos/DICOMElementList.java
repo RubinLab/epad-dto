@@ -7,6 +7,12 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
+/**
+ * Represents a list of DICOM headers. Designed to be JSON serializable.
+ * 
+ * 
+ * @author martin
+ */
 public class DICOMElementList implements Serializable
 {
 	private static final long serialVersionUID = 1L;

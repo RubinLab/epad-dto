@@ -5,26 +5,7 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * A description of an XNAT experiment.
- * <p>
- * Example query:
- * <p>
- * <code>curl -b JSESSIONID=[session_key] -X GET "http:[host:port]/epad/projects/[project_id]/subjects/[subject_id]/experiments"</code>
- * <p>
- * Redirects to the XNAT call <code>/xnat/data/projects/..</code>, which returns a JSON-specified list of subjects for
- * the specified project, e.g.,
- * <p>
- * <code>
- * {
- * "ResultSet":
- *  { "Result":
- *    [ 
- *      {"project":"PRJ1","xsiType":"...","ID":"...","insert_date":"...","label":"SID1", "date":"...", "URI":"/data/subjects/EPAD_S00002"}  
- *    ], 
- *    "totalRecords" : "1"
- *  }
- * }
- * </code>
+ * A description of an XNAT experiment. Designed to be JSON serializable.
  * 
  * @author martin
  */

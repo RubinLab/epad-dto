@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * Class representing a DICOM element returned from a query to ePAD.
+ * Class representing a DICOM element returned from a query to ePAD. Designed to be JSON serializable.
  * 
  * @author martin
  */

@@ -8,7 +8,7 @@ import java.util.List;
 import com.google.gson.Gson;
 
 /**
- * Represents a list if DCM4CHEE series
+ * Represents a list of DCM4CHEE series. Designed to be JSON serializable.
  * 
  * 
  * @author martin

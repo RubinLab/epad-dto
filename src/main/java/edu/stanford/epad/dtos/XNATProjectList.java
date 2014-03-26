@@ -10,13 +10,7 @@ import com.google.gson.Gson;
 /**
  * A result from XNAT listing a set of projects.
  * <p>
- * Example invocation:
- * <p>
- * <code>curl -b JSESSIONID=[session_key] -X GET "http:[host:port]/epad/projects/"</code>
- * <p>
- * Redirects to the XNAT call <code>/xnat/data/projects</code>, which returns a JSON-specified list of projects, e.g.,
- * <p>
- * <code>
+ * Example: <code>
  * {
  * "ResultSet":
  *  { "Result":

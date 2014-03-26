@@ -9,6 +9,12 @@ import java.util.Set;
 
 import com.google.gson.Gson;
 
+/**
+ * Represents a list of XNAT users.
+ * 
+ * 
+ * @author martin
+ */
 public class XNATUserList implements Serializable
 {
 	private static final long serialVersionUID = 1L;

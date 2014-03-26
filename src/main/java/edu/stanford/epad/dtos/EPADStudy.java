@@ -6,6 +6,8 @@ import java.util.Set;
 import com.google.gson.Gson;
 
 /**
+ * Representation of a DICOM study in ePAD. Designed to be JSON serializable.
+ * 
  * @author martin
  */
 public class EPADStudy implements Serializable

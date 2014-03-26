@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * Represents result returned by DCM4CHEE series search.
+ * Represents result returned by DCM4CHEE series search. Designed to be JSON serializable.
  * 
  * @author martin
  */
