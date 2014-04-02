@@ -14,25 +14,39 @@ public class EPADStudy implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String projectID, studyUID, insertDate, studyDate, uri;
+	public final String projectID, studyUID, insertDate, studyDate, xnatURI;
+	public final String firstSeriesUID, firstSeriesDateAcquired;
+	public final String physicianName, birthdate, sex;
+	public final int studyStatus;
 	public final String studyDescription, studyAccessionNumber;
 	public final Set<String> examTypes;
+	public final int numberOfImages;
 	public final int numberOfSeries;
 	public final int numberOfAnnotations;
 
-	public EPADStudy(String projectID, String studyUID, String insertDate, String studyDate, String uri,
-			Set<String> examTypes, String studyDescription, String studyAccessionNumber, int numberOfSeries,
-			int numberOfAnnotations)
+	public EPADStudy(String projectID, String studyUID, String insertDate, String studyDate, String xnatURI,
+			String firstSeriesUID, String firstSeriesDateAcquired, String physicianName, String birthdate, String sex,
+			int studyStatus, Set<String> examTypes, String studyDescription, String studyAccessionNumber, int numberOfSeries,
+			int numberOfImages, int numberOfAnnotations)
 	{
 		this.projectID = projectID;
 		this.studyUID = studyUID;
 		this.insertDate = insertDate;
 		this.studyDate = studyDate;
-		this.uri = uri;
+		this.xnatURI = xnatURI;
+
+		this.firstSeriesUID = firstSeriesUID;
+		this.firstSeriesDateAcquired = firstSeriesDateAcquired;
+		this.physicianName = physicianName;
+		this.birthdate = birthdate;
+		this.sex = sex;
+		this.studyStatus = studyStatus;
+
 		this.examTypes = examTypes;
 		this.studyDescription = studyDescription;
 		this.studyAccessionNumber = studyAccessionNumber;
 		this.numberOfSeries = numberOfSeries;
+		this.numberOfImages = numberOfImages;
 		this.numberOfAnnotations = numberOfAnnotations;
 	}
 
