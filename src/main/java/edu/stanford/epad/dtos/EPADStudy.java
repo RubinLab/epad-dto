@@ -14,20 +14,20 @@ public class EPADStudy implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String projectID, studyUID, insertDate, date, uri;
+	public final String projectID, studyUID, insertDate, studyDate, uri;
 	public final String studyDescription, studyAccessionNumber;
 	public final Set<String> examTypes;
 	public final int numberOfSeries;
 	public final int numberOfAnnotations;
 
-	public EPADStudy(String projectID, String studyUID, String insertDate, String date, String uri,
+	public EPADStudy(String projectID, String studyUID, String insertDate, String studyDate, String uri,
 			Set<String> examTypes, String studyDescription, String studyAccessionNumber, int numberOfSeries,
 			int numberOfAnnotations)
 	{
 		this.projectID = projectID;
 		this.studyUID = studyUID;
 		this.insertDate = insertDate;
-		this.date = date;
+		this.studyDate = studyDate;
 		this.uri = uri;
 		this.examTypes = examTypes;
 		this.studyDescription = studyDescription;

@@ -14,14 +14,14 @@ public class EPADImage implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String id, insertDate, date, sliceLocation;
+	public final String id, insertDate, imageDate, sliceLocation;
 	public final int instanceNumber;
 
-	public EPADImage(String id, String insertDate, String date, String sliceLocation, int instanceNumber)
+	public EPADImage(String id, String insertDate, String imageDate, String sliceLocation, int instanceNumber)
 	{
 		this.id = id;
 		this.insertDate = insertDate;
-		this.date = date;
+		this.imageDate = imageDate;
 		this.sliceLocation = sliceLocation;
 		this.instanceNumber = instanceNumber;
 	}
