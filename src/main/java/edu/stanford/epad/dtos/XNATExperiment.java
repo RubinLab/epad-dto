@@ -19,12 +19,12 @@ public class XNATExperiment implements Serializable
 			String uri)
 	{
 		this.project = project;
-		this.xsiType = xsiType;
-		this.ID = id;
+		this.xsiType = xsiType; // ePAD uses xnat:otherDicomSessionData
+		this.ID = id; // This is the XNAT identifier
 		this.insert_date = insert_date;
-		this.label = label;
-		this.date = date;
-		this.URI = uri;
+		this.label = label; // Label stores the DICOM study UID in ePAD
+		this.date = date; // Experiment date
+		this.URI = uri; // XNAT URI
 	}
 
 	public String toJSON()
