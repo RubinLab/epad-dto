@@ -15,20 +15,20 @@ public class EPADSubject implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String subjectName, insertUser, xnatID, insertDate, label, uri, projectID;
+	public final String subjectName, subjectID, projectID, insertUser, xnatID, insertDate, uri;
 	public final int numberOfStudies;
 	public final int numberOfAnnotations;
 	public final Set<String> examTypes;
 
 	public EPADSubject(String projectID, String subjectName, String insertUser, String xnatID, String insertDate,
-			String label, String uri, int numberOfStudies, int numberOfAnnotations, Set<String> examTypes)
+			String subjectID, String uri, int numberOfStudies, int numberOfAnnotations, Set<String> examTypes)
 	{
 		this.projectID = projectID;
 		this.subjectName = subjectName;
 		this.insertUser = insertUser;
 		this.xnatID = xnatID;
 		this.insertDate = insertDate;
-		this.label = label;
+		this.subjectID = subjectID;
 		this.uri = uri;
 		this.numberOfStudies = numberOfStudies;
 		this.numberOfAnnotations = numberOfAnnotations;
