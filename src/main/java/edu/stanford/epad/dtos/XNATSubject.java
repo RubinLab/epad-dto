@@ -5,9 +5,10 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * A description of an XNAT subject. This is the default structure returned from an XNAT project query.
+ * A description of an XNAT subject. This is the default structure returned from an XNAT subjects query.
  * 
  * @author martin
+ * @see XNATSubjectList
  */
 public class XNATSubject implements Serializable
 {
@@ -22,9 +23,9 @@ public class XNATSubject implements Serializable
 		this.insert_user = insert_user;
 		this.ID = id;
 		this.insert_date = insert_date;
-		this.label = label;
+		this.label = label; // We store the DICOM patient ID in this field
+		this.src = src; // We store the DICOM patient name in this field
 		this.URI = uri;
-		this.src = src;
 	}
 
 	public String toJSON()
