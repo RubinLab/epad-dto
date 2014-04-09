@@ -20,8 +20,8 @@ public class EPADSubject implements Serializable
 	public final int numberOfAnnotations;
 	public final Set<String> examTypes;
 
-	public EPADSubject(String projectID, String subjectName, String insertUser, String xnatID, String insertDate,
-			String subjectID, String uri, int numberOfStudies, int numberOfAnnotations, Set<String> examTypes)
+	public EPADSubject(String projectID, String subjectID, String subjectName, String insertUser, String xnatID,
+			String insertDate, String uri, int numberOfStudies, int numberOfAnnotations, Set<String> examTypes)
 	{
 		this.projectID = projectID;
 		this.subjectName = subjectName;
