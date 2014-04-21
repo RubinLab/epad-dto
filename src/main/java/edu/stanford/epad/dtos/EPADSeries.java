@@ -18,12 +18,12 @@ public class EPADSeries implements Serializable
 	public final int numberOfImages, numberOfSeriesRelatedInstances;
 	public final int numberOfAnnotations;
 	public final String institution, stationName, department;
-	public final int pngProcessingStatus;
+	public final SeriesProcessingStatus seriesProcessingStatus;
 
 	public EPADSeries(String studyUID, String seriesUID, String patientID, String patientName, String seriesDate,
 			String seriesDescription, String examType, String bodyPart, String accessionNumber, int numberOfImages,
 			int numberOfSeriesRelatedInstances, int numberOfAnnotations, String institution, String stationName,
-			String department, int pngProcessingStatus)
+			String department, SeriesProcessingStatus seriesProcessingStatus)
 	{
 		this.studyUID = studyUID;
 		this.seriesUID = seriesUID;
@@ -40,7 +40,7 @@ public class EPADSeries implements Serializable
 		this.institution = institution;
 		this.stationName = stationName;
 		this.department = department;
-		this.pngProcessingStatus = pngProcessingStatus;
+		this.seriesProcessingStatus = seriesProcessingStatus;
 	}
 
 	public String toJSON()

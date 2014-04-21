@@ -17,7 +17,7 @@ public class EPADStudy implements Serializable
 	public final String projectID, studyUID, insertDate;
 	public final String firstSeriesUID, firstSeriesDateAcquired;
 	public final String physicianName, birthdate, sex;
-	public final int studyStatus;
+	public final StudyProcessingStatus studyProcessingStatus;
 	public final String studyDescription, studyAccessionNumber;
 	public final Set<String> examTypes;
 	public final int numberOfImages;
@@ -25,9 +25,9 @@ public class EPADStudy implements Serializable
 	public final int numberOfAnnotations;
 
 	public EPADStudy(String projectID, String studyUID, String insertDate, String firstSeriesUID,
-			String firstSeriesDateAcquired, String physicianName, String birthdate, String sex, int studyStatus,
-			Set<String> examTypes, String studyDescription, String studyAccessionNumber, int numberOfSeries,
-			int numberOfImages, int numberOfAnnotations)
+			String firstSeriesDateAcquired, String physicianName, String birthdate, String sex,
+			StudyProcessingStatus studyProcessingStatus, Set<String> examTypes, String studyDescription,
+			String studyAccessionNumber, int numberOfSeries, int numberOfImages, int numberOfAnnotations)
 	{
 		this.projectID = projectID;
 		this.studyUID = studyUID;
@@ -38,7 +38,7 @@ public class EPADStudy implements Serializable
 		this.physicianName = physicianName;
 		this.birthdate = birthdate;
 		this.sex = sex;
-		this.studyStatus = studyStatus;
+		this.studyProcessingStatus = studyProcessingStatus;
 
 		this.examTypes = examTypes;
 		this.studyDescription = studyDescription;
