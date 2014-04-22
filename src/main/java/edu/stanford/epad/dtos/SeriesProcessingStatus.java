@@ -16,9 +16,9 @@ public enum SeriesProcessingStatus {
 			lookup.put(s.getCode(), s);
 	}
 
-	private SeriesProcessingStatus(int status)
+	private SeriesProcessingStatus(int statusCode)
 	{
-		this.statusCode = status;
+		this.statusCode = statusCode;
 	}
 
 	public int getCode()
