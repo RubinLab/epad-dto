@@ -13,21 +13,22 @@ public class EPADSeries implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String studyUID, seriesUID, patientID, patientName;
+	public final String projectID, patientID, patientName, studyUID, seriesUID;
 	public final String seriesDate, seriesDescription, examType, bodyPart, accessionNumber;
 	public final int numberOfImages, numberOfSeriesRelatedInstances;
 	public final int numberOfAnnotations;
 	public final String institution, stationName, department;
 	public final SeriesProcessingStatus seriesProcessingStatus;
 
-	public EPADSeries(String studyUID, String seriesUID, String patientID, String patientName, String seriesDate,
-			String seriesDescription, String examType, String bodyPart, String accessionNumber, int numberOfImages,
-			int numberOfSeriesRelatedInstances, int numberOfAnnotations, String institution, String stationName,
-			String department, SeriesProcessingStatus seriesProcessingStatus)
+	public EPADSeries(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
+			String seriesDate, String seriesDescription, String examType, String bodyPart, String accessionNumber,
+			int numberOfImages, int numberOfSeriesRelatedInstances, int numberOfAnnotations, String institution,
+			String stationName, String department, SeriesProcessingStatus seriesProcessingStatus)
 	{
+		this.projectID = projectID;
+		this.patientID = patientID;
 		this.studyUID = studyUID;
 		this.seriesUID = seriesUID;
-		this.patientID = patientID;
 		this.patientName = patientName;
 		this.seriesDate = seriesDate;
 		this.seriesDescription = seriesDescription;

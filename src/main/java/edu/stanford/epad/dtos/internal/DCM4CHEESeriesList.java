@@ -1,4 +1,4 @@
-package edu.stanford.epad.dtos;
+package edu.stanford.epad.dtos.internal;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -29,7 +29,7 @@ public class EPADImageList implements Serializable
 		this.ResultSet = new EPADImageResultSet();
 	}
 
-	public void addEPADImage(EPADImage epadImage)
+	public void addImage(EPADImage epadImage)
 	{
 		this.ResultSet.addEPADImage(epadImage);
 	}

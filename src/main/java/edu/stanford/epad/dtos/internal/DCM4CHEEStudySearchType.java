@@ -1,4 +1,4 @@
-package edu.stanford.epad.dtos;
+package edu.stanford.epad.dtos.internal;
 
 public enum DCM4CHEEStudySearchType {
 	PATIENT_NAME("patientName"), PATIENT_ID("patientId"), ASSESION_NUM("accessionNum"), EXAM_TYPE("examType"), STUDY_DATE(
