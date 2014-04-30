@@ -36,7 +36,7 @@ public class EPADProject implements Serializable
 		this.numberOfSubjects = numberOfSubjects;
 		this.numberOfStudies = numberOfStudies;
 		this.numberOfAnnotations = numberOfAnnotations;
-		this.loginNames = loginNames;
+		this.loginNames = new HashSet<String>(loginNames);
 		this.subjectIDs = new HashSet<String>(subjectIDs);
 	}
 
