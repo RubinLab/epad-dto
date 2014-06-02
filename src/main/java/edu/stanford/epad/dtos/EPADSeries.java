@@ -15,8 +15,7 @@ public class EPADSeries implements Serializable
 
 	public final String projectID, patientID, patientName, studyUID, seriesUID;
 	public final String seriesDate, seriesDescription, examType, bodyPart, accessionNumber;
-	public final int numberOfImages, numberOfSeriesRelatedInstances;
-	public final int numberOfAnnotations;
+	public final int numberOfImages, numberOfSeriesRelatedInstances, numberOfAnnotations;
 	public final String institution, stationName, department;
 	public final SeriesProcessingStatus seriesProcessingStatus;
 	public final String createdTime;
@@ -53,9 +52,3 @@ public class EPADSeries implements Serializable
 		return gson.toJson(this);
 	}
 }
-
-// this.bodyPart = bodyPart;
-// this.institution = institution;
-// this.stationName = stationName;
-// this.department = department;
-// this.accessionNumber = accessionNumber;
