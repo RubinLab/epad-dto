@@ -11,6 +11,7 @@ import com.google.gson.Gson;
  * Result returned from an ePAD database series query. Designed to be JSON serializable.
  * 
  * @author martin
+ * 
  * @see DICOMSeriesOrderHandler
  */
 public class EPADDatabaseSeries implements Serializable
