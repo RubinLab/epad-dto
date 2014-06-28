@@ -16,9 +16,12 @@ public class EPADImage implements Serializable
 
 	public final String projectID, patientID, studyUID, seriesUID, imageUID, insertDate, imageDate, sliceLocation;
 	public final int instanceNumber;
+	public final int numberOfFrames;
+	public final String pngURL, jpegURL;
 
 	public EPADImage(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
-			String insertDate, String imageDate, String sliceLocation, int instanceNumber)
+			String insertDate, String imageDate, String sliceLocation, int instanceNumber, int numberOfFrames,
+			String pngURL, String jpegURL)
 	{
 		this.projectID = projectID;
 		this.patientID = patientID;
@@ -29,6 +32,9 @@ public class EPADImage implements Serializable
 		this.imageDate = imageDate;
 		this.sliceLocation = sliceLocation;
 		this.instanceNumber = instanceNumber;
+		this.numberOfFrames = numberOfFrames;
+		this.pngURL = pngURL;
+		this.jpegURL = jpegURL;
 	}
 
 	public String toJSON()
