@@ -1,10 +1,10 @@
 package edu.stanford.epad.dtos;
 
 import java.io.Serializable;
-import java.util.Collections;
-import java.util.List;
 
 import com.google.gson.Gson;
+
+import edu.stanford.epad.dtos.internal.DICOMElementList;
 
 /**
  * A description of an image returned from ePAD. Designed to be JSON serializable.
@@ -18,16 +18,15 @@ public class EPADImage implements Serializable
 
 	public final String projectID, patientID, studyUID, seriesUID, imageUID, insertDate, imageDate, sliceLocation;
 	public final int instanceNumber;
-	public final String pngURL, jpegURL;
-	public final List<DICOMAttribute> dicomAttributes;
-	public final List<DICOMAttribute> calculatedDICOMAttributes;
+	public final String pngPath, jpegPath;
+	public final DICOMElementList dicomElements;
+	public final DICOMElementList calculatedDICOMElements;
 	public final int numberOfFrames;
 	public final boolean isDSO;
 
 	public EPADImage(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
-			String insertDate, String imageDate, String sliceLocation, int instanceNumber, String pngURL, String jpegURL,
-			List<DICOMAttribute> dicomAttributes, List<DICOMAttribute> calculatedDICOMAttributes, int numberOfFrames,
-			boolean isDSO)
+			String insertDate, String imageDate, String sliceLocation, int instanceNumber, String pngPath, String jpegPath,
+			DICOMElementList dicomElements, DICOMElementList calculatedDICOMElements, int numberOfFrames, boolean isDSO)
 	{
 		this.projectID = projectID;
 		this.patientID = patientID;
@@ -38,10 +37,10 @@ public class EPADImage implements Serializable
 		this.imageDate = imageDate;
 		this.sliceLocation = sliceLocation;
 		this.instanceNumber = instanceNumber;
-		this.pngURL = pngURL;
-		this.jpegURL = jpegURL;
-		this.dicomAttributes = Collections.unmodifiableList(dicomAttributes);
-		this.calculatedDICOMAttributes = Collections.unmodifiableList(calculatedDICOMAttributes);
+		this.pngPath = pngPath;
+		this.jpegPath = jpegPath;
+		this.dicomElements = dicomElements;
+		this.calculatedDICOMElements = calculatedDICOMElements;
 		this.numberOfFrames = numberOfFrames;
 		this.isDSO = isDSO;
 	}
