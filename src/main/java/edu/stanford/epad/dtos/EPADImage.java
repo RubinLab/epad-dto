@@ -1,6 +1,8 @@
 package edu.stanford.epad.dtos;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.List;
 
 import com.google.gson.Gson;
 
@@ -16,12 +18,16 @@ public class EPADImage implements Serializable
 
 	public final String projectID, patientID, studyUID, seriesUID, imageUID, insertDate, imageDate, sliceLocation;
 	public final int instanceNumber;
-	public final int numberOfFrames;
 	public final String pngURL, jpegURL;
+	public final List<DICOMAttribute> dicomAttributes;
+	public final List<DICOMAttribute> calculatedDICOMAttributes;
+	public final int numberOfFrames;
+	public final boolean isDSO;
 
 	public EPADImage(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
-			String insertDate, String imageDate, String sliceLocation, int instanceNumber, int numberOfFrames,
-			String pngURL, String jpegURL)
+			String insertDate, String imageDate, String sliceLocation, int instanceNumber, String pngURL, String jpegURL,
+			List<DICOMAttribute> dicomAttributes, List<DICOMAttribute> calculatedDICOMAttributes, int numberOfFrames,
+			boolean isDSO)
 	{
 		this.projectID = projectID;
 		this.patientID = patientID;
@@ -32,9 +38,12 @@ public class EPADImage implements Serializable
 		this.imageDate = imageDate;
 		this.sliceLocation = sliceLocation;
 		this.instanceNumber = instanceNumber;
-		this.numberOfFrames = numberOfFrames;
 		this.pngURL = pngURL;
 		this.jpegURL = jpegURL;
+		this.dicomAttributes = Collections.unmodifiableList(dicomAttributes);
+		this.calculatedDICOMAttributes = Collections.unmodifiableList(calculatedDICOMAttributes);
+		this.numberOfFrames = numberOfFrames;
+		this.isDSO = isDSO;
 	}
 
 	public String toJSON()
