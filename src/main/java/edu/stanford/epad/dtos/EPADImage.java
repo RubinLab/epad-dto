@@ -16,29 +16,32 @@ public class EPADImage implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String projectID, patientID, studyUID, seriesUID, imageUID, insertDate, imageDate, sliceLocation;
+	public final String projectID, patientID, studyUID, seriesUID, imageUID, classUID;
+	public final String insertDate, imageDate, sliceLocation;
 	public final int instanceNumber;
-	public final String pngPath, jpegPath;
+	public final String losslessImage, lossyImage;
 	public final DICOMElementList dicomElements;
 	public final DICOMElementList calculatedDICOMElements;
 	public final int numberOfFrames;
 	public final boolean isDSO;
 
 	public EPADImage(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
-			String insertDate, String imageDate, String sliceLocation, int instanceNumber, String pngPath, String jpegPath,
-			DICOMElementList dicomElements, DICOMElementList calculatedDICOMElements, int numberOfFrames, boolean isDSO)
+			String classUID, String insertDate, String imageDate, String sliceLocation, int instanceNumber,
+			String losslessImage, String lossyImage, DICOMElementList dicomElements,
+			DICOMElementList calculatedDICOMElements, int numberOfFrames, boolean isDSO)
 	{
 		this.projectID = projectID;
 		this.patientID = patientID;
 		this.studyUID = studyUID;
 		this.seriesUID = seriesUID;
 		this.imageUID = imageUID;
+		this.classUID = classUID;
 		this.insertDate = insertDate;
 		this.imageDate = imageDate;
 		this.sliceLocation = sliceLocation;
 		this.instanceNumber = instanceNumber;
-		this.pngPath = pngPath;
-		this.jpegPath = jpegPath;
+		this.losslessImage = losslessImage;
+		this.lossyImage = lossyImage;
 		this.dicomElements = dicomElements;
 		this.calculatedDICOMElements = calculatedDICOMElements;
 		this.numberOfFrames = numberOfFrames;
