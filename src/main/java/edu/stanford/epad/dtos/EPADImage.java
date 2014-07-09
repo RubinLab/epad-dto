@@ -21,14 +21,14 @@ public class EPADImage implements Serializable
 	public final int instanceNumber;
 	public final String losslessImage, lossyImage;
 	public final DICOMElementList dicomElements;
-	public final DICOMElementList calculatedDICOMElements;
+	public final DICOMElementList defaultDICOMElements;
 	public final int numberOfFrames;
 	public final boolean isDSO;
 
 	public EPADImage(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
 			String classUID, String insertDate, String imageDate, String sliceLocation, int instanceNumber,
 			String losslessImage, String lossyImage, DICOMElementList dicomElements,
-			DICOMElementList calculatedDICOMElements, int numberOfFrames, boolean isDSO)
+			DICOMElementList defaultDICOMElements, int numberOfFrames, boolean isDSO)
 	{
 		this.projectID = projectID;
 		this.patientID = patientID;
@@ -43,7 +43,7 @@ public class EPADImage implements Serializable
 		this.losslessImage = losslessImage;
 		this.lossyImage = lossyImage;
 		this.dicomElements = dicomElements;
-		this.calculatedDICOMElements = calculatedDICOMElements;
+		this.defaultDICOMElements = defaultDICOMElements;
 		this.numberOfFrames = numberOfFrames;
 		this.isDSO = isDSO;
 	}
