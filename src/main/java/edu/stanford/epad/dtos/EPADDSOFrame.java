@@ -2,22 +2,25 @@ package edu.stanford.epad.dtos;
 
 import com.google.gson.Gson;
 
+import edu.stanford.epad.dtos.internal.DICOMElementList;
+
 public class EPADDSOFrame extends EPADFrame
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String sourceSeriesUID, sourceImageUID, sourcePNGURL, maskURL;
+	public final String sourceSeriesUID, sourceImageUID, sourceLosslessImage, sourceLossyImage;
 
-	public EPADDSOFrame(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
-			String insertDate, String imageDate, String sliceLocation, int frameNumber, String pngURL, String jpegURL,
-			String sourceSeriesUID, String sourceImageUID, String sourcePNGURL, String maskURL)
+	public EPADDSOFrame(String projectID, String subjectID, String studyUID, String seriesUID, String imageUID,
+			String insertDate, String imageDate, String sliceLocation, int frameNumber, String losslessImage,
+			String lossyImage, DICOMElementList dicomElements, DICOMElementList defaultDICOMElements, String sourceSeriesUID,
+			String sourceImageUID, String sourceLosslessImage, String sourceLossyImage)
 	{
-		super(projectID, patientID, studyUID, seriesUID, imageUID, insertDate, imageDate, sliceLocation, frameNumber,
-				pngURL, jpegURL);
+		super(projectID, subjectID, studyUID, seriesUID, imageUID, insertDate, imageDate, sliceLocation, frameNumber,
+				losslessImage, lossyImage, dicomElements, defaultDICOMElements);
 		this.sourceSeriesUID = sourceSeriesUID;
 		this.sourceImageUID = sourceImageUID;
-		this.sourcePNGURL = sourcePNGURL;
-		this.maskURL = maskURL;
+		this.sourceLossyImage = sourceLossyImage;
+		this.sourceLosslessImage = sourceLosslessImage;
 	}
 
 	@Override

@@ -4,25 +4,32 @@ import java.io.Serializable;
 
 import com.google.gson.Gson;
 
+import edu.stanford.epad.dtos.internal.DICOMElementList;
+
 public class EPADFrame implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String projectID, patientID, studyUID, seriesUID, imageUID;
+	public final String projectID, subjectID, studyUID, seriesUID, imageUID;
 	public final int frameNumber;
-	public final String pngURL, jpegURL;
+	public final String losslessImage, lossyImage;
+	public final DICOMElementList dicomElements;
+	public final DICOMElementList defaultDICOMElements;
 
-	public EPADFrame(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
-			String insertDate, String imageDate, String sliceLocation, int frameNumber, String pngURL, String jpegURL)
+	public EPADFrame(String projectID, String subjectID, String studyUID, String seriesUID, String imageUID,
+			String insertDate, String imageDate, String sliceLocation, int frameNumber, String losslessImage,
+			String lossyImage, DICOMElementList dicomElements, DICOMElementList defaultDICOMElements)
 	{
 		this.projectID = projectID;
-		this.patientID = patientID;
+		this.subjectID = subjectID;
 		this.studyUID = studyUID;
 		this.seriesUID = seriesUID;
 		this.imageUID = imageUID;
 		this.frameNumber = frameNumber;
-		this.pngURL = pngURL;
-		this.jpegURL = jpegURL;
+		this.losslessImage = losslessImage;
+		this.lossyImage = lossyImage;
+		this.dicomElements = dicomElements;
+		this.defaultDICOMElements = defaultDICOMElements;
 	}
 
 	public String toJSON()
