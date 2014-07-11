@@ -28,7 +28,8 @@ public class EPADFrame implements Serializable
 		this.frameNumber = frameNumber;
 		this.losslessImage = losslessImage;
 		this.lossyImage = lossyImage;
-		this.dicomElements = dicomElements;
+		this.dicomElements = new DICOMElementList(); // TODO Removal temporary for testing
+		// this.dicomElements = dicomElements;
 		this.defaultDICOMElements = defaultDICOMElements;
 	}
 
