@@ -42,7 +42,7 @@ public class EPADImage implements Serializable
 		this.instanceNumber = instanceNumber;
 		this.losslessImage = losslessImage;
 		this.lossyImage = lossyImage;
-		this.dicomElements = new DICOMElementList(); // We do not pass all elements on this call.
+		this.dicomElements = dicomElements;
 		this.defaultDICOMElements = defaultDICOMElements;
 		this.numberOfFrames = numberOfFrames;
 		this.isDSO = isDSO;
