@@ -17,12 +17,12 @@ public class DCM4CHEESeries implements Serializable
 			seriesDescription;
 	public final int numberOfSeriesRelatedInstances, imagesInSeries, seriesStatus;
 	public final String bodyPart, institution, stationName, department, accessionNumber;
-	public java.sql.Timestamp createdTime;
+	public final String createdTime;
 
 	public DCM4CHEESeries(String studyUID, String seriesUID, String patientID, String patientName, String seriesDate,
 			String examType, String thumbnailURL, String seriesDescription, int numberOfSeriesRelatedInstances,
 			int imagesInSeries, int seriesStatus, String bodyPart, String institution, String stationName, String department,
-			String accessionNumber, java.sql.Timestamp createdTime)
+			String accessionNumber, String createdTime)
 	{
 		this.studyUID = studyUID;
 		this.seriesUID = seriesUID;
