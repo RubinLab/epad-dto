@@ -3,8 +3,10 @@ package edu.stanford.epad.dtos.internal;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import com.google.gson.Gson;
@@ -49,6 +51,20 @@ public class XNATUserList implements Serializable
 			loginNames.add(xnatUser.login);
 
 		return loginNames;
+	}
+
+	/*
+	 * Get Roles for each user
+	 * Role = Owners, Members, Collaborators
+	 */
+	public Map<String,String> getRoles()
+	{
+		Map<String,String> loginToRole = new HashMap<String, String>();
+
+		for (XNATUser xnatUser : ResultSet.Result)
+			loginToRole.put(xnatUser.login, xnatUser.displayname);
+
+		return loginToRole;
 	}
 
 	public class XNATUserResultSet

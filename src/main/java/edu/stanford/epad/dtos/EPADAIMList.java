@@ -3,7 +3,9 @@ package edu.stanford.epad.dtos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.google.gson.Gson;
 
@@ -55,6 +57,39 @@ public class EPADAIMList implements Serializable
 			this.Result.add(epadAIM);
 			this.totalRecords++;
 		}
+	}
+	
+	public Set<String> getAIMIds()
+	{
+		Set<String> ids = new HashSet<String>();
+
+		for (EPADAIM aim : ResultSet.Result)
+			ids.add(aim.aimID);
+
+		return ids;
+	}
+	
+	public Set<String> getAIMIds(String username)
+	{
+		Set<String> ids = new HashSet<String>();
+
+		for (EPADAIM aim : ResultSet.Result)
+		{
+			if (username == null || aim.userName.equals(username))
+				ids.add(aim.aimID);
+		}
+
+		return ids;
+	}
+	
+	public String getProjectID()
+	{
+		for (EPADAIM aim : ResultSet.Result)
+		{
+			return aim.projectID;
+		}
+
+		return null;
 	}
 
 	public String toJSON()

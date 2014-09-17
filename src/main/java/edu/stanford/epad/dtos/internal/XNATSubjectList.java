@@ -3,7 +3,9 @@ package edu.stanford.epad.dtos.internal;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gson.Gson;
 
@@ -72,6 +74,19 @@ public class XNATSubjectList implements Serializable
 			this.Result.add(xnatSubject);
 			this.totalRecords++;
 		}
+	}
+
+	/*
+	 * Get Names for each subjectId
+	 */
+	public Map<String,String> getNameMap()
+	{
+		Map<String,String> idToName = new HashMap<String, String>();
+
+		for (XNATSubject subject : ResultSet.Result)
+			idToName.put(subject.src, subject.label);
+
+		return idToName;
 	}
 
 	public String toJSON()
