@@ -69,27 +69,28 @@ public class EPADAIMList implements Serializable
 		return ids;
 	}
 	
-	public Set<String> getAIMIds(String username)
+	public Set<EPADAIM> getAIMsForProject(String projectID)
 	{
-		Set<String> ids = new HashSet<String>();
+		Set<EPADAIM> aims = new HashSet<EPADAIM>();
 
 		for (EPADAIM aim : ResultSet.Result)
 		{
-			if (username == null || aim.userName.equals(username))
-				ids.add(aim.aimID);
+			if (projectID == null || aim.projectID.equals(projectID))
+				aims.add(aim);
+		}
+
+		return aims;
+	}
+	
+	public Set<String> getProjectIds()
+	{
+		Set<String> ids = new HashSet<String>();
+		for (EPADAIM aim : ResultSet.Result)
+		{
+			ids.add(aim.projectID);
 		}
 
 		return ids;
-	}
-	
-	public String getProjectID()
-	{
-		for (EPADAIM aim : ResultSet.Result)
-		{
-			return aim.projectID;
-		}
-
-		return null;
 	}
 
 	public String toJSON()

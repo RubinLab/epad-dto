@@ -18,11 +18,12 @@ public class DCM4CHEESeries implements Serializable
 	public final int numberOfSeriesRelatedInstances, imagesInSeries, seriesStatus;
 	public final String bodyPart, institution, stationName, department, accessionNumber;
 	public final String createdTime;
+	public final boolean isDSO;
 
 	public DCM4CHEESeries(String studyUID, String seriesUID, String patientID, String patientName, String seriesDate,
 			String examType, String thumbnailURL, String seriesDescription, int numberOfSeriesRelatedInstances,
 			int imagesInSeries, int seriesStatus, String bodyPart, String institution, String stationName, String department,
-			String accessionNumber, String createdTime)
+			String accessionNumber, String createdTime, boolean isDSO)
 	{
 		this.studyUID = studyUID;
 		this.seriesUID = seriesUID;
@@ -41,6 +42,7 @@ public class DCM4CHEESeries implements Serializable
 		this.department = department;
 		this.accessionNumber = accessionNumber;
 		this.createdTime = createdTime;
+		this.isDSO = isDSO;
 	}
 
 	public String toJSON()

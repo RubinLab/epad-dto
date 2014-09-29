@@ -19,12 +19,13 @@ public class EPADSeries implements Serializable
 	public final String institution, stationName, department;
 	public final SeriesProcessingStatus seriesProcessingStatus;
 	public final String createdTime, firstImageUIDInSeries;
+	public final boolean isDSO;
 
 	public EPADSeries(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
 			String seriesDate, String seriesDescription, String examType, String bodyPart, String accessionNumber,
 			int numberOfImages, int numberOfSeriesRelatedInstances, int numberOfAnnotations, String institution,
 			String stationName, String department, SeriesProcessingStatus seriesProcessingStatus, String createdTime,
-			String firstImageUIDInSeries)
+			String firstImageUIDInSeries, boolean isDSO)
 	{
 		this.projectID = projectID;
 		this.patientID = patientID;
@@ -45,6 +46,7 @@ public class EPADSeries implements Serializable
 		this.seriesProcessingStatus = seriesProcessingStatus;
 		this.createdTime = createdTime;
 		this.firstImageUIDInSeries = firstImageUIDInSeries;
+		this.isDSO = isDSO;
 	}
 
 	public String toJSON()
