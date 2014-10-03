@@ -17,7 +17,7 @@ public class DCM4CHEEStudy implements Serializable
 	public int studyStatus, seriesCount;
 	public String firstSeriesUID, firstSeriesDateAcquired, studyAccessionNumber;
 	public int imagesCount;
-	public String studyID, studyDescription, physicianName, birthdate, sex;
+	public String studyID, studyDescription, physicianName, birthdate, sex, createdTime;
 
 	public DCM4CHEEStudy(String studyUID, String patientName, String patientID, String examType, String dateAcquired,
 			int studyStatus, int seriesCount, String firstSeriesUID, String firstSeriesDateAcquired,
@@ -40,6 +40,31 @@ public class DCM4CHEEStudy implements Serializable
 		this.physicianName = physicianName;
 		this.birthdate = birthdate;
 		this.sex = sex;
+		this.createdTime = null;
+	}
+
+	public DCM4CHEEStudy(String studyUID, String patientName, String patientID, String examType, String dateAcquired,
+			int studyStatus, int seriesCount, String firstSeriesUID, String firstSeriesDateAcquired,
+			String studyAccessionNumber, int imagesCount, String studyID, String studyDescription, String physicianName,
+			String birthdate, String sex, String createdTime)
+	{
+		this.studyUID = studyUID;
+		this.patientName = patientName;
+		this.patientID = patientID;
+		this.examType = examType;
+		this.dateAcquired = dateAcquired;
+		this.studyStatus = studyStatus;
+		this.seriesCount = seriesCount;
+		this.firstSeriesUID = firstSeriesUID;
+		this.firstSeriesDateAcquired = firstSeriesDateAcquired;
+		this.studyAccessionNumber = studyAccessionNumber;
+		this.imagesCount = imagesCount;
+		this.studyID = studyID;
+		this.studyDescription = studyDescription;
+		this.physicianName = physicianName;
+		this.birthdate = birthdate;
+		this.sex = sex;
+		this.createdTime = createdTime;
 	}
 
 	public String toJSON()

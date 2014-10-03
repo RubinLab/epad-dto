@@ -23,7 +23,8 @@ public class EPADStudy implements Serializable
 	public final int numberOfImages;
 	public final int numberOfSeries;
 	public final int numberOfAnnotations;
-
+	public final String createdTime;
+	
 	public EPADStudy(String projectID, String patientID, String patientName, String studyUID, String insertDate,
 			String firstSeriesUID, String firstSeriesDateAcquired, String physicianName, String birthdate, String sex,
 			StudyProcessingStatus studyProcessingStatus, Set<String> examTypes, String studyDescription,
@@ -48,6 +49,34 @@ public class EPADStudy implements Serializable
 		this.numberOfSeries = numberOfSeries;
 		this.numberOfImages = numberOfImages;
 		this.numberOfAnnotations = numberOfAnnotations;
+		this.createdTime = null;
+	}
+	
+	public EPADStudy(String projectID, String patientID, String patientName, String studyUID, String insertDate,
+			String firstSeriesUID, String firstSeriesDateAcquired, String physicianName, String birthdate, String sex,
+			StudyProcessingStatus studyProcessingStatus, Set<String> examTypes, String studyDescription,
+			String studyAccessionNumber, int numberOfSeries, int numberOfImages, int numberOfAnnotations, String createdTime)
+	{
+		this.projectID = projectID;
+		this.patientID = patientID;
+		this.patientName = patientName;
+		this.studyUID = studyUID;
+		this.insertDate = insertDate;
+
+		this.firstSeriesUID = firstSeriesUID;
+		this.firstSeriesDateAcquired = firstSeriesDateAcquired;
+		this.physicianName = physicianName;
+		this.birthdate = birthdate;
+		this.sex = sex;
+		this.studyProcessingStatus = studyProcessingStatus;
+
+		this.examTypes = examTypes;
+		this.studyDescription = studyDescription;
+		this.studyAccessionNumber = studyAccessionNumber;
+		this.numberOfSeries = numberOfSeries;
+		this.numberOfImages = numberOfImages;
+		this.numberOfAnnotations = numberOfAnnotations;
+		this.createdTime = createdTime;
 	}
 
 	public String toJSON()
