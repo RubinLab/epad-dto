@@ -45,6 +45,31 @@ public class DCM4CHEESeries implements Serializable
 		this.isDSO = isDSO;
 	}
 
+	public DCM4CHEESeries(String studyUID, String seriesUID, String patientID, String patientName, String seriesDate,
+			String examType, String thumbnailURL, String seriesDescription, int numberOfSeriesRelatedInstances,
+			int imagesInSeries, int seriesStatus, String bodyPart, String institution, String stationName, String department,
+			String accessionNumber, String createdTime)
+	{
+		this.studyUID = studyUID;
+		this.seriesUID = seriesUID;
+		this.patientID = patientID;
+		this.patientName = patientName;
+		this.seriesDate = seriesDate;
+		this.examType = examType;
+		this.thumbnailURL = thumbnailURL;
+		this.seriesDescription = seriesDescription;
+		this.numberOfSeriesRelatedInstances = numberOfSeriesRelatedInstances;
+		this.imagesInSeries = imagesInSeries;
+		this.seriesStatus = seriesStatus;
+		this.bodyPart = bodyPart;
+		this.institution = institution;
+		this.stationName = stationName;
+		this.department = department;
+		this.accessionNumber = accessionNumber;
+		this.createdTime = createdTime;
+		this.isDSO = false;
+	}
+
 	public String toJSON()
 	{
 		Gson gson = new Gson();

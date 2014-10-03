@@ -49,6 +49,34 @@ public class EPADSeries implements Serializable
 		this.isDSO = isDSO;
 	}
 
+	public EPADSeries(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
+			String seriesDate, String seriesDescription, String examType, String bodyPart, String accessionNumber,
+			int numberOfImages, int numberOfSeriesRelatedInstances, int numberOfAnnotations, String institution,
+			String stationName, String department, SeriesProcessingStatus seriesProcessingStatus, String createdTime,
+			String firstImageUIDInSeries)
+	{
+		this.projectID = projectID;
+		this.patientID = patientID;
+		this.studyUID = studyUID;
+		this.seriesUID = seriesUID;
+		this.patientName = patientName;
+		this.seriesDate = seriesDate;
+		this.seriesDescription = seriesDescription;
+		this.examType = examType;
+		this.bodyPart = bodyPart;
+		this.accessionNumber = accessionNumber;
+		this.numberOfImages = numberOfImages;
+		this.numberOfSeriesRelatedInstances = numberOfSeriesRelatedInstances;
+		this.numberOfAnnotations = numberOfAnnotations;
+		this.institution = institution;
+		this.stationName = stationName;
+		this.department = department;
+		this.seriesProcessingStatus = seriesProcessingStatus;
+		this.createdTime = createdTime;
+		this.firstImageUIDInSeries = firstImageUIDInSeries;
+		this.isDSO = false;
+	}
+
 	public String toJSON()
 	{
 		Gson gson = new Gson();
