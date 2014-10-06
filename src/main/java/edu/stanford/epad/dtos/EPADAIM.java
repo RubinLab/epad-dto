@@ -1,6 +1,7 @@
 package edu.stanford.epad.dtos;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import com.google.gson.Gson;
 
@@ -15,6 +16,9 @@ public class EPADAIM implements Serializable
 	public String name;
 	public String template;
 	public String date;
+	public String patientName;
+	public Date studyDate;
+	public String comment;
 
 	public EPADAIM(String aimID, String userName, String projectID, String subjectID, String studyUID, String seriesUID, String imageUID,
 			int instanceOrFrameNumber)
