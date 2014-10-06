@@ -12,6 +12,9 @@ public class EPADAIM implements Serializable
 	public final String userName;
 	public final String projectID, subjectID, studyUID, seriesUID, imageUID;
 	public final int instanceOrFrameNumber;
+	public String name;
+	public String template;
+	public String date;
 
 	public EPADAIM(String aimID, String userName, String projectID, String subjectID, String studyUID, String seriesUID, String imageUID,
 			int instanceOrFrameNumber)
