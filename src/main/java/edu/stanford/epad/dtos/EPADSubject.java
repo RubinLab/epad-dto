@@ -19,6 +19,7 @@ public class EPADSubject implements Serializable
 	public final int numberOfStudies;
 	public final int numberOfAnnotations;
 	public final Set<String> examTypes;
+	public String userProjectStatus;
 
 	public EPADSubject(String projectID, String subjectID, String subjectName, String insertUser, String xnatID,
 			String insertDate, String uri, int numberOfStudies, int numberOfAnnotations, Set<String> examTypes)
@@ -33,6 +34,14 @@ public class EPADSubject implements Serializable
 		this.numberOfStudies = numberOfStudies;
 		this.numberOfAnnotations = numberOfAnnotations;
 		this.examTypes = new HashSet<String>(examTypes);
+	}
+
+	public String getUserProjectStatus() {
+		return userProjectStatus;
+	}
+
+	public void setUserProjectStatus(String userProjectStatus) {
+		this.userProjectStatus = userProjectStatus;
 	}
 
 	public String toJSON()
