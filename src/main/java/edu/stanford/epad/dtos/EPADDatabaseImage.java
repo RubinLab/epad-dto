@@ -15,13 +15,15 @@ public class EPADDatabaseImage implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String fileName;
+//	public final String fileName;
+	public final String imageUID;
 	public final int instanceNumber;
 	public final String sliceLocation, contentTime;
 
-	public EPADDatabaseImage(String fileName, int instanceNumber, String sliceLocation, String contentTime)
+	public EPADDatabaseImage(String imageUID, int instanceNumber, String sliceLocation, String contentTime)
 	{
-		this.fileName = fileName;
+//		this.fileName = fileName;
+		this.imageUID = imageUID;
 		this.instanceNumber = instanceNumber;
 		this.sliceLocation = sliceLocation;
 		this.contentTime = contentTime;
@@ -29,14 +31,14 @@ public class EPADDatabaseImage implements Serializable
 
 	public String getImageUID()
 	{
-		int lastDotIndex = fileName.lastIndexOf('.');
-
-		String uidPart = fileName;
-		if (lastDotIndex > 0) {
-			uidPart = fileName.substring(0, lastDotIndex);
-		}
-		uidPart = uidPart.replaceAll("_", ".");
-		return uidPart;
+//		int lastDotIndex = fileName.lastIndexOf('.');
+//
+//		String uidPart = fileName;
+//		if (lastDotIndex > 0) {
+//			uidPart = fileName.substring(0, lastDotIndex);
+//		}
+//		uidPart = uidPart.replaceAll("_", ".");
+		return imageUID;
 	}
 
 	public String toJSON()
