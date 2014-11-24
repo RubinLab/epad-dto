@@ -18,7 +18,7 @@ public class EPADAIM implements Serializable
 	public String template;
 	public String date;
 	public String patientName;
-	public Date studyDate;
+	public String studyDate;
 	public String comment;
 
 	public EPADAIM(String aimID, String userName, String projectID, String subjectID, String studyUID, String seriesUID, String imageUID,
