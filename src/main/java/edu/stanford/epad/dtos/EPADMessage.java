@@ -22,6 +22,13 @@ public class EPADMessage implements Serializable
 		date = new Date();
 	}
 
+	public EPADMessage(String message, Level level)
+	{
+		this.message = message;
+		this.level = level;
+		date = new Date();
+	}
+
 	public EPADMessage(Date date, String message, Level level)
 	{
 		this.date = date;
