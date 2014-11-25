@@ -13,19 +13,19 @@ public class EPADMessage implements Serializable
 
 	public final Date date;
 	public final String message;
-	public final Level level;
+	public final String level; // changed to string, because gson can't handle it
 
 	public EPADMessage(String message)
 	{
 		this.message = message;
-		this.level = Level.ERROR;
+		this.level = Level.ERROR.toString();
 		date = new Date();
 	}
 
 	public EPADMessage(String message, Level level)
 	{
 		this.message = message;
-		this.level = level;
+		this.level = level.toString();
 		date = new Date();
 	}
 
@@ -33,7 +33,7 @@ public class EPADMessage implements Serializable
 	{
 		this.date = date;
 		this.message = message;
-		this.level = level;
+		this.level = level.toString();
 	}
 
 	public String toJSON()
