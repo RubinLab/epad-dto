@@ -10,6 +10,7 @@ public class RemotePACEntity  implements Serializable {
 	public final String entityID;
 	public String subjectID;
 	public String subjectName;
+	public boolean inEpad = false;
 	
 	public RemotePACEntity(String entityType, String entityValue, int level, String entityID) {
 		super();
