@@ -1,7 +1,7 @@
 package edu.stanford.epad.dtos;
 
 import java.io.Serializable;
-import java.util.Map;
+import java.util.List;
 import java.util.Set;
 
 import com.google.gson.Gson;
@@ -21,7 +21,7 @@ public class EPADUser implements Serializable
 	public final Set<String> permissions;
 	public final EPADMessageList messages;
 	public final Set<String> projects;
-	public final Map<String,String> projectToRole;
+	public final List<String> projectToRole;
 
 	public EPADUser(String displayname, String username, String firstname, String lastname, String email, boolean enabled, boolean admin, boolean passwordExpired, String role, Set<String> permissions)
 	{
@@ -40,7 +40,7 @@ public class EPADUser implements Serializable
 		this.projectToRole = null;
 	}
 
-	public EPADUser(String displayname, String username, String firstname, String lastname, String email, boolean enabled, boolean admin, boolean passwordExpired, String role, Set<String> permissions, Set<String> projects, Map<String, String> projectToRole, EPADMessageList messages)
+	public EPADUser(String displayname, String username, String firstname, String lastname, String email, boolean enabled, boolean admin, boolean passwordExpired, String role, Set<String> permissions, Set<String> projects, List<String> projectToRole, EPADMessageList messages)
 	{
 		this.displayname = displayname;
 		this.username = username;
