@@ -29,49 +29,25 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * A description of a non-dicom file returned from an ePAD query. Designed to be JSON serializable.
+ * A Dicom Tag.
  * 
  * @author dev
  */
-public class EPADFile implements Serializable
+public class DicomTag implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String projectID, patientID, patientName, studyUID, seriesUID, fileName, fileType, createdTime;
-	public final long fileLength;
-	public final String path;
-	public final boolean enabled;
+	public final String name, level, group, element, value, type;
 	
-	public EPADFile(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
-			String fileName, long fileLength, String fileType, String createdTime, String path)
-	{
-		this.projectID = projectID;
-		this.patientID = patientID;
-		this.studyUID = studyUID;
-		this.seriesUID = seriesUID;
-		this.patientName = patientName;
-		this.fileName = fileName;
-		this.fileLength = fileLength;
-		this.fileType = fileType;
-		this.createdTime = createdTime;
-		this.path = path;
-		this.enabled = true;
-	}
-	
-	public EPADFile(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
-			String fileName, long fileLength, String fileType, String createdTime, String path, boolean enabled)
-	{
-		this.projectID = projectID;
-		this.patientID = patientID;
-		this.studyUID = studyUID;
-		this.seriesUID = seriesUID;
-		this.patientName = patientName;
-		this.fileName = fileName;
-		this.fileLength = fileLength;
-		this.fileType = fileType;
-		this.createdTime = createdTime;
-		this.path = path;
-		this.enabled = enabled;
+	public DicomTag(String level, String name, String group, String element, String value,
+			String type) {
+		super();
+		this.level = level;
+		this.name = name;
+		this.group = group;
+		this.element = element;
+		this.value = value;
+		this.type = type;
 	}
 
 	public String toJSON()
