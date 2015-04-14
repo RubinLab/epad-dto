@@ -41,6 +41,7 @@ public class EPADFile implements Serializable
 	public final long fileLength;
 	public final String path;
 	public final boolean enabled;
+	public final String description;
 	
 	public EPADFile(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
 			String fileName, long fileLength, String fileType, String createdTime, String path)
@@ -56,10 +57,11 @@ public class EPADFile implements Serializable
 		this.createdTime = createdTime;
 		this.path = path;
 		this.enabled = true;
+		this.description = "";
 	}
 	
 	public EPADFile(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
-			String fileName, long fileLength, String fileType, String createdTime, String path, boolean enabled)
+			String fileName, long fileLength, String fileType, String createdTime, String path, boolean enabled, String description)
 	{
 		this.projectID = projectID;
 		this.patientID = patientID;
@@ -72,6 +74,7 @@ public class EPADFile implements Serializable
 		this.createdTime = createdTime;
 		this.path = path;
 		this.enabled = enabled;
+		this.description = description;
 	}
 
 	public String toJSON()
