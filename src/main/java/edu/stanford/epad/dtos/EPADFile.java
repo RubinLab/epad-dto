@@ -40,7 +40,7 @@ public class EPADFile implements Serializable
 	public final String projectID, patientID, patientName, studyUID, seriesUID, fileName, fileType, createdTime;
 	public final long fileLength;
 	public final String path;
-	public final boolean enabled;
+	public boolean enabled;
 	public final String description;
 	
 	public EPADFile(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
