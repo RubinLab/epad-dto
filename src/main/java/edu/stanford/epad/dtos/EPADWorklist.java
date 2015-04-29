@@ -19,18 +19,14 @@ public class EPADWorklist implements Serializable
 	public final String workListID, username, projectID, description, status;
 	
 	public final String startDate, completionDate, dueDate;
-
-	public final Set<String> subjectIDs;
-
-	public final List<String> subjectStatus;
 	
-	public final Set<String> studyUIDs;
+	public final List<String> studyUIDs;
 
 	public final List<String> studyStatus;
 
 	public EPADWorklist(String workListID, String username, String projectID,
 			String description, String status, String startDate,
-			String completionDate, String dueDate, Set<String> subjectIDs, List<String> subjectStatus, Set<String> studyUIDs, List<String> studyStatus) {
+			String completionDate, String dueDate, List<String> studyUIDs, List<String> studyStatus) {
 		super();
 		this.workListID = workListID;
 		this.username = username;
@@ -40,8 +36,6 @@ public class EPADWorklist implements Serializable
 		this.startDate = startDate;
 		this.completionDate = completionDate;
 		this.dueDate = dueDate;
-		this.subjectIDs = subjectIDs;
-		this.subjectStatus = subjectStatus;
 		this.studyUIDs = studyUIDs;
 		this.studyStatus = studyStatus;
 	}
