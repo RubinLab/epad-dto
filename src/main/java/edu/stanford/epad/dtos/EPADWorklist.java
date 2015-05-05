@@ -40,8 +40,6 @@ public class EPADWorklist implements Serializable
 		this.studyStatus = studyStatus;
 	}
 
-
-
 	public String toJSON()
 	{
 		Gson gson = new Gson();
