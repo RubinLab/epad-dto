@@ -17,21 +17,21 @@ public class EPADTemplateList implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final EPADFileResultSet ResultSet;
+	public final EPADTemplateResultSet ResultSet;
 
-	public EPADTemplateList(List<EPADFile> Result)
+	public EPADTemplateList(List<EPADTemplate> Result)
 	{
-		this.ResultSet = new EPADFileResultSet(Result);
+		this.ResultSet = new EPADTemplateResultSet(Result);
 	}
 
 	public EPADTemplateList()
 	{
-		this.ResultSet = new EPADFileResultSet();
+		this.ResultSet = new EPADTemplateResultSet();
 	}
 
-	public void addFile(EPADFile epadFile)
+	public void addTemplate(EPADTemplate epadFile)
 	{
-		this.ResultSet.addEPADFile(epadFile);
+		this.ResultSet.addEPADTemplate(epadFile);
 	}
 
 	public static EPADTemplateList emptyImages()
@@ -39,24 +39,24 @@ public class EPADTemplateList implements Serializable
 		return new EPADTemplateList();
 	}
 
-	public class EPADFileResultSet
+	public class EPADTemplateResultSet
 	{
-		public final List<EPADFile> Result;
+		public final List<EPADTemplate> Result;
 		public int totalRecords;
 
-		public EPADFileResultSet(List<EPADFile> Result)
+		public EPADTemplateResultSet(List<EPADTemplate> Result)
 		{
 			this.Result = Collections.unmodifiableList(Result);
 			this.totalRecords = Result.size();
 		}
 
-		public EPADFileResultSet()
+		public EPADTemplateResultSet()
 		{
-			this.Result = new ArrayList<EPADFile>();
+			this.Result = new ArrayList<EPADTemplate>();
 			this.totalRecords = 0;
 		}
 
-		public void addEPADFile(EPADFile epadFile)
+		public void addEPADTemplate(EPADTemplate epadFile)
 		{
 			this.Result.add(epadFile);
 			this.totalRecords++;
