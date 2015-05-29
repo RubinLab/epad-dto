@@ -13,38 +13,38 @@ import com.google.gson.Gson;
  * 
  * @author martin
  */
-public class EPADTemplateList implements Serializable
+public class EPADTemplateContainerList implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
 	public final EPADTemplateResultSet ResultSet;
 
-	public EPADTemplateList(List<EPADTemplate> Result)
+	public EPADTemplateContainerList(List<EPADTemplateContainer> Result)
 	{
 		this.ResultSet = new EPADTemplateResultSet(Result);
 	}
 
-	public EPADTemplateList()
+	public EPADTemplateContainerList()
 	{
 		this.ResultSet = new EPADTemplateResultSet();
 	}
 
-	public void addTemplate(EPADTemplate epadFile)
+	public void addTemplate(EPADTemplateContainer epadFile)
 	{
 		this.ResultSet.addEPADTemplate(epadFile);
 	}
 
-	public static EPADTemplateList emptyImages()
+	public static EPADTemplateContainerList emptyImages()
 	{
-		return new EPADTemplateList();
+		return new EPADTemplateContainerList();
 	}
 
 	public class EPADTemplateResultSet
 	{
-		public final List<EPADTemplate> Result;
+		public final List<EPADTemplateContainer> Result;
 		public int totalRecords;
 
-		public EPADTemplateResultSet(List<EPADTemplate> Result)
+		public EPADTemplateResultSet(List<EPADTemplateContainer> Result)
 		{
 			this.Result = Collections.unmodifiableList(Result);
 			this.totalRecords = Result.size();
@@ -52,11 +52,11 @@ public class EPADTemplateList implements Serializable
 
 		public EPADTemplateResultSet()
 		{
-			this.Result = new ArrayList<EPADTemplate>();
+			this.Result = new ArrayList<EPADTemplateContainer>();
 			this.totalRecords = 0;
 		}
 
-		public void addEPADTemplate(EPADTemplate epadFile)
+		public void addEPADTemplate(EPADTemplateContainer epadFile)
 		{
 			this.Result.add(epadFile);
 			this.totalRecords++;
