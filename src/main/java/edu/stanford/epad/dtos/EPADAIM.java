@@ -22,6 +22,7 @@ public class EPADAIM implements Serializable
 	public String comment;
 	public String xml;
 	public String templateType;
+	public String dsoStatus;
 
 	public EPADAIM(String aimID, String userName, String projectID, String subjectID, String studyUID, String seriesUID, String imageUID,
 			int instanceOrFrameNumber)
