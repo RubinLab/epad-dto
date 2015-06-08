@@ -23,6 +23,7 @@ public class EPADProject implements Serializable
 	public final Set<String> subjectIDs;
 	public final Set<String> loginNames;
 	public Map<String,String> loginToRole = null;
+	public String defaultTemplate;
 
 	public EPADProject(String secondaryID, String piLastName, String description, String name, String id,
 			String piFirstName, String uri, int numberOfSubjects, int numberOfStudies, int numberOfAnnotations,
