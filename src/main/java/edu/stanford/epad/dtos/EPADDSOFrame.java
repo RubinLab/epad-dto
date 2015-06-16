@@ -9,6 +9,21 @@ public class EPADDSOFrame extends EPADFrame
 	private static final long serialVersionUID = 1L;
 
 	public final String sourceSeriesUID, sourceImageUID, sourceLosslessImage, sourceLossyImage;
+	public final String contourImage;
+
+	public EPADDSOFrame(String projectID, String subjectID, String studyUID, String seriesUID, String imageUID,
+			String insertDate, String imageDate, String sliceLocation, int frameNumber, String losslessImage,
+			String lossyImage, DICOMElementList dicomElements, DICOMElementList defaultDICOMElements, String sourceSeriesUID,
+			String sourceImageUID, String sourceLosslessImage, String sourceLossyImage, String contourImage)
+	{
+		super(projectID, subjectID, studyUID, seriesUID, imageUID, insertDate, imageDate, sliceLocation, frameNumber,
+				losslessImage, lossyImage, dicomElements, defaultDICOMElements);
+		this.sourceSeriesUID = sourceSeriesUID;
+		this.sourceImageUID = sourceImageUID;
+		this.sourceLossyImage = sourceLossyImage;
+		this.sourceLosslessImage = sourceLosslessImage;
+		this.contourImage = contourImage;
+	}
 
 	public EPADDSOFrame(String projectID, String subjectID, String studyUID, String seriesUID, String imageUID,
 			String insertDate, String imageDate, String sliceLocation, int frameNumber, String losslessImage,
@@ -21,6 +36,7 @@ public class EPADDSOFrame extends EPADFrame
 		this.sourceImageUID = sourceImageUID;
 		this.sourceLossyImage = sourceLossyImage;
 		this.sourceLosslessImage = sourceLosslessImage;
+		this.contourImage = null;
 	}
 
 	@Override
