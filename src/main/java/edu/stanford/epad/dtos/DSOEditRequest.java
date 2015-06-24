@@ -15,7 +15,7 @@ import com.google.gson.Gson;
  */
 public class DSOEditRequest
 {
-	public final String projectID, patientID, studyUID, seriesUID, imageUID, aimID;
+	public String projectID, patientID, studyUID, seriesUID, imageUID, aimID;
 	public final List<Integer> editedFrameNumbers;
 
 	public DSOEditRequest(String projectID, String patientID, String studyUID, String seriesUID, String imageUID, String aimID,
