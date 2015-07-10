@@ -16,6 +16,7 @@ public class EPADTemplateContainer extends EPADFile {
 	public String modality;
 	
 	public List<EPADTemplate> templates;
+	public List<String> projectIDs;
 	
 	public EPADTemplateContainer(String projectID, String patientID, String patientName,
 			String studyUID, String seriesUID, String fileName,
