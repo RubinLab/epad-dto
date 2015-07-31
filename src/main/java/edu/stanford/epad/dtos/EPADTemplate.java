@@ -14,6 +14,7 @@ public class EPADTemplate {
 	public String templateCode;
 	public String templateDescription;
 	public String modality;
+	public boolean defaultTemplate;
 	
 	public EPADTemplate(String templateUID, String templateName,
 			String templateType, String templateCode,
