@@ -12,7 +12,7 @@ public class EPADMessage implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	public final Date date;
-	public final String message; // short message
+	public String message; // short message
 	public final String level; // changed to string, because gson can't handle it
 	public String moreInfo; // Longer message
 
@@ -21,6 +21,7 @@ public class EPADMessage implements Serializable
 		this.message = message;
 		this.level = Level.ERROR.toString();
 		date = new Date();
+		shortenMessage();
 	}
 
 	public EPADMessage(String message, Level level)
@@ -28,6 +29,7 @@ public class EPADMessage implements Serializable
 		this.message = message;
 		this.level = level.toString();
 		date = new Date();
+		shortenMessage();
 	}
 
 	public EPADMessage(Date date, String message, Level level)
@@ -35,8 +37,23 @@ public class EPADMessage implements Serializable
 		this.date = date;
 		this.message = message;
 		this.level = level.toString();
+		shortenMessage();
 	}
 
+	private void shortenMessage()
+	{
+		if (message.length() > 60 && message.indexOf(",") != -1)
+		{
+			moreInfo = message;
+			message = message.substring(0, message.indexOf(","));
+		}
+		if (message.length() > 60 && message.indexOf("- ") != -1)
+		{
+			moreInfo = message;
+			message = message.substring(0, message.indexOf("- "));
+		}
+	}
+	
 	public String toJSON()
 	{
 		Gson gson = new Gson();
