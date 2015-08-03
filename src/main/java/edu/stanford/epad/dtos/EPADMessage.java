@@ -12,8 +12,9 @@ public class EPADMessage implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	public final Date date;
-	public final String message;
+	public final String message; // short message
 	public final String level; // changed to string, because gson can't handle it
+	public String moreInfo; // Longer message
 
 	public EPADMessage(String message)
 	{
