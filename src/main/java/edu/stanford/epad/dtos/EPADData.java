@@ -16,7 +16,8 @@ public class EPADData implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String id, name, description, status;
+	public String id, name, description, status;
+	public boolean alert = false;
 
 	public EPADData(String id, String name, String description, String status) {
 		super();
