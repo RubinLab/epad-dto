@@ -18,6 +18,7 @@ public class TaskStatus implements Serializable
 	public static final String TASK_DELETE_PATIENT = "Delete Patient";
 	public static final String TASK_DELETE_STUDY = "Delete Study";
 	public static final String TASK_RT_PROCESS = "Process RT Dicom";
+	public static final String TASK_RT_MATLAB = "Process RT Dicom-MATLAB";
 	public static final String TASK_PLUGIN = "Plugin Process";
 	
 	public String type;
