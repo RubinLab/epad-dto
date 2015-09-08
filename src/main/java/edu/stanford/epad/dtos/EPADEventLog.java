@@ -20,12 +20,12 @@ public class EPADEventLog implements Serializable
 	String imageUID;
 	String aimID;
 	String filename;
-	String function;
+	String action;
 	String params;
 	
 	public EPADEventLog(String createdTime, String username, String projectID,
 			String subjectUID, String studyUID, String seriesUID,
-			String imageUID, String aimID, String function, String params) {
+			String imageUID, String aimID, String action, String params) {
 		super();
 		this.createdTime = createdTime;
 		this.username = username;
@@ -35,7 +35,7 @@ public class EPADEventLog implements Serializable
 		this.seriesUID = seriesUID;
 		this.imageUID = imageUID;
 		this.aimID = aimID;
-		this.function = function;
+		this.action = action;
 		this.params = params;
 	}
 	
@@ -52,7 +52,7 @@ public class EPADEventLog implements Serializable
 		this.imageUID = imageUID;
 		this.aimID = aimID;
 		this.filename = filename;
-		this.function = function;
+		this.action = action;
 		this.params = params;
 	}
 
