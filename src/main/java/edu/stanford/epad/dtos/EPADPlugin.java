@@ -16,11 +16,11 @@ public class EPADPlugin implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String pluginId, name, description, javaclass, status;
+	public final String pluginId, name, description, javaclass, status, modality;
 	public final Boolean enabled; 
 	
 
-	public EPADPlugin( String pluginId, String name, String description, String javaclass, Boolean enabled, String status)
+	public EPADPlugin( String pluginId, String name, String description, String javaclass, Boolean enabled, String status, String modality)
 	{
 		this.pluginId = pluginId;
 		this.name = name;
@@ -28,6 +28,7 @@ public class EPADPlugin implements Serializable
 		this.javaclass=javaclass;
 		this.enabled=enabled;
 		this.status=status;
+		this.modality=modality;
 		
 	}
 
@@ -65,6 +66,9 @@ public class EPADPlugin implements Serializable
 		return status;
 	}
 
+	public String getModality() {
+		return modality;
+	}
 
 
 
@@ -72,6 +76,7 @@ public class EPADPlugin implements Serializable
 		return enabled;
 	}
 
+	
 
 
 
