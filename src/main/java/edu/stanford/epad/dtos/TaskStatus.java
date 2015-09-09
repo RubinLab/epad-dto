@@ -20,6 +20,7 @@ public class TaskStatus implements Serializable
 	public static final String TASK_RT_PROCESS = "Process RT Dicom";
 	public static final String TASK_RT_MATLAB = "Process RT Dicom-MATLAB";
 	public static final String TASK_PLUGIN = "Plugin Process";
+	public static final String TASK_TCIA_DOWNLOAD = "TCIA DOWNLOAD";
 	
 	public String type;
 	public String target;
