@@ -16,33 +16,16 @@ public class EPADPluginParameter implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String id, projectId, pluginId, name, defaultValue;
+	public final String name, defaultValue;
 	
 
 	public EPADPluginParameter(String id, String projectId, String pluginId, String name, String defaultValue)
 	{
-		this.id = id;
-		this.projectId = projectId;
-		this.pluginId = pluginId;
 		this.name = name;
 		this.defaultValue = defaultValue;
 		
 	}
 
-	
-	public String getId() {
-		return id;
-	}
-
-
-	public String getProjectId() {
-		return projectId;
-	}
-
-
-	public String getPluginId() {
-		return pluginId;
-	}
 
 
 	public String getName() {

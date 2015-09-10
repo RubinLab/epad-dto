@@ -37,6 +37,10 @@ public class EPADPluginParameterList implements Serializable
 	{
 		return new EPADPluginParameterList();
 	}
+	
+	public List<EPADPluginParameter> getResult() {
+		return this.ResultSet.Result;
+	}
 
 	public class EPADPluginParameterResultSet
 	{
