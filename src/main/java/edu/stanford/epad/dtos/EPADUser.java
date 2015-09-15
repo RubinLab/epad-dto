@@ -22,7 +22,8 @@ public class EPADUser implements Serializable
 	public final EPADMessageList messages;
 	public final Set<String> projects;
 	public final List<String> projectToRole;
-
+	public String colorpreference;
+	
 	public EPADUser(String displayname, String username, String firstname, String lastname, String email, boolean enabled, boolean admin, boolean passwordExpired, String role, Set<String> permissions)
 	{
 		this.displayname = displayname;
