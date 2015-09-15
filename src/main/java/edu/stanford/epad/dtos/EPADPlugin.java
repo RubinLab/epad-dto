@@ -2,6 +2,7 @@ package edu.stanford.epad.dtos;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -19,9 +20,9 @@ public class EPADPlugin implements Serializable
 	public final String pluginId, name, description, javaclass, status, modality;
 	public final Boolean enabled; 
 	public final String projectId,projectName;
-	public final EPADPluginParameterList parameters;
+	public final List<EPADPluginParameter> parameters;
 
-	public EPADPlugin( String pluginId, String name, String description, String javaclass, Boolean enabled, String status, String modality,String projectId,String projectName,EPADPluginParameterList parameters)
+	public EPADPlugin( String pluginId, String name, String description, String javaclass, Boolean enabled, String status, String modality,String projectId,String projectName,List<EPADPluginParameter> parameters)
 	{
 		this.pluginId = pluginId;
 		this.name = name;
@@ -38,24 +39,6 @@ public class EPADPlugin implements Serializable
 
 	
 	
-	public String getProjectId() {
-		return projectId;
-	}
-
-
-
-	public String getProjectName() {
-		return projectName;
-	}
-
-
-
-	public EPADPluginParameterList getParameters() {
-		return parameters;
-	}
-
-
-
 	public String getPluginId() {
 		return pluginId;
 	}
