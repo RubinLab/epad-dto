@@ -15,10 +15,10 @@ public class EPADSubject implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String subjectName, subjectID, projectID, insertUser, xnatID, insertDate, uri;
-	public final int numberOfStudies;
-	public final int numberOfAnnotations;
-	public final Set<String> examTypes;
+	public String subjectName, subjectID, projectID, insertUser, xnatID, insertDate, uri;
+	public int numberOfStudies;
+	public int numberOfAnnotations;
+	public Set<String> examTypes;
 	public String userProjectStatus;
 
 	public EPADSubject(String projectID, String subjectID, String subjectName, String insertUser, String xnatID,
