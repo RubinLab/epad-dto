@@ -16,8 +16,8 @@ public class EPADSubject implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	public String subjectName, subjectID, projectID, insertUser, xnatID, insertDate, uri;
-	public int numberOfStudies;
-	public int numberOfAnnotations;
+	public Integer numberOfStudies;
+	public Integer numberOfAnnotations;
 	public Set<String> examTypes;
 	public String userProjectStatus;
 
