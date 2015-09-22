@@ -11,7 +11,7 @@ public class TaskStatus implements Serializable
 
 	public static final String TASK_UPLOAD = "File Upload";
 	public static final String TASK_UNZIP = "File Unzip";
-	public static final String TASK_ADD_TO_PROJECT = "Add Dicoms to Project";
+	public static final String TASK_ADD_TO_PROJECT = "Add Studies/Aims/Files to Project";
 	public static final String TASK_DCM4CHE_SEND = "Send Dicoms to DCM4CHE";
 	public static final String TASK_DICOM_PNG_GEN = "Generate Series PNGs";
 	public static final String TASK_DSO_PNG_GEN = "Generate DSO PNGs";
