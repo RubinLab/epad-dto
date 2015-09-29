@@ -24,6 +24,7 @@ public class EPADImage implements Serializable
 	public final DICOMElementList defaultDICOMElements;
 	public final int numberOfFrames;
 	public final boolean isDSO;
+	public boolean multiFrameImage = false;
 
 	public EPADImage(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
 			String classUID, String insertDate, String imageDate, String sliceLocation, int instanceNumber,

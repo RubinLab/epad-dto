@@ -16,7 +16,7 @@ public class EPADWorklistSubject implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String workListID, username, projectID, subjectID, status;
+	public final String workListID, username, projectID, subjectID, subjectName, status;
 	
 	public final String startDate, completionDate;
 
@@ -30,8 +30,21 @@ public class EPADWorklistSubject implements Serializable
 		this.status = status;
 		this.startDate = startDate;
 		this.completionDate = completionDate;
+		this.subjectName = null;
 	}
 
+	public EPADWorklistSubject(String workListID, String username, String projectID, String subjectID, String subjectName,String status, String startDate,
+			String completionDate) {
+		super();
+		this.workListID = workListID;
+		this.username = username;
+		this.projectID = projectID;
+		this.subjectID = subjectID;
+		this.subjectName = subjectName;
+		this.status = status;
+		this.startDate = startDate;
+		this.completionDate = completionDate;
+	}
 
 
 	public String toJSON()
