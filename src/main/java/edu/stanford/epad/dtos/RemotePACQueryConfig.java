@@ -15,6 +15,9 @@ public class RemotePACQueryConfig  implements Serializable {
 	public final String studyDate; 
 	public final String lastQueryTime; 
 	public final String lastQueryStatus;
+	public String hostname;
+	public String subjectName; 
+	public String projectName; 
 	
 	public RemotePACQueryConfig(String pacID, String requestor,
 			String subjectID, String projectID, String modality, String period,
@@ -31,8 +34,5 @@ public class RemotePACQueryConfig  implements Serializable {
 		this.studyDate = studyDate;
 		this.lastQueryTime = lastQueryTime;
 		this.lastQueryStatus = lastQueryStatus;
-	} 
-	
-
-	
+	} 	
 }

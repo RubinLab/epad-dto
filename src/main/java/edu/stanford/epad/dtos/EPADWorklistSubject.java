@@ -19,6 +19,8 @@ public class EPADWorklistSubject implements Serializable
 	public final String workListID, username, projectID, subjectID, subjectName, status;
 	
 	public final String startDate, completionDate;
+	
+	public String workListName;
 
 	public EPADWorklistSubject(String workListID, String username, String projectID, String subjectID,String status, String startDate,
 			String completionDate) {
