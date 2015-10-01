@@ -17,12 +17,13 @@ public class EPADPlugin implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public final String pluginId, name, description, javaclass, status, modality;
+	public final String pluginId, name, description, javaclass, status, modality,developer,documentation;
+	public final String rate;
 	public final Boolean enabled; 
 	public final String projectId,projectName;
 	public final List<EPADPluginParameter> parameters;
 
-	public EPADPlugin( String pluginId, String name, String description, String javaclass, Boolean enabled, String status, String modality,String projectId,String projectName,List<EPADPluginParameter> parameters)
+	public EPADPlugin( String pluginId, String name, String description, String javaclass, Boolean enabled, String status, String modality,String projectId,String projectName,List<EPADPluginParameter> parameters,String developer,String documentation,String rate)
 	{
 		this.pluginId = pluginId;
 		this.name = name;
@@ -34,7 +35,9 @@ public class EPADPlugin implements Serializable
 		this.projectId=projectId;
 		this.projectName=projectName;
 		this.parameters=parameters;
-		
+		this.developer=developer;
+		this.documentation=documentation;
+		this.rate=rate;
 	}
 
 	
@@ -83,6 +86,27 @@ public class EPADPlugin implements Serializable
 
 	
 
+
+
+	public String getDeveloper() {
+		return developer;
+	}
+
+
+
+	public String getDocumentation() {
+		return documentation;
+	}
+
+
+
+	public String getRate() {
+		return rate;
+	}
+
+
+
+	
 
 
 	public String toJSON()
