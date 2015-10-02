@@ -40,6 +40,23 @@ public class EPADPlugin implements Serializable
 		this.rate=rate;
 	}
 
+
+	public EPADPlugin( String pluginId, String name, String description, String javaclass, Boolean enabled, String status, String modality,String projectId,String projectName,List<EPADPluginParameter> parameters)
+	{
+		this.pluginId = pluginId;
+		this.name = name;
+		this.description = description;
+		this.javaclass=javaclass;
+		this.enabled=enabled;
+		this.status=status;
+		this.modality=modality;
+		this.projectId=projectId;
+		this.projectName=projectName;
+		this.parameters=parameters;
+		this.developer="";
+		this.documentation="";
+		this.rate="";
+	}
 	
 	
 	public String getPluginId() {
