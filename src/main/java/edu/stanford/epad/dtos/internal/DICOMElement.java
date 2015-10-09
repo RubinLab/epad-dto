@@ -14,6 +14,7 @@ public class DICOMElement implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	public final String tagCode, tagName, value;
+	public String parentSequenceName;
 
 	public DICOMElement(String tagCode, String tagName, String value)
 	{

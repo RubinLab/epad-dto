@@ -10,6 +10,7 @@ public class EPADDSOFrame extends EPADFrame
 
 	public final String sourceSeriesUID, sourceImageUID, sourceLosslessImage, sourceLossyImage;
 	public final String contourImage;
+	public int segmentNumber = 1;
 
 	public EPADDSOFrame(String projectID, String subjectID, String studyUID, String seriesUID, String imageUID,
 			String insertDate, String imageDate, String sliceLocation, int frameNumber, String losslessImage,
