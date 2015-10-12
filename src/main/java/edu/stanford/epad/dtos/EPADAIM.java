@@ -23,7 +23,9 @@ public class EPADAIM implements Serializable
 	public String xml;
 	public String templateType;
 	public String dsoStatus;
+	public String color;
 	public int dsoFrameNo;
+	
 	public String user; // For audit trail
 
 	public EPADAIM(String aimID, String userName, String projectID, String subjectID, String studyUID, String seriesUID, String imageUID,
