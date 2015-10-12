@@ -22,6 +22,7 @@ public class EPADWorklistSubject implements Serializable
 	
 	public String workListName;
 	public long sortOrder;
+	public Integer numberOfAnnotations;
 
 	public EPADWorklistSubject(String workListID, String username, String projectID, String subjectID,String status, String startDate,
 			String completionDate) {
