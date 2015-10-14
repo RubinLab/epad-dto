@@ -23,6 +23,7 @@ public class TaskStatus implements Serializable
 	public static final String TASK_TCIA_DOWNLOAD = "TCIA DOWNLOAD";
 	
 	public String type;
+	public String projectID;
 	public String target;
 	public String username;
 	public String status;
