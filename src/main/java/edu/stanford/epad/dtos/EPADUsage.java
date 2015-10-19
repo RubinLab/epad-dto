@@ -28,6 +28,8 @@ public class EPADUsage implements Serializable
 	public final int numOfAutoQueries;
 	public final int numOfWorkLists;
 	public int numOfFiles;
+	public int numOfTemplates;
+	public int numOfPlugins;
 	public final String usageTime;
 
 	public EPADUsage(String host, int numOfUsers, int numOfProjects,
@@ -52,7 +54,7 @@ public class EPADUsage implements Serializable
 	public EPADUsage(String host, int numOfUsers, int numOfProjects,
 			int numOfPatients, int numOfStudies, int numOfSeries,
 			int numOfAims, int numOfDSOs, int numOfPacs, int numOfAutoQueries,
-			int numOfWorkLists, int numOfFiles, String usageTime) {
+			int numOfWorkLists, int numOfFiles, int numOfTemplates, int numOfPlugins, String usageTime) {
 		super();
 		this.host = host;
 		this.numOfUsers = numOfUsers;
@@ -66,6 +68,8 @@ public class EPADUsage implements Serializable
 		this.numOfAutoQueries = numOfAutoQueries;
 		this.numOfWorkLists = numOfWorkLists;
 		this.numOfFiles = numOfFiles;
+		this.numOfTemplates = numOfTemplates;
+		this.numOfPlugins = numOfPlugins;
 		this.usageTime = usageTime;
 	}
 
