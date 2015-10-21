@@ -24,6 +24,13 @@ public class EPADUser implements Serializable
 	public String colorpreference;
 	public EPADUsage usage;
 	
+	// Permissions
+	public static final String CreateProjectPermission = "CreateProject";
+	public static final String CreateWorkListPermission = "CreateWorkList";
+	public static final String CreateUserPermission = "CreateUser";
+	public static final String CreatePACPermission = "CreatePAC";
+	public static final String CreateAutoPACQueryPermission = "CreateAutoPACQuery";
+	
 	public EPADUser(String displayname, String username, String firstname, String lastname, String email, boolean enabled, boolean admin, boolean passwordExpired, String role, Set<String> permissions)
 	{
 		this.displayname = displayname;
