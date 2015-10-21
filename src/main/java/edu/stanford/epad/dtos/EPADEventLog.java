@@ -25,6 +25,7 @@ public class EPADEventLog implements Serializable
 	public String subjectName;
 	public String aimName;
 	public String projectName;
+	public String errorMessage;
 	
 	public EPADEventLog(String createdTime, String username, String projectID,
 			String subjectUID, String studyUID, String seriesUID,
