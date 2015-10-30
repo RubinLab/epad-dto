@@ -22,6 +22,7 @@ public class EPADUser implements Serializable
 	public final Set<String> projects;
 	public final List<String> projectToRole;
 	public String colorpreference;
+	public String creator;
 	public EPADUsage usage;
 	
 	// Permissions
