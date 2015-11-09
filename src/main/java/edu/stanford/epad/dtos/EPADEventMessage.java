@@ -20,6 +20,8 @@ public class EPADEventMessage implements Serializable
     public String projectName;
     public String studyID;
     public String seriesID;
+    public String aimID;
+    public String aimName;
     public String templateID;
     public String templateName;
     public String pluginID;
@@ -32,6 +34,7 @@ public class EPADEventMessage implements Serializable
 	public EPADEventMessage(int number, String event, String more,
 			String subjectID, String subjectName, String projectID,
 			String projectName, String studyID, String seriesID,
+			String aimID, String aimName,
 			String templateID, String templateName, String pluginID,
 			String pluginName, String date, boolean error) {
 		super();
@@ -44,6 +47,8 @@ public class EPADEventMessage implements Serializable
 		this.projectName = projectName;
 		this.studyID = studyID;
 		this.seriesID = seriesID;
+		this.aimID = aimID;
+		this.aimName = aimName;
 		this.templateID = templateID;
 		this.templateName = templateName;
 		this.pluginID = pluginID;
