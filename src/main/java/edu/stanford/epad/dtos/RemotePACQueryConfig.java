@@ -110,6 +110,7 @@ import java.util.List;
 
 public class RemotePACQueryConfig  implements Serializable {
 	public final String pacID;
+	public final String aeTitle;
 	public final String requestor; // Username of requestor
 	public final String subjectID; 
 	public final String projectID; 
@@ -129,6 +130,25 @@ public class RemotePACQueryConfig  implements Serializable {
 			String lastQueryStatus) {
 		super();
 		this.pacID = pacID;
+		this.aeTitle = null;
+		this.requestor = requestor;
+		this.subjectID = subjectID;
+		this.projectID = projectID;
+		this.modality = modality;
+		this.period = period;
+		this.enabled = enabled;
+		this.studyDate = studyDate;
+		this.lastQueryTime = lastQueryTime;
+		this.lastQueryStatus = lastQueryStatus;
+	} 	
+	
+	public RemotePACQueryConfig(String pacID, String aeTitle, String requestor,
+			String subjectID, String projectID, String modality, String period,
+			boolean enabled, String studyDate, String lastQueryTime,
+			String lastQueryStatus) {
+		super();
+		this.pacID = pacID;
+		this.aeTitle = aeTitle;
 		this.requestor = requestor;
 		this.subjectID = subjectID;
 		this.projectID = projectID;
