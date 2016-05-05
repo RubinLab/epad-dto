@@ -129,6 +129,7 @@ public class EPADAIM implements Serializable
 	public String dsoStatus;
 	public String color;
 	public int dsoFrameNo;
+	public String sharedProjects;  //ml
 	
 	public String user; // For audit trail
 
@@ -157,6 +158,22 @@ public class EPADAIM implements Serializable
 		this.imageUID = imageUID;
 		this.instanceOrFrameNumber = instanceOrFrameNumber;
 		this.dsoSeriesUID = dsoSeriesUID;
+	}
+	
+	//ml
+	public EPADAIM(String aimID, String userName, String projectID, String subjectID, String studyUID, String seriesUID, String imageUID,
+			int instanceOrFrameNumber, String dsoSeriesUID, String sharedProjects)
+	{
+		this.aimID = aimID;
+		this.userName = userName;
+		this.projectID = projectID;
+		this.subjectID = subjectID;
+		this.studyUID = studyUID;
+		this.seriesUID = seriesUID;
+		this.imageUID = imageUID;
+		this.instanceOrFrameNumber = instanceOrFrameNumber;
+		this.dsoSeriesUID = dsoSeriesUID;
+		this.sharedProjects = sharedProjects; 
 	}
 
 	public String toJSON()

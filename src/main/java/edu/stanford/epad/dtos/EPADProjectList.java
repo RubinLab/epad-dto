@@ -136,7 +136,22 @@ public class EPADProjectList implements Serializable
 	{
 		this.ResultSet.addEPADProject(epadProject);
 	}
-
+	
+	public void removeEPADProject(String projectID)
+	{
+		for (int i=0; i<this.ResultSet.Result.size(); i++){
+			if (projectID.equals(this.ResultSet.Result.get(i).id)) {
+				this.ResultSet.removeEPADProjectByIndex(i);
+				i--;
+			}
+		}
+		
+	}
+	public void addAll(EPADProjectList epadProjectList)
+	{
+		this.ResultSet.Result.addAll(epadProjectList.ResultSet.Result);
+	}
+	
 	public static EPADProjectList emptyProjects()
 	{
 		return new EPADProjectList();
@@ -163,6 +178,24 @@ public class EPADProjectList implements Serializable
 		{
 			this.Result.add(epadProject);
 			this.totalRecords++;
+		}
+		
+		public void removeEPADProjectByIndex(int index)
+		{
+			this.Result.remove(index);
+			this.totalRecords--;
+		}
+		
+		public void removeEPADProject(EPADProject epadProject)
+		{
+			this.Result.remove(epadProject);
+			this.totalRecords--;
+		}
+		
+		public void addAll(EPADProjectResultSet epadProjectResultSet)
+		{
+			this.Result.addAll(epadProjectResultSet.Result);
+			this.totalRecords+=epadProjectResultSet.Result.size();
 		}
 	}
 

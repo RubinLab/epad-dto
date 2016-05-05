@@ -129,7 +129,9 @@ public class EPADImage implements Serializable
 	public final int numberOfFrames;
 	public final boolean isDSO;
 	public boolean multiFrameImage = false;
-
+    //ml suv calc
+	public final double rescaleIntercept, rescaleSlope;
+	
 	public EPADImage(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
 			String classUID, String insertDate, String imageDate, String sliceLocation, int instanceNumber,
 			String losslessImage, String lossyImage, DICOMElementList dicomElements, DICOMElementList defaultDICOMElements,
@@ -151,6 +153,34 @@ public class EPADImage implements Serializable
 		this.defaultDICOMElements = defaultDICOMElements;
 		this.numberOfFrames = numberOfFrames;
 		this.isDSO = isDSO;
+		this.rescaleIntercept = 0;
+		this.rescaleSlope = 0;
+	}
+	
+	
+	public EPADImage(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
+			String classUID, String insertDate, String imageDate, String sliceLocation, int instanceNumber,
+			String losslessImage, String lossyImage, DICOMElementList dicomElements, DICOMElementList defaultDICOMElements,
+			int numberOfFrames, boolean isDSO, double rescaleIntercept, double rescaleSlope)
+	{
+		this.projectID = projectID;
+		this.patientID = patientID;
+		this.studyUID = studyUID;
+		this.seriesUID = seriesUID;
+		this.imageUID = imageUID;
+		this.classUID = classUID;
+		this.insertDate = insertDate;
+		this.imageDate = imageDate;
+		this.sliceLocation = sliceLocation;
+		this.instanceNumber = instanceNumber;
+		this.losslessImage = losslessImage;
+		this.lossyImage = lossyImage;
+		this.dicomElements = dicomElements;
+		this.defaultDICOMElements = defaultDICOMElements;
+		this.numberOfFrames = numberOfFrames;
+		this.isDSO = isDSO;
+		this.rescaleIntercept = rescaleIntercept;
+		this.rescaleSlope = rescaleSlope;
 	}
 
 	public String toJSON()

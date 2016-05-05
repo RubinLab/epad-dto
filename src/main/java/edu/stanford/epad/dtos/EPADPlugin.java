@@ -19,10 +19,28 @@ public class EPADPlugin implements Serializable
 
 	public final String pluginId, name, description, javaclass, status, modality,developer,documentation;
 	public final String rate;
-	public final Boolean enabled; 
+	public final Boolean enabled, processMultipleAims; 
 	public final String projectId,projectName;
 	public final List<EPADPluginParameter> parameters;
 
+	public EPADPlugin( String pluginId, String name, String description, String javaclass, Boolean enabled, String status, String modality,String projectId,String projectName,List<EPADPluginParameter> parameters,String developer,String documentation,String rate, Boolean processMultipleAims)
+	{
+		this.pluginId = pluginId;
+		this.name = name;
+		this.description = description;
+		this.javaclass=javaclass;
+		this.enabled=enabled;
+		this.status=status;
+		this.modality=modality;
+		this.projectId=projectId;
+		this.projectName=projectName;
+		this.parameters=parameters;
+		this.developer=developer;
+		this.documentation=documentation;
+		this.rate=rate;
+		this.processMultipleAims=processMultipleAims;
+	}
+	
 	public EPADPlugin( String pluginId, String name, String description, String javaclass, Boolean enabled, String status, String modality,String projectId,String projectName,List<EPADPluginParameter> parameters,String developer,String documentation,String rate)
 	{
 		this.pluginId = pluginId;
@@ -38,6 +56,7 @@ public class EPADPlugin implements Serializable
 		this.developer=developer;
 		this.documentation=documentation;
 		this.rate=rate;
+		this.processMultipleAims=false;
 	}
 
 
@@ -56,13 +75,16 @@ public class EPADPlugin implements Serializable
 		this.developer="";
 		this.documentation="";
 		this.rate="";
+		this.processMultipleAims=false;
 	}
 	
 	
 	public String getPluginId() {
 		return pluginId;
 	}
-
+	public Boolean getProcessMultipleAims() {
+		return processMultipleAims;
+	}
 
 
 
