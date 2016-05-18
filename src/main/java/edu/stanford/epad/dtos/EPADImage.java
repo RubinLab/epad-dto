@@ -130,7 +130,7 @@ public class EPADImage implements Serializable
 	public final boolean isDSO;
 	public boolean multiFrameImage = false;
     //ml suv calc
-	public final double rescaleIntercept, rescaleSlope;
+	public double rescaleIntercept, rescaleSlope;
 	
 	public EPADImage(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
 			String classUID, String insertDate, String imageDate, String sliceLocation, int instanceNumber,
@@ -161,7 +161,7 @@ public class EPADImage implements Serializable
 	public EPADImage(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
 			String classUID, String insertDate, String imageDate, String sliceLocation, int instanceNumber,
 			String losslessImage, String lossyImage, DICOMElementList dicomElements, DICOMElementList defaultDICOMElements,
-			int numberOfFrames, boolean isDSO, double rescaleIntercept, double rescaleSlope)
+			int numberOfFrames, boolean isDSO, String rescaleIntercept, String rescaleSlope)
 	{
 		this.projectID = projectID;
 		this.patientID = patientID;
@@ -179,8 +179,13 @@ public class EPADImage implements Serializable
 		this.defaultDICOMElements = defaultDICOMElements;
 		this.numberOfFrames = numberOfFrames;
 		this.isDSO = isDSO;
-		this.rescaleIntercept = rescaleIntercept;
-		this.rescaleSlope = rescaleSlope;
+		try {
+			this.rescaleIntercept = Double.parseDouble(rescaleIntercept);
+			this.rescaleSlope = Double.parseDouble(rescaleSlope);
+		} catch (Exception e) {
+			this.rescaleIntercept = 0;
+			this.rescaleSlope = 0;
+		}
 	}
 
 	public String toJSON()
