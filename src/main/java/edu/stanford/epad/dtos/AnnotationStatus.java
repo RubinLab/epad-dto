@@ -104,124 +104,41 @@
  *******************************************************************************/
 package edu.stanford.epad.dtos;
 
-import java.io.Serializable;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
 
-import com.google.gson.Gson;
+public enum AnnotationStatus {
+	//ml just done is required initially but who knows??
+	NOT_STARTED(1), IN_PROGRESS(2), DONE(3), ERROR(4);
 
-/**
- * A description of a series returned from an ePAD query. Designed to be JSON serializable.
- * 
- * @author martin
- */
-public class EPADSeries implements Serializable
-{
-	private static final long serialVersionUID = 1L;
+	private final int statusCode;
 
-	public final String projectID, patientID, patientName, studyUID, seriesUID;
-	public final String seriesDate, seriesDescription, examType, bodyPart, accessionNumber;
-	public final int numberOfImages, numberOfSeriesRelatedInstances, numberOfAnnotations;
-	public final String institution, stationName, department;
-	public final SeriesProcessingStatus seriesProcessingStatus;
-	public final String createdTime, firstImageUIDInSeries;
-	public final boolean isDSO;
-	public boolean isNonDicomSeries;
-	public AnnotationStatus annotationStatus;
+	private static final Map<Integer, AnnotationStatus> lookup = new HashMap<Integer, AnnotationStatus>();
 
-	//ml annotation status added for tracking done
-	public EPADSeries(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
-			String seriesDate, String seriesDescription, String examType, String bodyPart, String accessionNumber,
-			int numberOfImages, int numberOfSeriesRelatedInstances, int numberOfAnnotations, String institution,
-			String stationName, String department, SeriesProcessingStatus seriesProcessingStatus, String createdTime,
-			String firstImageUIDInSeries, boolean isDSO, AnnotationStatus annotationStatus)
-	{
-		this.projectID = projectID;
-		this.patientID = patientID;
-		this.studyUID = studyUID;
-		this.seriesUID = seriesUID;
-		this.patientName = patientName;
-		this.seriesDate = seriesDate;
-		this.seriesDescription = seriesDescription;
-		this.examType = examType;
-		this.bodyPart = bodyPart;
-		this.accessionNumber = accessionNumber;
-		this.numberOfImages = numberOfImages;
-		this.numberOfSeriesRelatedInstances = numberOfSeriesRelatedInstances;
-		this.numberOfAnnotations = numberOfAnnotations;
-		this.institution = institution;
-		this.stationName = stationName;
-		this.department = department;
-		this.seriesProcessingStatus = seriesProcessingStatus;
-		this.createdTime = createdTime;
-		this.firstImageUIDInSeries = firstImageUIDInSeries;
-		this.isDSO = isDSO;
-		this.isNonDicomSeries = false;
-		this.annotationStatus = annotationStatus;
-	}
-	
-	public EPADSeries(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
-			String seriesDate, String seriesDescription, String examType, String bodyPart, String accessionNumber,
-			int numberOfImages, int numberOfSeriesRelatedInstances, int numberOfAnnotations, String institution,
-			String stationName, String department, SeriesProcessingStatus seriesProcessingStatus, String createdTime,
-			String firstImageUIDInSeries, boolean isDSO)
-	{
-		this.projectID = projectID;
-		this.patientID = patientID;
-		this.studyUID = studyUID;
-		this.seriesUID = seriesUID;
-		this.patientName = patientName;
-		this.seriesDate = seriesDate;
-		this.seriesDescription = seriesDescription;
-		this.examType = examType;
-		this.bodyPart = bodyPart;
-		this.accessionNumber = accessionNumber;
-		this.numberOfImages = numberOfImages;
-		this.numberOfSeriesRelatedInstances = numberOfSeriesRelatedInstances;
-		this.numberOfAnnotations = numberOfAnnotations;
-		this.institution = institution;
-		this.stationName = stationName;
-		this.department = department;
-		this.seriesProcessingStatus = seriesProcessingStatus;
-		this.createdTime = createdTime;
-		this.firstImageUIDInSeries = firstImageUIDInSeries;
-		this.isDSO = isDSO;
-		this.isNonDicomSeries = false;
-		this.annotationStatus = AnnotationStatus.NOT_STARTED;
+	static {
+		for (AnnotationStatus s : EnumSet.allOf(AnnotationStatus.class))
+			lookup.put(s.getCode(), s);
 	}
 
-	public EPADSeries(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
-			String seriesDate, String seriesDescription, String examType, String bodyPart, String accessionNumber,
-			int numberOfImages, int numberOfSeriesRelatedInstances, int numberOfAnnotations, String institution,
-			String stationName, String department, SeriesProcessingStatus seriesProcessingStatus, String createdTime,
-			String firstImageUIDInSeries)
+	private AnnotationStatus(int statusCode)
 	{
-		this.projectID = projectID;
-		this.patientID = patientID;
-		this.studyUID = studyUID;
-		this.seriesUID = seriesUID;
-		this.patientName = patientName;
-		this.seriesDate = seriesDate;
-		this.seriesDescription = seriesDescription;
-		this.examType = examType;
-		this.bodyPart = bodyPart;
-		this.accessionNumber = accessionNumber;
-		this.numberOfImages = numberOfImages;
-		this.numberOfSeriesRelatedInstances = numberOfSeriesRelatedInstances;
-		this.numberOfAnnotations = numberOfAnnotations;
-		this.institution = institution;
-		this.stationName = stationName;
-		this.department = department;
-		this.seriesProcessingStatus = seriesProcessingStatus;
-		this.createdTime = createdTime;
-		this.firstImageUIDInSeries = firstImageUIDInSeries;
-		this.isDSO = false;
-		this.isNonDicomSeries = false;
-		this.annotationStatus = AnnotationStatus.NOT_STARTED;
+		this.statusCode = statusCode;
 	}
 
-	public String toJSON()
+	public int getCode()
 	{
-		Gson gson = new Gson();
+		return statusCode;
+	}
 
-		return gson.toJson(this);
+	public static AnnotationStatus getValue(int statusCode)
+	{
+		AnnotationStatus seriesProcessingStatus = lookup.get(statusCode);
+
+		if (seriesProcessingStatus == null)
+			throw new IllegalArgumentException("Invalid status code " + statusCode + " for "
+					+ AnnotationStatus.class.getName() + " enum");
+
+		return seriesProcessingStatus;
 	}
 }

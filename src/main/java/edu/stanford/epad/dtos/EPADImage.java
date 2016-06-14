@@ -131,6 +131,10 @@ public class EPADImage implements Serializable
 	public boolean multiFrameImage = false;
     //ml suv calc
 	public double rescaleIntercept, rescaleSlope;
+	//ml for slice ordering when instance number is always 1
+	public Double sliceOrder;
+	
+	
 	
 	public EPADImage(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
 			String classUID, String insertDate, String imageDate, String sliceLocation, int instanceNumber,
@@ -155,6 +159,12 @@ public class EPADImage implements Serializable
 		this.isDSO = isDSO;
 		this.rescaleIntercept = 0;
 		this.rescaleSlope = 0;
+		try {
+			//use slice location as order for now
+			this.sliceOrder = Double.parseDouble(sliceLocation);
+		} catch (Exception e) {
+			this.sliceOrder=0.0;
+		}
 	}
 	
 	
@@ -182,11 +192,116 @@ public class EPADImage implements Serializable
 		try {
 			this.rescaleIntercept = Double.parseDouble(rescaleIntercept);
 			this.rescaleSlope = Double.parseDouble(rescaleSlope);
+			//use slice location as order for now
+			this.sliceOrder = Double.parseDouble(sliceLocation);
 		} catch (Exception e) {
 			this.rescaleIntercept = 0;
 			this.rescaleSlope = 0;
+			this.sliceOrder=0.0;
 		}
 	}
+	
+//	public EPADImage(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
+//			String classUID, String insertDate, String imageDate, String sliceLocation, int instanceNumber,
+//			String losslessImage, String lossyImage, DICOMElementList dicomElements, DICOMElementList defaultDICOMElements,
+//			int numberOfFrames, boolean isDSO, String rescaleIntercept, String rescaleSlope, String imageOrientation, String imagePosition)
+//	{
+//		this.projectID = projectID;
+//		this.patientID = patientID;
+//		this.studyUID = studyUID;
+//		this.seriesUID = seriesUID;
+//		this.imageUID = imageUID;
+//		this.classUID = classUID;
+//		this.insertDate = insertDate;
+//		this.imageDate = imageDate;
+//		this.sliceLocation = sliceLocation;
+//		this.instanceNumber = instanceNumber;
+//		this.losslessImage = losslessImage;
+//		this.lossyImage = lossyImage;
+//		this.dicomElements = dicomElements;
+//		this.defaultDICOMElements = defaultDICOMElements;
+//		this.numberOfFrames = numberOfFrames;
+//		this.isDSO = isDSO;
+//		try {
+//			this.rescaleIntercept = Double.parseDouble(rescaleIntercept);
+//			this.rescaleSlope = Double.parseDouble(rescaleSlope);
+//		} catch (Exception e) {
+//			this.rescaleIntercept = 0;
+//			this.rescaleSlope = 0;
+//		}
+//		
+//
+//		this.sliceOrder=calcSliceOrder(imageOrientation, imagePosition);
+//	}
+	
+//	//calculates the slice order using the image position and orientation to find the correct order
+//	public Double calcSliceOrder(String imageOrientation, String imagePosition) {
+//		//ted's idl code  dctag orientation, iptag position
+////		dc = DOUBLE(REFORM(*dctag.value, 3, 2))
+////		; dc is a 3x2 array containing the x and y direction cosines obtained from the value of dctag
+////        dc = CROSS(dc[*,0], dc[*,1])
+////        ; dc is the z direction cosine obtained by the cross product
+////        dummy = MAX(ABS(dc), sldir)
+////        ; sldir will be the index of the largest element of dc
+////        slorder = DOUBLE((*iptag.value)[sldir])/dc[sldir]
+////        ; slorder is the slice index obtained by extracting the appropriate element of the image position (iptag)
+//		
+//	 	//do not try if one of them is empty
+//		if (imageOrientation.equals("") || imagePosition.equals("")) return 0.0;
+//		//extact dc
+//		String[] dcStr = imageOrientation.split("\\\\");
+//		Double[][] dc = new Double[2][3];
+//		for (int row=0; row<2; row++) {
+//			for (int col=0; col<3; col++) {
+//				dc[row][col] = Double.parseDouble(dcStr[row*3+col]);					
+//			}
+//		}
+//		
+//		
+//		//calc cross product
+//		Double z[]=new Double[3];
+//		
+////		Vector A be in the y direction (Ax=0 , Ay=1 , Az = 0)
+////										dc[0][0] dc[0][1] dc[0][2] 
+////		Vector B be in the x direction (Bx=1 , By=0 , Bz = 0)
+////										dc[1][0] dc[1][1] dc[1][2] 
+////
+////		so, Vector A×B components:
+////
+////		x = Ay * Bz - By * Az = 0
+////		y = Az * Bx - Bz * Ax = 0
+////		z = Ax * By - Bx * Ay = -1
+//		
+//		z[0] = dc[0][1] * dc[1][2] - dc[1][1] * dc[0][2];
+//        z[1] = dc[0][2] * dc[1][0] - dc[1][2] * dc[0][0];
+//        z[2] = dc[0][0] * dc[1][1] - dc[1][0] * dc[0][1];
+//        
+//        System.out.println(" dc0 "+ dc[0][0] + " " + dc[0][1] + " " +dc[0][2]);
+//        System.out.println(" dc1 "+ dc[1][0] + " " + dc[1][1] + " " +dc[1][2]);
+//        
+//        System.out.println(" z "+ z[0] + " " + z[1] + " " +z[2]);
+//        //find max index
+//        int maxZ = (z[0]>z[1]? (z[0]>z[2]? 0:2):(z[1]>z[2]? 1:2));
+//        //extract ip
+//        String[] ipStr = imagePosition.split("\\\\");
+//        Double[] ip = new Double[3];
+//        for (int col=0; col<3; col++) {
+//			ip[col] = Double.parseDouble(ipStr[col]);
+//		}
+//        System.out.println("ip "+ ip[maxZ] + " z "+ z[maxZ]);
+//        //calc slOrder
+//        return ip[maxZ]/z[maxZ];
+//	}
+
+	public Double getSliceOrder() {
+		return sliceOrder;
+	}
+
+
+	public void setSliceOrder(Double sliceOrder) {
+		this.sliceOrder = sliceOrder;
+	}
+
 
 	public String toJSON()
 	{

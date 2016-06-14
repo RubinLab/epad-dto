@@ -107,6 +107,7 @@ package edu.stanford.epad.dtos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -166,7 +167,21 @@ public class EPADImageList implements Serializable
 			this.totalRecords++;
 		}
 	}
-
+//	public class EPADImageComparator implements Comparator<EPADImage> {
+//	    @Override
+//	    public int compare(EPADImage o1, EPADImage o2) {
+//	        return o1.getSliceOrder().compareTo(o2.getSliceOrder());
+//	    }
+//	}
+	public void sort(){
+		Collections.sort(this.ResultSet.Result, new Comparator<EPADImage>() {
+		    @Override
+		    public int compare(EPADImage o1, EPADImage o2) {
+		    	 return o1.getSliceOrder().compareTo(o2.getSliceOrder());
+		    }
+		});
+		
+	}
 	public String toJSON()
 	{
 		Gson gson = new Gson();
