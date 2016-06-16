@@ -141,4 +141,16 @@ public enum AnnotationStatus {
 
 		return seriesProcessingStatus;
 	}
+	
+	//for accepting also DONE as text not sure if needed
+	//TODO add others if needed
+	public static AnnotationStatus getValueByName(String statusText)
+	{
+		int statusCode=0;
+		
+		if (statusText.startsWith("DONE"))
+			statusCode=3;
+		
+		return getValue(statusCode);
+	}
 }

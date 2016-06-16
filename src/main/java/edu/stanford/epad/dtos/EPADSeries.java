@@ -105,6 +105,7 @@
 package edu.stanford.epad.dtos;
 
 import java.io.Serializable;
+import java.util.Map;
 
 import com.google.gson.Gson;
 
@@ -126,13 +127,14 @@ public class EPADSeries implements Serializable
 	public final boolean isDSO;
 	public boolean isNonDicomSeries;
 	public AnnotationStatus annotationStatus;
+	public Map<String, AnnotationStatus> userStatusList;
 
 	//ml annotation status added for tracking done
 	public EPADSeries(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
 			String seriesDate, String seriesDescription, String examType, String bodyPart, String accessionNumber,
 			int numberOfImages, int numberOfSeriesRelatedInstances, int numberOfAnnotations, String institution,
 			String stationName, String department, SeriesProcessingStatus seriesProcessingStatus, String createdTime,
-			String firstImageUIDInSeries, boolean isDSO, AnnotationStatus annotationStatus)
+			String firstImageUIDInSeries, boolean isDSO, AnnotationStatus annotationStatus, Map<String, AnnotationStatus> userStatusList)
 	{
 		this.projectID = projectID;
 		this.patientID = patientID;
@@ -156,6 +158,7 @@ public class EPADSeries implements Serializable
 		this.isDSO = isDSO;
 		this.isNonDicomSeries = false;
 		this.annotationStatus = annotationStatus;
+		this.userStatusList = userStatusList;
 	}
 	
 	public EPADSeries(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
@@ -186,6 +189,7 @@ public class EPADSeries implements Serializable
 		this.isDSO = isDSO;
 		this.isNonDicomSeries = false;
 		this.annotationStatus = AnnotationStatus.NOT_STARTED;
+		this.userStatusList = null;
 	}
 
 	public EPADSeries(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
@@ -216,6 +220,7 @@ public class EPADSeries implements Serializable
 		this.isDSO = false;
 		this.isNonDicomSeries = false;
 		this.annotationStatus = AnnotationStatus.NOT_STARTED;
+		this.userStatusList = null;
 	}
 
 	public String toJSON()
