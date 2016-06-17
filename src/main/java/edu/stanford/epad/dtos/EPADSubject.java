@@ -106,6 +106,7 @@ package edu.stanford.epad.dtos;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import com.google.gson.Gson;
@@ -125,6 +126,28 @@ public class EPADSubject implements Serializable
 	public Set<String> examTypes;
 	public String userProjectStatus;
 
+	public AnnotationStatus annotationStatus;
+	public Map<String, AnnotationStatus> userStatusList;
+
+	//constructor with annotation status
+	public EPADSubject(String projectID, String subjectID, String subjectName, String insertUser, String xnatID,
+			String insertDate, String uri, int numberOfStudies, int numberOfAnnotations, Set<String> examTypes, AnnotationStatus annotationStatus, Map<String, AnnotationStatus> userStatusList)
+	{
+		this.projectID = projectID;
+		this.subjectName = subjectName;
+		this.insertUser = insertUser;
+		this.xnatID = xnatID;
+		this.insertDate = insertDate;
+		this.subjectID = subjectID;
+		this.uri = uri;
+		this.numberOfStudies = numberOfStudies;
+		this.numberOfAnnotations = numberOfAnnotations;
+		this.examTypes = new HashSet<String>(examTypes);
+		
+		this.annotationStatus = annotationStatus;
+		this.userStatusList = userStatusList;
+	}
+	
 	public EPADSubject(String projectID, String subjectID, String subjectName, String insertUser, String xnatID,
 			String insertDate, String uri, int numberOfStudies, int numberOfAnnotations, Set<String> examTypes)
 	{
@@ -138,6 +161,9 @@ public class EPADSubject implements Serializable
 		this.numberOfStudies = numberOfStudies;
 		this.numberOfAnnotations = numberOfAnnotations;
 		this.examTypes = new HashSet<String>(examTypes);
+
+		this.annotationStatus = AnnotationStatus.ERROR;
+		this.userStatusList = null;
 	}
 
 	public String getUserProjectStatus() {

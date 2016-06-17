@@ -129,6 +129,9 @@ public class EPADProject implements Serializable
 	public Map<String,String> loginToRole = null;
 	public String defaultTemplate;
 
+	public AnnotationStatus annotationStatus;
+	public Map<String, AnnotationStatus> userStatusList;
+
 	public EPADProject(String secondaryID, String piLastName, String description, String name, String id,
 			String piFirstName, String uri, int numberOfSubjects, int numberOfStudies, int numberOfAnnotations,
 			Set<String> subjectIDs, Set<String> loginNames)
@@ -145,6 +148,9 @@ public class EPADProject implements Serializable
 		this.numberOfAnnotations = numberOfAnnotations;
 		this.loginNames = new HashSet<String>(loginNames);
 		this.subjectIDs = new HashSet<String>(subjectIDs);
+		
+		this.annotationStatus = AnnotationStatus.ERROR;
+		this.userStatusList = null;
 	}
 
 	public EPADProject(String secondaryID, String piLastName, String description, String name, String id,
@@ -164,6 +170,35 @@ public class EPADProject implements Serializable
 		this.loginNames = new HashSet<String>(loginNames);
 		this.subjectIDs = new HashSet<String>(subjectIDs);
 		this.loginToRole = loginToRole;
+		
+		this.annotationStatus = AnnotationStatus.ERROR;
+		this.userStatusList = null;
+	}
+	
+	
+	//annotation status additions
+	public EPADProject(String secondaryID, String piLastName, String description, String name, String id,
+			String piFirstName, String uri, int numberOfSubjects, int numberOfStudies, int numberOfAnnotations,
+			Set<String> subjectIDs, Set<String> loginNames, Map<String,String>loginToRole,
+			AnnotationStatus annotationStatus, Map<String, AnnotationStatus> userStatusList)
+	{
+		this.secondaryID = secondaryID;
+		this.piLastName = piLastName;
+		this.description = description;
+		this.name = name;
+		this.id = id;
+		this.piFirstName = piFirstName;
+		this.uri = uri;
+		this.numberOfSubjects = numberOfSubjects;
+		this.numberOfStudies = numberOfStudies;
+		this.numberOfAnnotations = numberOfAnnotations;
+		this.loginNames = new HashSet<String>(loginNames);
+		this.subjectIDs = new HashSet<String>(subjectIDs);
+		this.loginToRole = loginToRole;
+		
+
+		this.annotationStatus = annotationStatus;
+		this.userStatusList = userStatusList;
 	}
 
 	public String toJSON()

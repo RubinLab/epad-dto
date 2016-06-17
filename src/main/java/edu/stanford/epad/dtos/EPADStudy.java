@@ -105,6 +105,7 @@
 package edu.stanford.epad.dtos;
 
 import java.io.Serializable;
+import java.util.Map;
 import java.util.Set;
 
 import com.google.gson.Gson;
@@ -128,6 +129,8 @@ public class EPADStudy implements Serializable
 	public final int numberOfSeries;
 	public final int numberOfAnnotations;
 	public final String createdTime;
+	public AnnotationStatus annotationStatus;
+	public Map<String, AnnotationStatus> userStatusList;
 	
 	public EPADStudy(String projectID, String patientID, String patientName, String studyUID, String insertDate,
 			String firstSeriesUID, String firstSeriesDateAcquired, String physicianName, String birthdate, String sex,
@@ -154,6 +157,9 @@ public class EPADStudy implements Serializable
 		this.numberOfImages = numberOfImages;
 		this.numberOfAnnotations = numberOfAnnotations;
 		this.createdTime = null;
+		
+		this.annotationStatus = AnnotationStatus.ERROR;
+		this.userStatusList = null;
 	}
 	
 	public EPADStudy(String projectID, String patientID, String patientName, String studyUID, String insertDate,
@@ -181,8 +187,42 @@ public class EPADStudy implements Serializable
 		this.numberOfImages = numberOfImages;
 		this.numberOfAnnotations = numberOfAnnotations;
 		this.createdTime = createdTime;
+		
+		this.annotationStatus = AnnotationStatus.ERROR;
+		this.userStatusList = null;
 	}
 
+	//get annotation status and user status list
+	public EPADStudy(String projectID, String patientID, String patientName, String studyUID, String insertDate,
+			String firstSeriesUID, String firstSeriesDateAcquired, String physicianName, String birthdate, String sex,
+			StudyProcessingStatus studyProcessingStatus, Set<String> examTypes, String studyDescription,
+			String studyAccessionNumber, int numberOfSeries, int numberOfImages, int numberOfAnnotations, String createdTime,
+			AnnotationStatus annotationStatus, Map<String, AnnotationStatus> userStatusList)
+	{
+		this.projectID = projectID;
+		this.patientID = patientID;
+		this.patientName = patientName;
+		this.studyUID = studyUID;
+		this.insertDate = insertDate;
+
+		this.firstSeriesUID = firstSeriesUID;
+		this.firstSeriesDateAcquired = firstSeriesDateAcquired;
+		this.physicianName = physicianName;
+		this.birthdate = birthdate;
+		this.sex = sex;
+		this.studyProcessingStatus = studyProcessingStatus;
+
+		this.examTypes = examTypes;
+		this.studyDescription = studyDescription;
+		this.studyAccessionNumber = studyAccessionNumber;
+		this.numberOfSeries = numberOfSeries;
+		this.numberOfImages = numberOfImages;
+		this.numberOfAnnotations = numberOfAnnotations;
+		this.createdTime = createdTime;
+		
+		this.annotationStatus = annotationStatus;
+		this.userStatusList = userStatusList;
+	}
 	public String toJSON()
 	{
 		Gson gson = new Gson();

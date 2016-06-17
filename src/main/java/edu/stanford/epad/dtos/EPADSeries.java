@@ -188,7 +188,8 @@ public class EPADSeries implements Serializable
 		this.firstImageUIDInSeries = firstImageUIDInSeries;
 		this.isDSO = isDSO;
 		this.isNonDicomSeries = false;
-		this.annotationStatus = AnnotationStatus.NOT_STARTED;
+		
+		this.annotationStatus = AnnotationStatus.ERROR;
 		this.userStatusList = null;
 	}
 
@@ -219,7 +220,8 @@ public class EPADSeries implements Serializable
 		this.firstImageUIDInSeries = firstImageUIDInSeries;
 		this.isDSO = false;
 		this.isNonDicomSeries = false;
-		this.annotationStatus = AnnotationStatus.NOT_STARTED;
+		
+		this.annotationStatus = AnnotationStatus.ERROR;
 		this.userStatusList = null;
 	}
 
