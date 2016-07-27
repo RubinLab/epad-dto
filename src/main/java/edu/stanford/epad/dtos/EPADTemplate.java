@@ -115,11 +115,25 @@ public class EPADTemplate {
 	public String templateUID;
 	public String templateName;
 	public String templateType;
+	public String templateLevelType;
 	public String templateCode;
 	public String templateDescription;
 	public String modality;
 	public boolean defaultTemplate;
 	
+	
+	public EPADTemplate(String templateUID, String templateName,
+			String templateType, String templateCode,
+			String templateDescription, String modality, String templateLevelType) {
+		super();
+		this.templateUID = templateUID;
+		this.templateName = templateName;
+		this.templateType = templateType;
+		this.templateCode = templateCode;
+		this.templateDescription = templateDescription;
+		this.modality = modality;
+		this.templateLevelType = templateLevelType;
+	}
 	public EPADTemplate(String templateUID, String templateName,
 			String templateType, String templateCode,
 			String templateDescription, String modality) {

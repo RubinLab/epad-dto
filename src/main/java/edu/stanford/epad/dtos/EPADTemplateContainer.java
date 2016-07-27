@@ -130,4 +130,11 @@ public class EPADTemplateContainer extends EPADFile {
 				fileLength, fileType, createdTime, path, enabled, description);
 	}
 
+	public EPADTemplateContainer(String projectID, String patientID, String patientName,
+			String studyUID, String seriesUID, String fileName,
+			long fileLength, String fileType, String createdTime, String path,
+			boolean enabled, String description, String templateLevelType) {
+		super(projectID, patientID, patientName, studyUID, seriesUID, fileName,
+				fileLength, fileType, createdTime, path, enabled, description, templateLevelType);
+	}
 }
