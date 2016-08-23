@@ -116,6 +116,7 @@ import com.google.gson.Gson;
 public class DSOEditResult
 {
 	public final String projectID, patientID, studyUID, seriesUID, imageUID, aimID;
+	public Integer firstFrame;
 
 	public DSOEditResult(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
 			String aimID)
@@ -126,6 +127,18 @@ public class DSOEditResult
 		this.seriesUID = seriesUID;
 		this.imageUID = imageUID;
 		this.aimID = aimID;
+	}
+	
+	public DSOEditResult(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
+			String aimID, Integer firstFrame)
+	{
+		this.projectID = projectID;
+		this.patientID = patientID;
+		this.studyUID = studyUID;
+		this.seriesUID = seriesUID;
+		this.imageUID = imageUID;
+		this.aimID = aimID;
+		this.firstFrame = firstFrame;
 	}
 
 	public String toJSON()
