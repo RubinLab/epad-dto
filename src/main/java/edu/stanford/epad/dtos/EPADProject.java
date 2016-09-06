@@ -128,6 +128,7 @@ public class EPADProject implements Serializable
 	public final Set<String> loginNames;
 	public Map<String,String> loginToRole = null;
 	public String defaultTemplate;
+	public String type;
 
 	public AnnotationStatus annotationStatus;
 	public Map<String, AnnotationStatus> userStatusList;
@@ -199,6 +200,32 @@ public class EPADProject implements Serializable
 
 		this.annotationStatus = annotationStatus;
 		this.userStatusList = userStatusList;
+	}
+	
+	//type added
+	public EPADProject(String secondaryID, String piLastName, String description, String name, String id,
+				String piFirstName, String uri, int numberOfSubjects, int numberOfStudies, int numberOfAnnotations,
+				Set<String> subjectIDs, Set<String> loginNames, Map<String,String>loginToRole,
+				AnnotationStatus annotationStatus, Map<String, AnnotationStatus> userStatusList, String type)
+	{
+			this.secondaryID = secondaryID;
+			this.piLastName = piLastName;
+			this.description = description;
+			this.name = name;
+			this.id = id;
+			this.piFirstName = piFirstName;
+			this.uri = uri;
+			this.numberOfSubjects = numberOfSubjects;
+			this.numberOfStudies = numberOfStudies;
+			this.numberOfAnnotations = numberOfAnnotations;
+			this.loginNames = new HashSet<String>(loginNames);
+			this.subjectIDs = new HashSet<String>(subjectIDs);
+			this.loginToRole = loginToRole;
+			
+
+			this.annotationStatus = annotationStatus;
+			this.userStatusList = userStatusList;
+			this.type = type;
 	}
 
 	public String toJSON()
