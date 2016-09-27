@@ -116,8 +116,14 @@ import com.google.gson.Gson;
 public class EPADFile implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-
-	public final String projectID, patientID, patientName, studyUID, seriesUID, fileName, fileType, createdTime;
+	public String projectID;
+	public final String patientID;
+	public final String patientName;
+	public final String studyUID;
+	public final String seriesUID;
+	public final String fileName;
+	public final String fileType;
+	public final String createdTime;
 	public final long fileLength;
 	public final String path;
 	public boolean enabled;
