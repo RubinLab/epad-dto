@@ -108,34 +108,27 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class EPADTemplateContainer extends EPADFile {
+public class EPADProjectTemplate {
 
 	private static final long serialVersionUID = 1L;
-
-	public String templateUID;
-	public String templateName;
-	public String templateType;
-	public String templateCode;
-	public String templateDescription;
-	public String modality;
+		
+	public String projectID;
+	public boolean enabled;
+	public boolean defaultTemplate;
 	
-	public List<EPADTemplate> templates;
-	public List<String> projectIDs;
-	public List<EPADProjectTemplate> projectTemplates;
 	
-	public EPADTemplateContainer(String projectID, String patientID, String patientName,
-			String studyUID, String seriesUID, String fileName,
-			long fileLength, String fileType, String createdTime, String path,
-			boolean enabled, String description) {
-		super(projectID, patientID, patientName, studyUID, seriesUID, fileName,
-				fileLength, fileType, createdTime, path, enabled, description);
+	public EPADProjectTemplate(String projectID, boolean enabled,
+			boolean defaultTemplate) {
+		this.projectID = projectID;
+		this.enabled = enabled;
+		this.defaultTemplate = defaultTemplate;
+		
 	}
 
-	public EPADTemplateContainer(String projectID, String patientID, String patientName,
-			String studyUID, String seriesUID, String fileName,
-			long fileLength, String fileType, String createdTime, String path,
-			boolean enabled, String description, String templateLevelType) {
-		super(projectID, patientID, patientName, studyUID, seriesUID, fileName,
-				fileLength, fileType, createdTime, path, enabled, description, templateLevelType);
+
+	public String getProjectID() {
+		return projectID;
 	}
+	
+
 }
