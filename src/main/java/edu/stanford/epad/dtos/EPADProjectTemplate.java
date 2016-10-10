@@ -104,91 +104,31 @@
  *******************************************************************************/
 package edu.stanford.epad.dtos;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-import com.google.gson.Gson;
+public class EPADProjectTemplate {
 
-/**
- * A description of a non-dicom file returned from an ePAD query. Designed to be JSON serializable.
- * 
- * @author dev
- */
-public class EPADFile implements Serializable
-{
 	private static final long serialVersionUID = 1L;
+		
 	public String projectID;
-	public final String patientID;
-	public final String patientName;
-	public final String studyUID;
-	public final String seriesUID;
-	public final String fileName;
-	public final String fileType;
-	public final String createdTime;
-	public final long fileLength;
-	public final String path;
 	public boolean enabled;
-	public final String description;
-
-	public String templateLevelType;
+	public boolean defaultTemplate;
 	
-	public EPADFile(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
-			String fileName, long fileLength, String fileType, String createdTime, String path)
-	{
-		this.projectID = projectID;
-		this.patientID = patientID;
-		this.studyUID = studyUID;
-		this.seriesUID = seriesUID;
-		this.patientName = patientName;
-		this.fileName = fileName;
-		this.fileLength = fileLength;
-		this.fileType = fileType;
-		this.createdTime = createdTime;
-		this.path = path;
-		this.enabled = true;
-		this.description = "";
-	}
 	
-	public EPADFile(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
-			String fileName, long fileLength, String fileType, String createdTime, String path, boolean enabled, String description)
-	{
+	public EPADProjectTemplate(String projectID, boolean enabled,
+			boolean defaultTemplate) {
 		this.projectID = projectID;
-		this.patientID = patientID;
-		this.studyUID = studyUID;
-		this.seriesUID = seriesUID;
-		this.patientName = patientName;
-		this.fileName = fileName;
-		this.fileLength = fileLength;
-		this.fileType = fileType;
-		this.createdTime = createdTime;
-		this.path = path;
 		this.enabled = enabled;
-		this.description = description;
+		this.defaultTemplate = defaultTemplate;
+		
 	}
 
+
+	public String getProjectID() {
+		return projectID;
+	}
 	
-	public EPADFile(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
-			String fileName, long fileLength, String fileType, String createdTime, String path, boolean enabled, String description, 
-			String templateLevelType)
-	{
-		this.projectID = projectID;
-		this.patientID = patientID;
-		this.studyUID = studyUID;
-		this.seriesUID = seriesUID;
-		this.patientName = patientName;
-		this.fileName = fileName;
-		this.fileLength = fileLength;
-		this.fileType = fileType;
-		this.createdTime = createdTime;
-		this.path = path;
-		this.enabled = enabled;
-		this.description = description;
-		this.templateLevelType = templateLevelType.toLowerCase(); //image, series, study, subject
-	}
 
-	public String toJSON()
-	{
-		Gson gson = new Gson();
-
-		return gson.toJson(this);
-	}
 }
