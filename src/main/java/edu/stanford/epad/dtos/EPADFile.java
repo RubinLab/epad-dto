@@ -182,7 +182,7 @@ public class EPADFile implements Serializable
 		this.path = path;
 		this.enabled = enabled;
 		this.description = description;
-		this.templateLevelType = templateLevelType; //image, series, study, subject
+		this.templateLevelType = templateLevelType.toLowerCase(); //image, series, study, subject
 	}
 
 	public String toJSON()
