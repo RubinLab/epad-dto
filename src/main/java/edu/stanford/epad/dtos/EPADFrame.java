@@ -119,7 +119,28 @@ public class EPADFrame implements Serializable
 	public final String losslessImage, lossyImage;
 	public final DICOMElementList dicomElements;
 	public final DICOMElementList defaultDICOMElements;
+	public final double[] pixelValues;
 
+	public EPADFrame(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
+			String insertDate, String imageDate, String sliceLocation, int frameNumber, String losslessImage,
+			String lossyImage, DICOMElementList dicomElements, DICOMElementList defaultDICOMElements, String pixelValues)
+	{
+		this.projectID = projectID;
+		this.patientID = patientID;
+		this.studyUID = studyUID;
+		this.seriesUID = seriesUID;
+		this.imageUID = imageUID;
+		this.frameNumber = frameNumber;
+		this.losslessImage = losslessImage;
+		this.lossyImage = lossyImage;
+		this.dicomElements = dicomElements;
+		this.defaultDICOMElements = defaultDICOMElements;
+		Gson gson = new Gson();
+
+		
+		this.pixelValues=gson.fromJson(pixelValues, double[].class);
+		
+	}
 	public EPADFrame(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
 			String insertDate, String imageDate, String sliceLocation, int frameNumber, String losslessImage,
 			String lossyImage, DICOMElementList dicomElements, DICOMElementList defaultDICOMElements)
@@ -132,9 +153,9 @@ public class EPADFrame implements Serializable
 		this.frameNumber = frameNumber;
 		this.losslessImage = losslessImage;
 		this.lossyImage = lossyImage;
-		this.dicomElements = new DICOMElementList(); // TODO Removal temporary for testing
-		// this.dicomElements = dicomElements;
+		this.dicomElements = dicomElements;
 		this.defaultDICOMElements = defaultDICOMElements;
+		this.pixelValues=null;
 	}
 
 	public String toJSON()
