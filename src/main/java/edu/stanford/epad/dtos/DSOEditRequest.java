@@ -121,6 +121,23 @@ public class DSOEditRequest
 {
 	public String projectID, patientID, studyUID, seriesUID, imageUID, aimID;
 	public final List<Integer> editedFrameNumbers;
+	//additions for segmented property (category,type,modifier). Id lookup from SegmentedPropertyHelper in epad-common
+	public String property,color;
+	
+	public DSOEditRequest(String projectID, String patientID, String studyUID, String seriesUID, String imageUID, String aimID,
+			List<Integer> editedFrameNumbers, String property, String color)
+	{
+		this.projectID = projectID;
+		this.patientID = patientID;
+		this.studyUID = studyUID;
+		this.seriesUID = seriesUID;
+		this.imageUID = imageUID;
+		this.aimID = aimID;
+		this.editedFrameNumbers = Collections.unmodifiableList(editedFrameNumbers);
+		this.property= property;
+		this.color=color;
+		
+	}
 
 	public DSOEditRequest(String projectID, String patientID, String studyUID, String seriesUID, String imageUID, String aimID,
 			List<Integer> editedFrameNumbers)
@@ -132,6 +149,9 @@ public class DSOEditRequest
 		this.imageUID = imageUID;
 		this.aimID = aimID;
 		this.editedFrameNumbers = Collections.unmodifiableList(editedFrameNumbers);
+		this.property= null;
+		this.color=null;
+		
 	}
 
 	public String toJSON()
