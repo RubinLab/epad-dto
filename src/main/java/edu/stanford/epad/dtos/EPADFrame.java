@@ -119,7 +119,7 @@ public class EPADFrame implements Serializable
 	public final String losslessImage, lossyImage;
 	public final DICOMElementList dicomElements;
 	public final DICOMElementList defaultDICOMElements;
-	public final double[] pixelValues;
+	public final Double[] pixelValues;
 
 	public EPADFrame(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
 			String insertDate, String imageDate, String sliceLocation, int frameNumber, String losslessImage,
@@ -138,7 +138,7 @@ public class EPADFrame implements Serializable
 		Gson gson = new Gson();
 
 		
-		this.pixelValues=gson.fromJson(pixelValues, double[].class);
+		this.pixelValues=gson.fromJson(pixelValues, Double[].class);
 		
 	}
 	public EPADFrame(String projectID, String patientID, String studyUID, String seriesUID, String imageUID,
