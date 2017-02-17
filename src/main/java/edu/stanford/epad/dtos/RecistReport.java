@@ -170,6 +170,18 @@ public class RecistReport implements Serializable
 		return min;
 	}
 	
+	public String getMinRRBaseLineResponse(){
+		Double min=999999.0;
+		int minIndex=-1;
+		for (int i=0;i<tRRBaseline.length;i++){
+			if (tRRBaseline[i]<min){
+				min=tRRBaseline[i];
+				minIndex=i;
+			}
+		}
+		return tResponseCats[minIndex];
+	}
+	
 	public Double getMinRRMinimum(){
 		Double min=999999.0;
 		for (int i=0;i<tRRMin.length;i++){
@@ -177,6 +189,18 @@ public class RecistReport implements Serializable
 				min=tRRMin[i];
 		}
 		return min;
+	}
+	
+	public String getMinRRMinimumResponse(){
+		Double min=999999.0;
+		int minIndex=-1;
+		for (int i=0;i<tRRMin.length;i++){
+			if (tRRMin[i]<min){
+				min=tRRMin[i];
+				minIndex=i;
+			}
+		}
+		return tResponseCats[minIndex];
 	}
 	public String toJSON()
 	{
