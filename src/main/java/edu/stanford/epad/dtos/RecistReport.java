@@ -123,7 +123,7 @@ public class RecistReport implements Serializable
 	Double[] tSums;
 	Double[] tRRBaseline;
 	Double[] tRRMin;
-	
+	String[] tResponseCats;
 	
 	String[] ntLesionNames;
 	String[] ntStudyDates;
@@ -132,7 +132,7 @@ public class RecistReport implements Serializable
 	Double[] ntRRBaseline;
 	Double[] ntRRMin;
 
-	public RecistReport(String[] tLesionNames,String[] tStudyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin, String[] ntLesionNames,String[] ntStudyDates,String[][] ntTable,Double[] ntSums,Double[] ntRRBaseline,Double[] ntRRMin) {
+	public RecistReport(String[] tLesionNames,String[] tStudyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,String[] tResponseCats, String[] ntLesionNames,String[] ntStudyDates,String[][] ntTable,Double[] ntSums,Double[] ntRRBaseline,Double[] ntRRMin) {
 		super();
 		this.tLesionNames=tLesionNames;
 		this.tStudyDates=tStudyDates;
@@ -140,6 +140,7 @@ public class RecistReport implements Serializable
 		this.tSums=tSums;
 		this.tRRBaseline=tRRBaseline;
 		this.tRRMin=tRRMin;
+		this.tResponseCats=tResponseCats;
 		
 		this.ntLesionNames=ntLesionNames;
 		this.ntStudyDates=ntStudyDates;
@@ -149,7 +150,7 @@ public class RecistReport implements Serializable
 		this.ntRRMin=ntRRMin;
 	}
 
-	public RecistReport(String[] tLesionNames,String[] tStudyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin){
+	public RecistReport(String[] tLesionNames,String[] tStudyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,String[] tResponseCats){
 		super();
 		this.tLesionNames=tLesionNames;
 		this.tStudyDates=tStudyDates;
@@ -157,6 +158,7 @@ public class RecistReport implements Serializable
 		this.tSums=tSums;
 		this.tRRBaseline=tRRBaseline;
 		this.tRRMin=tRRMin;
+		this.tResponseCats=tResponseCats;
 	}
 	
 	public Double getMinRRBaseLine(){
