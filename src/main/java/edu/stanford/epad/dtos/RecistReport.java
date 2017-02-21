@@ -123,6 +123,7 @@ public class RecistReport implements Serializable
 	Double[] tSums;
 	Double[] tRRBaseline;
 	Double[] tRRMin;
+	Double[] tRR;
 	String[] tResponseCats;
 	
 	String[] ntLesionNames;
@@ -132,7 +133,7 @@ public class RecistReport implements Serializable
 	Double[] ntRRBaseline;
 	Double[] ntRRMin;
 
-	public RecistReport(String[] tLesionNames,String[] tStudyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,String[] tResponseCats, String[] ntLesionNames,String[] ntStudyDates,String[][] ntTable,Double[] ntSums,Double[] ntRRBaseline,Double[] ntRRMin) {
+	public RecistReport(String[] tLesionNames,String[] tStudyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,Double[] tRR,String[] tResponseCats, String[] ntLesionNames,String[] ntStudyDates,String[][] ntTable,Double[] ntSums,Double[] ntRRBaseline,Double[] ntRRMin) {
 		super();
 		this.tLesionNames=tLesionNames;
 		this.tStudyDates=tStudyDates;
@@ -140,6 +141,7 @@ public class RecistReport implements Serializable
 		this.tSums=tSums;
 		this.tRRBaseline=tRRBaseline;
 		this.tRRMin=tRRMin;
+		this.tRR=tRR;
 		this.tResponseCats=tResponseCats;
 		
 		this.ntLesionNames=ntLesionNames;
@@ -150,7 +152,7 @@ public class RecistReport implements Serializable
 		this.ntRRMin=ntRRMin;
 	}
 
-	public RecistReport(String[] tLesionNames,String[] tStudyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,String[] tResponseCats){
+	public RecistReport(String[] tLesionNames,String[] tStudyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,Double[] tRR,String[] tResponseCats){
 		super();
 		this.tLesionNames=tLesionNames;
 		this.tStudyDates=tStudyDates;
@@ -158,6 +160,7 @@ public class RecistReport implements Serializable
 		this.tSums=tSums;
 		this.tRRBaseline=tRRBaseline;
 		this.tRRMin=tRRMin;
+		this.tRR=tRR;
 		this.tResponseCats=tResponseCats;
 	}
 	
@@ -197,6 +200,27 @@ public class RecistReport implements Serializable
 		for (int i=0;i<tRRMin.length;i++){
 			if (tRRMin[i]<min){
 				min=tRRMin[i];
+				minIndex=i;
+			}
+		}
+		return tResponseCats[minIndex];
+	}
+	
+	public Double getMinRR(){
+		Double min=999999.0;
+		for (int i=0;i<tRR.length;i++){
+			if (tRR[i]<min)
+				min=tRR[i];
+		}
+		return min;
+	}
+	
+	public String getMinRRResponse(){
+		Double min=999999.0;
+		int minIndex=-1;
+		for (int i=0;i<tRR.length;i++){
+			if (tRR[i]<min){
+				min=tRR[i];
 				minIndex=i;
 			}
 		}
