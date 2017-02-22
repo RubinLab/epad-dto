@@ -207,10 +207,18 @@ public class RecistReport implements Serializable
 	}
 	
 	public Double getMinRR(){
+		//find the last 0 (baseline) then find the min after that
 		Double min=999999.0;
-		for (int i=0;i<tRR.length;i++){
-			if (tRR[i]<min)
-				min=tRR[i];
+		
+		for (int j=tRR.length-1;j>=0;j--){
+			if (tRR[j]==0) {
+				for (int i=j; i<tRR.length;i++) {
+					if (tRR[i]<min){
+						min=tRR[i];
+					}
+				}
+				break;
+			}
 		}
 		return min;
 	}
@@ -218,10 +226,15 @@ public class RecistReport implements Serializable
 	public String getMinRRResponse(){
 		Double min=999999.0;
 		int minIndex=-1;
-		for (int i=0;i<tRR.length;i++){
-			if (tRR[i]<min){
-				min=tRR[i];
-				minIndex=i;
+		for (int j=tRR.length-1;j>=0;j--){
+			if (tRR[j]==0) {
+				for (int i=j; i<tRR.length;i++) {
+					if (tRR[i]<min){
+						min=tRR[i];
+						minIndex=i;
+					}
+				}
+				break;
 			}
 		}
 		return tResponseCats[minIndex];
