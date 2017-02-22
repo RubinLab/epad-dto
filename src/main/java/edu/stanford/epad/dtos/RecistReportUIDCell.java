@@ -109,141 +109,23 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * A description of an recist report
+ * A description of an recist uid struct report
  * 
  * @author emel alkim
  */
-public class RecistReport implements Serializable
+public class RecistReportUIDCell implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	
-	String[] tLesionNames;
-	String[] tStudyDates;
-	String[][] tTable;
-	Double[] tSums;
-	Double[] tRRBaseline;
-	Double[] tRRMin;
-	Double[] tRR;
-	String[] tResponseCats;
-	RecistReportUIDCell[][] tUIDs;
-	
-	String[] ntLesionNames;
-	String[] ntStudyDates;
-	String[][] ntTable;
-	Double[] ntSums;
-	Double[] ntRRBaseline;
-	Double[] ntRRMin;
-	RecistReportUIDCell[][] ntUIDs;
-	
-	public RecistReport(String[] tLesionNames,String[] tStudyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,Double[] tRR,String[] tResponseCats, RecistReportUIDCell[][] tUIDs, String[] ntLesionNames,String[] ntStudyDates,String[][] ntTable,Double[] ntSums,Double[] ntRRBaseline,Double[] ntRRMin, RecistReportUIDCell[][] ntUIDs) {
-		super();
-		this.tLesionNames=tLesionNames;
-		this.tStudyDates=tStudyDates;
-		this.tTable=tTable;
-		this.tSums=tSums;
-		this.tRRBaseline=tRRBaseline;
-		this.tRRMin=tRRMin;
-		this.tRR=tRR;
-		this.tResponseCats=tResponseCats;
-		this.tUIDs=tUIDs;
-		
-		this.ntLesionNames=ntLesionNames;
-		this.ntStudyDates=ntStudyDates;
-		this.ntTable=ntTable;
-		this.ntSums=ntSums;
-		this.ntRRBaseline=ntRRBaseline;
-		this.ntRRMin=ntRRMin;
-		this.ntUIDs=ntUIDs;
+	String studyUID;
+	String seriesUID;
+	String aimUID;
+	public RecistReportUIDCell(String studyUID,String seriesUID,String aimUID){
+		this.studyUID=studyUID;
+		this.seriesUID=seriesUID;
+		this.aimUID=aimUID;
 	}
 
-	public RecistReport(String[] tLesionNames,String[] tStudyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,Double[] tRR,String[] tResponseCats, RecistReportUIDCell[][] tUIDs){
-		super();
-		this.tLesionNames=tLesionNames;
-		this.tStudyDates=tStudyDates;
-		this.tTable=tTable;
-		this.tSums=tSums;
-		this.tRRBaseline=tRRBaseline;
-		this.tRRMin=tRRMin;
-		this.tRR=tRR;
-		this.tResponseCats=tResponseCats;
-		this.tUIDs=tUIDs;
-	}
-	
-	public Double getMinRRBaseLine(){
-		Double min=999999.0;
-		for (int i=0;i<tRRBaseline.length;i++){
-			if (tRRBaseline[i]<min)
-				min=tRRBaseline[i];
-		}
-		return min;
-	}
-	
-	public String getMinRRBaseLineResponse(){
-		Double min=999999.0;
-		int minIndex=-1;
-		for (int i=0;i<tRRBaseline.length;i++){
-			if (tRRBaseline[i]<min){
-				min=tRRBaseline[i];
-				minIndex=i;
-			}
-		}
-		return tResponseCats[minIndex];
-	}
-	
-	public Double getMinRRMinimum(){
-		Double min=999999.0;
-		for (int i=0;i<tRRMin.length;i++){
-			if (tRRMin[i]<min)
-				min=tRRMin[i];
-		}
-		return min;
-	}
-	
-	public String getMinRRMinimumResponse(){
-		Double min=999999.0;
-		int minIndex=-1;
-		for (int i=0;i<tRRMin.length;i++){
-			if (tRRMin[i]<min){
-				min=tRRMin[i];
-				minIndex=i;
-			}
-		}
-		return tResponseCats[minIndex];
-	}
-	
-	public Double getMinRR(){
-		//find the last 0 (baseline) then find the min after that
-		Double min=999999.0;
-		
-		for (int j=tRR.length-1;j>=0;j--){
-			if (tRR[j]==0) {
-				for (int i=j; i<tRR.length;i++) {
-					if (tRR[i]<min){
-						min=tRR[i];
-					}
-				}
-				break;
-			}
-		}
-		return min;
-	}
-	
-	public String getMinRRResponse(){
-		Double min=999999.0;
-		int minIndex=-1;
-		for (int j=tRR.length-1;j>=0;j--){
-			if (tRR[j]==0) {
-				for (int i=j; i<tRR.length;i++) {
-					if (tRR[i]<min){
-						min=tRR[i];
-						minIndex=i;
-					}
-				}
-				break;
-			}
-		}
-		return tResponseCats[minIndex];
-	}
+
 	public String toJSON()
 	{
 		Gson gson = new Gson();
