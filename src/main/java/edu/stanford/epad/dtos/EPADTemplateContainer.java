@@ -104,11 +104,9 @@
  *******************************************************************************/
 package edu.stanford.epad.dtos;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class EPADTemplateContainer extends EPADFile {
+public class EPADTemplateContainer extends EPADFile implements Comparable<EPADTemplateContainer> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -137,5 +135,10 @@ public class EPADTemplateContainer extends EPADFile {
 			boolean enabled, String description, String templateLevelType) {
 		super(projectID, patientID, patientName, studyUID, seriesUID, fileName,
 				fileLength, fileType, createdTime, path, enabled, description, templateLevelType);
+	}
+	public int compareTo(EPADTemplateContainer compareData) {
+		if (this.templateName.equalsIgnoreCase(compareData.templateName))
+			return this.templateCode.compareToIgnoreCase(compareData.templateCode);
+		return this.templateName.compareToIgnoreCase(compareData.templateName);
 	}
 }

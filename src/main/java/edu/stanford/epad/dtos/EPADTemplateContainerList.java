@@ -142,6 +142,9 @@ public class EPADTemplateContainerList implements Serializable
 	{
 		return new EPADTemplateContainerList();
 	}
+	public void sort(){
+		this.ResultSet.sort();
+	}
 
 	public class EPADTemplateResultSet
 	{
@@ -164,6 +167,9 @@ public class EPADTemplateContainerList implements Serializable
 		{
 			this.Result.add(epadFile);
 			this.totalRecords++;
+		}
+		public void sort(){
+			Collections.sort(Result);
 		}
 	}
 
