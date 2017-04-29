@@ -120,7 +120,7 @@ public class EPADSubject implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	public String subjectName, subjectID, projectID, insertUser, xnatID, insertDate, uri;
+	public String subjectName, subjectID, projectID, insertUser, xnatID, insertDate, uri, displaySubjectID;
 	public Integer numberOfStudies;
 	public Integer numberOfAnnotations;
 	public Set<String> examTypes;
@@ -129,6 +129,28 @@ public class EPADSubject implements Serializable
 	public AnnotationStatus annotationStatus;
 	public Map<String, AnnotationStatus> userStatusList;
 
+	//constructor with annotation status
+	public EPADSubject(String projectID, String subjectID, String subjectName, String insertUser, String xnatID,
+			String insertDate, String uri, int numberOfStudies, int numberOfAnnotations, Set<String> examTypes, AnnotationStatus annotationStatus, Map<String, AnnotationStatus> userStatusList, String displayID)
+	{
+		this.projectID = projectID;
+		this.subjectName = subjectName;
+		this.insertUser = insertUser;
+		this.xnatID = xnatID;
+		this.insertDate = insertDate;
+		this.subjectID = subjectID;
+		this.uri = uri;
+		this.numberOfStudies = numberOfStudies;
+		this.numberOfAnnotations = numberOfAnnotations;
+		this.examTypes = new HashSet<String>(examTypes);
+		
+		this.annotationStatus = annotationStatus;
+		this.userStatusList = userStatusList;
+		//displayID added for handling animal data when one id can be used to refer to multiple animals with different names. Holds the original id from the dicom.
+		this.displaySubjectID = displayID;
+	}
+		
+		
 	//constructor with annotation status
 	public EPADSubject(String projectID, String subjectID, String subjectName, String insertUser, String xnatID,
 			String insertDate, String uri, int numberOfStudies, int numberOfAnnotations, Set<String> examTypes, AnnotationStatus annotationStatus, Map<String, AnnotationStatus> userStatusList)
@@ -146,6 +168,7 @@ public class EPADSubject implements Serializable
 		
 		this.annotationStatus = annotationStatus;
 		this.userStatusList = userStatusList;
+		this.displaySubjectID=subjectID;
 	}
 	
 	public EPADSubject(String projectID, String subjectID, String subjectName, String insertUser, String xnatID,
@@ -164,6 +187,7 @@ public class EPADSubject implements Serializable
 
 		this.annotationStatus = AnnotationStatus.ERROR;
 		this.userStatusList = null;
+		this.displaySubjectID=subjectID;
 	}
 
 	public String getUserProjectStatus() {

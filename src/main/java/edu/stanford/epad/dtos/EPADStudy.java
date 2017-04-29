@@ -123,7 +123,8 @@ public class EPADStudy implements Serializable
 	public final String firstSeriesUID, firstSeriesDateAcquired;
 	public final String physicianName, birthdate, sex;
 	public final StudyProcessingStatus studyProcessingStatus;
-	public final String studyDescription, studyAccessionNumber;
+	public String studyDescription;
+	public final String studyAccessionNumber;
 	public final Set<String> examTypes;
 	public final int numberOfImages;
 	public final int numberOfSeries;
