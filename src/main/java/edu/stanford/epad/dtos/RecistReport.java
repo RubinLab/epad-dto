@@ -126,6 +126,7 @@ public class RecistReport implements Serializable
 	Double[] tRR;
 	String[] tResponseCats;
 	RecistReportUIDCell[][] tUIDs;
+	Integer[] tTimepoints;
 	
 	String[] ntLesionNames;
 	String[] ntStudyDates;
@@ -169,6 +170,9 @@ public class RecistReport implements Serializable
 		this.tUIDs=tUIDs;
 	}
 	
+	public void setTimepoints(Integer[] tTimepoints){
+		this.tTimepoints=tTimepoints;
+	}
 	public Double getMinRRBaseLine(){
 		Double min=999999.0;
 		for (int i=0;i<tRRBaseline.length;i++){

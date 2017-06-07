@@ -129,6 +129,7 @@ public class EPADImage implements Serializable
 	public final int numberOfFrames;
 	public final boolean isDSO;
 	public boolean multiFrameImage = false;
+	public boolean isFlaggedImage = false;
     //ml suv calc
 	public double rescaleIntercept, rescaleSlope;
 	//ml for slice ordering when instance number is always 1
