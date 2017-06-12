@@ -147,7 +147,8 @@ public class WaterfallReport implements Serializable
 	
 	public WaterfallReport(String[] patientNames,Double[] values,String[] responseCats) {
 		super();
-		
+//		if (patientNames.length!=values.length || patientNames.length!=responseCats.length)
+//			throw error
 		series=new WaterfallData[patientNames.length];
 		for (int i=0;i<patientNames.length;i++) {
 			series[i]=new WaterfallData(patientNames[i], values[i], responseCats[i]);
