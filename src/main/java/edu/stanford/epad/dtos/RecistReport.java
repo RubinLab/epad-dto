@@ -118,7 +118,7 @@ public class RecistReport implements Serializable
 	private static final long serialVersionUID = 1L;
 	
 	String[] tLesionNames;
-	String[] tStudyDates;
+	String[] studyDates;
 	String[][] tTable;
 	Double[] tSums;
 	Double[] tRRBaseline;
@@ -131,15 +131,12 @@ public class RecistReport implements Serializable
 	String[] ntLesionNames;
 	String[] ntStudyDates;
 	String[][] ntTable;
-	Double[] ntSums;
-	Double[] ntRRBaseline;
-	Double[] ntRRMin;
 	RecistReportUIDCell[][] ntUIDs;
 	
-	public RecistReport(String[] tLesionNames,String[] tStudyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,Double[] tRR,String[] tResponseCats, RecistReportUIDCell[][] tUIDs, String[] ntLesionNames,String[] ntStudyDates,String[][] ntTable,Double[] ntSums,Double[] ntRRBaseline,Double[] ntRRMin, RecistReportUIDCell[][] ntUIDs) {
+	public RecistReport(String[] tLesionNames,String[] studyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,Double[] tRR,String[] tResponseCats, RecistReportUIDCell[][] tUIDs, String[] ntLesionNames,String[][] ntTable, RecistReportUIDCell[][] ntUIDs) {
 		super();
 		this.tLesionNames=tLesionNames;
-		this.tStudyDates=tStudyDates;
+		this.studyDates=studyDates;
 		this.tTable=tTable;
 		this.tSums=tSums;
 		this.tRRBaseline=tRRBaseline;
@@ -149,18 +146,15 @@ public class RecistReport implements Serializable
 		this.tUIDs=tUIDs;
 		
 		this.ntLesionNames=ntLesionNames;
-		this.ntStudyDates=ntStudyDates;
+//		this.ntStudyDates=ntStudyDates;
 		this.ntTable=ntTable;
-		this.ntSums=ntSums;
-		this.ntRRBaseline=ntRRBaseline;
-		this.ntRRMin=ntRRMin;
 		this.ntUIDs=ntUIDs;
 	}
 
-	public RecistReport(String[] tLesionNames,String[] tStudyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,Double[] tRR,String[] tResponseCats, RecistReportUIDCell[][] tUIDs){
+	public RecistReport(String[] tLesionNames,String[] studyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,Double[] tRR,String[] tResponseCats, RecistReportUIDCell[][] tUIDs){
 		super();
 		this.tLesionNames=tLesionNames;
-		this.tStudyDates=tStudyDates;
+		this.studyDates=studyDates;
 		this.tTable=tTable;
 		this.tSums=tSums;
 		this.tRRBaseline=tRRBaseline;
@@ -173,81 +167,126 @@ public class RecistReport implements Serializable
 	public void setTimepoints(Integer[] tTimepoints){
 		this.tTimepoints=tTimepoints;
 	}
-	public Double getMinRRBaseLine(){
-		Double min=999999.0;
-		for (int i=0;i<tRRBaseline.length;i++){
-			if (tRRBaseline[i]<min)
-				min=tRRBaseline[i];
-		}
-		return min;
-	}
 	
-	public String getMinRRBaseLineResponse(){
-		Double min=999999.0;
-		int minIndex=-1;
+	public Double getMaxChangeRRBaseLine(){
+		Double max=0.0;
 		for (int i=0;i<tRRBaseline.length;i++){
-			if (tRRBaseline[i]<min){
-				min=tRRBaseline[i];
-				minIndex=i;
+			if (Math.abs(tRRBaseline[i])>Math.abs(max))
+				max=tRRBaseline[i];
+		}
+		return max;
+	}
+	//TODO correct this. not the correct implementatation
+	public String getBestResponseBaseline(){
+		Double max=0.0;
+		int maxIndex=-1;
+		for (int i=0;i<tRRBaseline.length;i++){
+			if (Math.abs(tRRBaseline[i])>=Math.abs(max)){
+				max=tRRBaseline[i];
+				maxIndex=i;
 			}
 		}
-		return tResponseCats[minIndex];
-	}
-	
-	public Double getMinRRMinimum(){
-		Double min=999999.0;
-		for (int i=0;i<tRRMin.length;i++){
-			if (tRRMin[i]<min)
-				min=tRRMin[i];
-		}
-		return min;
-	}
-	
-	public String getMinRRMinimumResponse(){
-		Double min=999999.0;
-		int minIndex=-1;
-		for (int i=0;i<tRRMin.length;i++){
-			if (tRRMin[i]<min){
-				min=tRRMin[i];
-				minIndex=i;
-			}
-		}
-		return tResponseCats[minIndex];
-	}
-	
-	public Double getMinRR(){
-		//find the last 0 (baseline) then find the min after that
-		Double min=999999.0;
 		
-		for (int j=tRR.length-1;j>=0;j--){
-			if (tRR[j]==0) {
-				for (int i=j; i<tRR.length;i++) {
-					if (tRR[i]<min){
-						min=tRR[i];
-					}
-				}
-				break;
-			}
-		}
-		return min;
+		return tResponseCats[maxIndex];
 	}
 	
-	public String getMinRRResponse(){
-		Double min=999999.0;
-		int minIndex=-1;
-		for (int j=tRR.length-1;j>=0;j--){
-			if (tRR[j]==0) {
-				for (int i=j; i<tRR.length;i++) {
-					if (tRR[i]<min){
-						min=tRR[i];
-						minIndex=i;
-					}
-				}
-				break;
+	public Double getMaxChangeRRMin(){
+		Double max=0.0;
+		for (int i=0;i<tRRMin.length;i++){
+			if (Math.abs(tRRMin[i])>=Math.abs(max))
+				max=tRRMin[i];
+		}
+		return max;
+	}
+	
+	//TODO correct this. not the correct implementatation
+	public String getBestResponseMin(){
+		Double max=0.0;
+		int maxIndex=-1;
+		for (int i=0;i<tRRMin.length;i++){
+			if (Math.abs(tRRMin[i])>Math.abs(max)){
+				max=tRRMin[i];
+				maxIndex=i;
 			}
 		}
-		return tResponseCats[minIndex];
+		
+		return tResponseCats[maxIndex];
 	}
+//	public Double getMinRRBaseLine(){
+//		Double min=999999.0;
+//		for (int i=0;i<tRRBaseline.length;i++){
+//			if (tRRBaseline[i]<min)
+//				min=tRRBaseline[i];
+//		}
+//		return min;
+//	}
+	
+//	public String getMinRRBaseLineResponse(){
+//		Double min=999999.0;
+//		int minIndex=-1;
+//		for (int i=0;i<tRRBaseline.length;i++){
+//			if (tRRBaseline[i]<min){
+//				min=tRRBaseline[i];
+//				minIndex=i;
+//			}
+//		}
+//		return tResponseCats[minIndex];
+//	}
+	
+//	public Double getMinRRMinimum(){
+//		Double min=999999.0;
+//		for (int i=0;i<tRRMin.length;i++){
+//			if (tRRMin[i]<min)
+//				min=tRRMin[i];
+//		}
+//		return min;
+//	}
+//	
+//	public String getMinRRMinimumResponse(){
+//		Double min=999999.0;
+//		int minIndex=-1;
+//		for (int i=0;i<tRRMin.length;i++){
+//			if (tRRMin[i]<min){
+//				min=tRRMin[i];
+//				minIndex=i;
+//			}
+//		}
+//		return tResponseCats[minIndex];
+//	}
+	
+//	public Double getMinRR(){
+//		//find the last 0 (baseline) then find the min after that
+//		Double min=999999.0;
+//		
+//		for (int j=tRR.length-1;j>=0;j--){
+//			if (tRR[j]==0) {
+//				for (int i=j; i<tRR.length;i++) {
+//					if (tRR[i]<min){
+//						min=tRR[i];
+//					}
+//				}
+//				break;
+//			}
+//		}
+//		return min;
+//	}
+//	
+//	public String getMinRRResponse(){
+//		Double min=999999.0;
+//		int minIndex=-1;
+//		for (int j=tRR.length-1;j>=0;j--){
+//			if (tRR[j]==0) {
+//				for (int i=j; i<tRR.length;i++) {
+//					if (tRR[i]<min){
+//						min=tRR[i];
+//						minIndex=i;
+//					}
+//				}
+//				break;
+//			}
+//		}
+//		return tResponseCats[minIndex];
+//	}
 	public String toJSON()
 	{
 		Gson gson = new Gson();
