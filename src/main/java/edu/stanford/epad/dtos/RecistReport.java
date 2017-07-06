@@ -168,58 +168,60 @@ public class RecistReport implements Serializable
 		this.tTimepoints=tTimepoints;
 	}
 	
-	public Double getMaxChangeRRBaseLine(){
-		Double max=0.0;
-		for (int i=0;i<tRRBaseline.length;i++){
-			if (Math.abs(tRRBaseline[i])>Math.abs(max))
-				max=tRRBaseline[i];
-		}
-		return max;
-	}
-	//TODO correct this. not the correct implementatation
-	public String getBestResponseBaseline(){
-		Double max=0.0;
-		int maxIndex=-1;
-		for (int i=0;i<tRRBaseline.length;i++){
-			if (Math.abs(tRRBaseline[i])>=Math.abs(max)){
-				max=tRRBaseline[i];
-				maxIndex=i;
-			}
-		}
-		
-		return tResponseCats[maxIndex];
-	}
-	
-	public Double getMaxChangeRRMin(){
-		Double max=0.0;
-		for (int i=0;i<tRRMin.length;i++){
-			if (Math.abs(tRRMin[i])>=Math.abs(max))
-				max=tRRMin[i];
-		}
-		return max;
-	}
-	
-	//TODO correct this. not the correct implementatation
-	public String getBestResponseMin(){
-		Double max=0.0;
-		int maxIndex=-1;
-		for (int i=0;i<tRRMin.length;i++){
-			if (Math.abs(tRRMin[i])>Math.abs(max)){
-				max=tRRMin[i];
-				maxIndex=i;
-			}
-		}
-		
-		return tResponseCats[maxIndex];
-	}
-//	public Double getMinRRBaseLine(){
-//		Double min=999999.0;
+//	public Double getMaxChangeRRBaseLine(){
+//		Double max=0.0;
 //		for (int i=0;i<tRRBaseline.length;i++){
-//			if (tRRBaseline[i]<min)
-//				min=tRRBaseline[i];
+//			if (Math.abs(tRRBaseline[i])>Math.abs(max))
+//				max=tRRBaseline[i];
 //		}
-//		return min;
+//		return max;
 //	}
+	//TODO correct this. not the correct implementatation
+//	public String getBestResponseBaseline(){
+//		Double max=0.0;
+//		int maxIndex=-1;
+//		for (int i=0;i<tRRBaseline.length;i++){
+//			if (Math.abs(tRRBaseline[i])>=Math.abs(max)){
+//				max=tRRBaseline[i];
+//				maxIndex=i;
+//			}
+//		}
+//		
+//		return tResponseCats[maxIndex];
+//	}
+//	
+//	public Double getMaxChangeRRMin(){
+//		Double max=0.0;
+//		for (int i=0;i<tRRMin.length;i++){
+//			if (Math.abs(tRRMin[i])>=Math.abs(max))
+//				max=tRRMin[i];
+//		}
+//		return max;
+//	}
+	
+	//TODO correct this. not the correct implementatation
+//	public String getBestResponseMin(){
+//		Double max=0.0;
+//		int maxIndex=-1;
+//		for (int i=0;i<tRRMin.length;i++){
+//			if (Math.abs(tRRMin[i])>Math.abs(max)){
+//				max=tRRMin[i];
+//				maxIndex=i;
+//			}
+//		}
+//		
+//		return tResponseCats[maxIndex];
+//	}
+	public Double getMinRRBaseLine(){
+		Double min=999999.0;
+		for (int i=0;i<tRRBaseline.length;i++){
+			if (tRRBaseline[i]<min)
+				min=tRRBaseline[i];
+		}
+		if (min==0)
+			return tRRBaseline[1];
+		return min;
+	}
 	
 //	public String getMinRRBaseLineResponse(){
 //		Double min=999999.0;
@@ -233,14 +235,16 @@ public class RecistReport implements Serializable
 //		return tResponseCats[minIndex];
 //	}
 	
-//	public Double getMinRRMinimum(){
-//		Double min=999999.0;
-//		for (int i=0;i<tRRMin.length;i++){
-//			if (tRRMin[i]<min)
-//				min=tRRMin[i];
-//		}
-//		return min;
-//	}
+	public Double getMinRRMinimum(){
+		Double min=999999.0;
+		for (int i=0;i<tRRMin.length;i++){
+			if (tRRMin[i]<min)
+				min=tRRMin[i];
+		}
+		if (min==0)
+			return tRRMin[1];
+		return min;
+	}
 //	
 //	public String getMinRRMinimumResponse(){
 //		Double min=999999.0;
