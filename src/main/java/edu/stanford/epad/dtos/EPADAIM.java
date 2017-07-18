@@ -131,6 +131,7 @@ public class EPADAIM implements Serializable
 	public int dsoFrameNo;
 	public String sharedProjects;  //ml
 	public boolean isDicomSR;
+	public String originalSubjectID;
 	
 	public String user; // For audit trail
 
@@ -146,6 +147,7 @@ public class EPADAIM implements Serializable
 		this.imageUID = imageUID;
 		this.instanceOrFrameNumber = instanceOrFrameNumber;
 		this.isDicomSR=false;
+		this.originalSubjectID=subjectID;
 	}
 
 	public EPADAIM(String aimID, String userName, String projectID, String subjectID, String studyUID, String seriesUID, String imageUID,
@@ -161,6 +163,7 @@ public class EPADAIM implements Serializable
 		this.instanceOrFrameNumber = instanceOrFrameNumber;
 		this.dsoSeriesUID = dsoSeriesUID;
 		this.isDicomSR=false;
+		this.originalSubjectID=subjectID;
 	}
 	
 	public EPADAIM(String aimID, String userName, String projectID, String subjectID, String studyUID, String seriesUID, String imageUID,
@@ -176,6 +179,7 @@ public class EPADAIM implements Serializable
 		this.instanceOrFrameNumber = instanceOrFrameNumber;
 		this.dsoSeriesUID = dsoSeriesUID;
 		this.isDicomSR=isDicomSR;
+		this.originalSubjectID=subjectID;
 	}
 	
 	
@@ -194,6 +198,7 @@ public class EPADAIM implements Serializable
 		this.dsoSeriesUID = dsoSeriesUID;
 		this.sharedProjects = sharedProjects; 
 		this.isDicomSR=false;
+		this.originalSubjectID=subjectID;
 	}
 	
 	//ml
@@ -211,6 +216,7 @@ public class EPADAIM implements Serializable
 			this.dsoSeriesUID = dsoSeriesUID;
 			this.sharedProjects = sharedProjects;
 			this.isDicomSR=isDicomSR;
+			this.originalSubjectID=subjectID;
 		}
 
 	public String toJSON()

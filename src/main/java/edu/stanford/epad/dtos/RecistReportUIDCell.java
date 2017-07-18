@@ -119,10 +119,22 @@ public class RecistReportUIDCell implements Serializable
 	String studyUID;
 	String seriesUID;
 	String aimUID;
+	Integer timepoint;
+	String type;
+	String location;
 	public RecistReportUIDCell(String studyUID,String seriesUID,String aimUID){
 		this.studyUID=studyUID;
 		this.seriesUID=seriesUID;
 		this.aimUID=aimUID;
+	}
+	
+	public RecistReportUIDCell(String studyUID,String seriesUID,String aimUID, Integer timepoint, String type,String location){
+		this.studyUID=studyUID;
+		this.seriesUID=seriesUID;
+		this.aimUID=aimUID;
+		this.timepoint=timepoint;
+		this.type=type;
+		this.location=location;
 	}
 
 

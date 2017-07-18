@@ -120,13 +120,19 @@ public class WaterfallReport implements Serializable
 	
 	public class WaterfallData implements Comparable<WaterfallData>{
 		String name;
+		String project;
 		Double y;
 		String responseCategory;
 		
-		public WaterfallData(String name, Double y,String responseCategory){
+//		public WaterfallData(String name, Double y,String responseCategory){
+//			this.name=name;
+//			this.y=y;
+//			this.responseCategory=responseCategory;
+//		}
+		public WaterfallData(String name, Double y,String project){
 			this.name=name;
 			this.y=y;
-			this.responseCategory=responseCategory;
+			this.project=project;
 		}
 		public int compareTo(WaterfallData compareData) {
 
@@ -144,16 +150,37 @@ public class WaterfallReport implements Serializable
 	
 	WaterfallData[] series;
 	
-	
-	public WaterfallReport(String[] patientNames,Double[] values,String[] responseCats) {
+	public WaterfallReport(String[] patientNames,Double[] values, String[] projects) {
 		super();
-		
+//		if (patientNames.length!=values.length || patientNames.length!=responseCats.length)
+//			throw error
 		series=new WaterfallData[patientNames.length];
 		for (int i=0;i<patientNames.length;i++) {
-			series[i]=new WaterfallData(patientNames[i], values[i], responseCats[i]);
+			series[i]=new WaterfallData(patientNames[i], values[i],projects[i]);
 		}
 		Arrays.sort(series);
 	}
+	public WaterfallReport(String[] patientNames,Double[] values) {
+		super();
+//		if (patientNames.length!=values.length || patientNames.length!=responseCats.length)
+//			throw error
+		series=new WaterfallData[patientNames.length];
+		for (int i=0;i<patientNames.length;i++) {
+			series[i]=new WaterfallData(patientNames[i], values[i],null);
+		}
+		Arrays.sort(series);
+	}
+	
+//	public WaterfallReport(String[] patientNames,Double[] values,String[] responseCats) {
+//		super();
+////		if (patientNames.length!=values.length || patientNames.length!=responseCats.length)
+////			throw error
+//		series=new WaterfallData[patientNames.length];
+//		for (int i=0;i<patientNames.length;i++) {
+//			series[i]=new WaterfallData(patientNames[i], values[i], responseCats[i]);
+//		}
+//		Arrays.sort(series);
+//	}
 	
 	public String toJSON()
 	{
