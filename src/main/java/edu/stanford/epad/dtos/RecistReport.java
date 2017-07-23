@@ -123,82 +123,135 @@ public class RecistReport implements Serializable
 	Double[] tSums;
 	Double[] tRRBaseline;
 	Double[] tRRMin;
-	Double[] tRR;
 	String[] tResponseCats;
 	RecistReportUIDCell[][] tUIDs;
-	Integer[] tTimepoints;
+	Integer[] stTimepoints; 
+	Integer[] tTimepoints; 
 	
 	String[] ntLesionNames;
 	String[] ntStudyDates;
 	String[][] ntTable;
 	RecistReportUIDCell[][] ntUIDs;
 	
-	public RecistReport(String[] tLesionNames,String[] studyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,Double[] tRR,String[] tResponseCats, RecistReportUIDCell[][] tUIDs, String[] ntLesionNames,String[][] ntTable, RecistReportUIDCell[][] ntUIDs) {
+	public RecistReport(String[] tLesionNames,String[] studyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,String[] tResponseCats, RecistReportUIDCell[][] tUIDs, String[] ntLesionNames,String[][] ntTable, RecistReportUIDCell[][] ntUIDs) {
 		super();
 		this.tLesionNames=tLesionNames;
 		this.studyDates=studyDates;
 		this.tTable=tTable;
-		this.tSums=tSums;
-		this.tRRBaseline=tRRBaseline;
-		this.tRRMin=tRRMin;
-		this.tRR=tRR;
-		this.tResponseCats=tResponseCats;
+		settSums(tSums);
+		settRRBaseline(tRRBaseline);
+		settRRMin(tRRMin);
+		settResponseCats(tResponseCats);
 		this.tUIDs=tUIDs;
 		
 		this.ntLesionNames=ntLesionNames;
-//		this.ntStudyDates=ntStudyDates;
 		this.ntTable=ntTable;
 		this.ntUIDs=ntUIDs;
 	}
 
-	public RecistReport(String[] tLesionNames,String[] studyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,Double[] tRR,String[] tResponseCats, RecistReportUIDCell[][] tUIDs){
+	public RecistReport(String[] tLesionNames,String[] studyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,String[] tResponseCats, RecistReportUIDCell[][] tUIDs){
 		super();
 		this.tLesionNames=tLesionNames;
 		this.studyDates=studyDates;
 		this.tTable=tTable;
-		this.tSums=tSums;
-		this.tRRBaseline=tRRBaseline;
-		this.tRRMin=tRRMin;
-		this.tRR=tRR;
-		this.tResponseCats=tResponseCats;
+		settSums(tSums);
+		settRRBaseline(tRRBaseline);
+		settRRMin(tRRMin);
+		settResponseCats(tResponseCats);
 		this.tUIDs=tUIDs;
 	}
 	
-	public void setTimepoints(Integer[] tTimepoints){
-		this.tTimepoints=tTimepoints;
+	public void setTimepoints(Integer[] stTimepoints){
+		this.stTimepoints=stTimepoints;
+		this.tTimepoints=cleanConsecutives(stTimepoints);
 	}
 	
-//	public Double getMaxChangeRRBaseLine(){
-//		Double max=0.0;
-//		for (int i=0;i<tRRBaseline.length;i++){
-//			if (Math.abs(tRRBaseline[i])>Math.abs(max))
-//				max=tRRBaseline[i];
-//		}
-//		return max;
-//	}
-	//TODO correct this. not the correct implementatation
-//	public String getBestResponseBaseline(){
-//		Double max=0.0;
-//		int maxIndex=-1;
-//		for (int i=0;i<tRRBaseline.length;i++){
-//			if (Math.abs(tRRBaseline[i])>=Math.abs(max)){
-//				max=tRRBaseline[i];
-//				maxIndex=i;
-//			}
-//		}
-//		
-//		return tResponseCats[maxIndex];
-//	}
-//	
-//	public Double getMaxChangeRRMin(){
-//		Double max=0.0;
-//		for (int i=0;i<tRRMin.length;i++){
-//			if (Math.abs(tRRMin[i])>=Math.abs(max))
-//				max=tRRMin[i];
-//		}
-//		return max;
-//	}
+
 	
+	public Double[] gettSums() {
+		return tSums;
+	}
+
+	/**
+	 * removes null entities from the array
+	 * @param in
+	 * @return
+	 */
+	public Double[] cleanArray(Double[] in){
+		if (in==null)
+			return null;
+		int len=0;
+		for (int i=0;i<in.length;i++)
+			if (in[i]!=null)
+				len++;
+		Double[] out=new Double[len];
+		int j=0;
+		for (int i=0;i<in.length;i++)
+			if (in[i]!=null){
+				out[j++]=in[i];
+			}
+		return out;
+	}
+	
+	
+	public String[] cleanArray(String[] in){
+		int len=0;
+		for (int i=0;i<in.length;i++)
+			if (in[i]!=null)
+				len++;
+		String[] out=new String[len];
+		int j=0;
+		for (int i=0;i<in.length;i++)
+			if (in[i]!=null){
+				out[j++]=in[i];
+			}
+		return out;
+	}
+	
+	public Integer[] cleanConsecutives(Integer[] in){
+		if (in==null)
+			return null;
+		int len=0;
+		for (int i=0;i<in.length;i++)
+			if (i==0 || (i>0 && in[i]!=in[i-1]))
+				len++;
+		Integer[] out=new Integer[len];
+		int j=0;
+		for (int i=0;i<in.length;i++)
+			if (i==0 || (i>0 && in[i]!=in[i-1])){
+				out[j++]=in[i];
+			}
+		return out;
+	}
+	
+	public void settSums(Double[] tSums) {
+		this.tSums = cleanArray(tSums);
+	}
+
+	public Double[] gettRRBaseline() {
+		return tRRBaseline;
+	}
+
+	public void settRRBaseline(Double[] tRRBaseline) {
+		this.tRRBaseline = cleanArray(tRRBaseline);
+	}
+
+	public Double[] gettRRMin() {
+		return tRRMin;
+	}
+
+	public void settRRMin(Double[] tRRMin) {
+		this.tRRMin = cleanArray(tRRMin);
+	}
+
+	public String[] gettResponseCats() {
+		return tResponseCats;
+	}
+
+	public void settResponseCats(String[] tResponseCats) {
+		this.tResponseCats = cleanArray(tResponseCats);
+	}
+
 	//TODO correct this. not the correct implementatation
 //	public String getBestResponseMin(){
 //		Double max=0.0;
@@ -258,39 +311,7 @@ public class RecistReport implements Serializable
 //		return tResponseCats[minIndex];
 //	}
 	
-//	public Double getMinRR(){
-//		//find the last 0 (baseline) then find the min after that
-//		Double min=999999.0;
-//		
-//		for (int j=tRR.length-1;j>=0;j--){
-//			if (tRR[j]==0) {
-//				for (int i=j; i<tRR.length;i++) {
-//					if (tRR[i]<min){
-//						min=tRR[i];
-//					}
-//				}
-//				break;
-//			}
-//		}
-//		return min;
-//	}
-//	
-//	public String getMinRRResponse(){
-//		Double min=999999.0;
-//		int minIndex=-1;
-//		for (int j=tRR.length-1;j>=0;j--){
-//			if (tRR[j]==0) {
-//				for (int i=j; i<tRR.length;i++) {
-//					if (tRR[i]<min){
-//						min=tRR[i];
-//						minIndex=i;
-//					}
-//				}
-//				break;
-//			}
-//		}
-//		return tResponseCats[minIndex];
-//	}
+
 	public String toJSON()
 	{
 		Gson gson = new Gson();
