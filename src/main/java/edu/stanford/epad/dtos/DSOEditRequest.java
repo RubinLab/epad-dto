@@ -119,11 +119,26 @@ import com.google.gson.Gson;
  */
 public class DSOEditRequest
 {
-	public String projectID, patientID, studyUID, seriesUID, imageUID, aimID;
+	public String projectID, patientID, studyUID, seriesUID, imageUID, aimID, name;
 	public final List<Integer> editedFrameNumbers;
 	//additions for segmented property (category,type,modifier). Id lookup from SegmentedPropertyHelper in epad-common
 	public String property,color;
 	
+	public DSOEditRequest(String projectID, String patientID, String studyUID, String seriesUID, String imageUID, String aimID,
+			List<Integer> editedFrameNumbers, String property, String color, String name)
+	{
+		this.projectID = projectID;
+		this.patientID = patientID;
+		this.studyUID = studyUID;
+		this.seriesUID = seriesUID;
+		this.imageUID = imageUID;
+		this.aimID = aimID;
+		this.editedFrameNumbers = Collections.unmodifiableList(editedFrameNumbers);
+		this.property= property;
+		this.color=color;
+		this.name = name;
+		
+	}
 	public DSOEditRequest(String projectID, String patientID, String studyUID, String seriesUID, String imageUID, String aimID,
 			List<Integer> editedFrameNumbers, String property, String color)
 	{
@@ -136,6 +151,7 @@ public class DSOEditRequest
 		this.editedFrameNumbers = Collections.unmodifiableList(editedFrameNumbers);
 		this.property= property;
 		this.color=color;
+		this.name=null;
 		
 	}
 
@@ -151,7 +167,7 @@ public class DSOEditRequest
 		this.editedFrameNumbers = Collections.unmodifiableList(editedFrameNumbers);
 		this.property= null;
 		this.color=null;
-		
+		this.name=null;
 	}
 
 	public String toJSON()
