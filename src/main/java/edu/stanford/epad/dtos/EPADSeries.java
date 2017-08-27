@@ -128,6 +128,7 @@ public class EPADSeries implements Serializable
 	public boolean isNonDicomSeries;
 	public AnnotationStatus annotationStatus;
 	public Map<String, AnnotationStatus> userStatusList;
+	public String referencedSeriesUID;
 
 	//ml annotation status added for tracking done
 	public EPADSeries(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
