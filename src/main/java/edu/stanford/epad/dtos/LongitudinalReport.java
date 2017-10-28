@@ -119,7 +119,7 @@ public class LongitudinalReport implements Serializable
 	
 	String[] tLesionNames;
 	String[] studyDates;
-	String[][] tTable;
+	Object[][] tTable;
 	RecistReportUIDCell[][] tUIDs;
 	Integer[] stTimepoints; 
 	Integer[] tTimepoints; 
@@ -145,7 +145,7 @@ public class LongitudinalReport implements Serializable
 //		this.ntUIDs=ntUIDs;
 //	}
 
-	public LongitudinalReport(String[] tLesionNames,String[] studyDates,String[][] tTable, RecistReportUIDCell[][] tUIDs){
+	public LongitudinalReport(String[] tLesionNames,String[] studyDates,Object[][] tTable, RecistReportUIDCell[][] tUIDs){
 		super();
 		this.tLesionNames=tLesionNames;
 		this.studyDates=studyDates;
@@ -218,7 +218,15 @@ public class LongitudinalReport implements Serializable
 	public String toJSON()
 	{
 		Gson gson = new Gson();
-
+		//traverse table and convert items with { to json objects first
+		for (int i=0;i<tTable.length;i++)
+			for (int j=0;j<tTable[i].length;j++){
+				if (tTable[i][j] instanceof String && ((String)tTable[i][j]).startsWith("{")){
+					tTable[i][j]=gson.fromJson((String)tTable[i][j], Object.class);
+				}
+			}
+			
+		
 		return gson.toJson(this);
 	}
 }
