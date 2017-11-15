@@ -122,6 +122,34 @@ public class LongitudinalReport implements Serializable
 	Object[][] tTable;
 	RecistReportUIDCell[][] tUIDs;
 	Integer[] stTimepoints; 
+	public static final int numofHeaderCols=2;
+	public String[] gettLesionNames() {
+		return tLesionNames;
+	}
+
+	public String[] getStudyDates() {
+		return studyDates;
+	}
+
+	public Object[][] gettTable() {
+		return tTable;
+	}
+
+	public RecistReportUIDCell[][] gettUIDs() {
+		return tUIDs;
+	}
+
+	public Integer[] getStTimepoints() {
+		return stTimepoints;
+	}
+
+	public Integer[] gettTimepoints() {
+		return tTimepoints;
+	}
+
+
+
+
 	Integer[] tTimepoints; 
 	
 //	String[] ntLesionNames;
