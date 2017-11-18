@@ -123,6 +123,9 @@ public class RecistReportUIDCell implements Serializable
 	String type;
 	String location;
 	String modality;
+	String templateCode;
+	String templateName;
+	String shapes;
 	
 	public RecistReportUIDCell(String studyUID,String seriesUID,String aimUID){
 		this.studyUID=studyUID;
@@ -149,6 +152,18 @@ public class RecistReportUIDCell implements Serializable
 		this.modality=modality;
 	}
 
+	public RecistReportUIDCell(String studyUID,String seriesUID,String aimUID, Integer timepoint, String type,String location,String modality, String templateCode,String templateName, String shapes){
+		this.studyUID=studyUID;
+		this.seriesUID=seriesUID;
+		this.aimUID=aimUID;
+		this.timepoint=timepoint;
+		this.type=type;
+		this.location=location;
+		this.modality=modality;
+		this.templateCode=templateCode;
+		this.templateName=templateName;
+		this.shapes=shapes;
+	}
 
 	public String toJSON()
 	{
