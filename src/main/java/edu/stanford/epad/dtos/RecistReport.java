@@ -271,7 +271,7 @@ public class RecistReport implements Serializable
 			if (tRRBaseline[i]<min)
 				min=tRRBaseline[i];
 		}
-		if (min==0)
+		if (min==0 && tRRBaseline.length>1)
 			return tRRBaseline[1];
 		return min;
 	}
@@ -294,7 +294,7 @@ public class RecistReport implements Serializable
 			if (tRRMin[i]<min)
 				min=tRRMin[i];
 		}
-		if (min==0)
+		if (min==0 && tRRMin.length>1)
 			return tRRMin[1];
 		return min;
 	}

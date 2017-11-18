@@ -109,66 +109,152 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 
 /**
- * A description of an recist uid struct report
+ * A description of an Longitudinal report
  * 
  * @author emel alkim
  */
-public class RecistReportUIDCell implements Serializable
+public class LongitudinalReport implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	String studyUID;
-	String seriesUID;
-	String aimUID;
-	Integer timepoint;
-	String type;
-	String location;
-	String modality;
-	String templateCode;
-	String templateName;
-	String shapes;
 	
-	public RecistReportUIDCell(String studyUID,String seriesUID,String aimUID){
-		this.studyUID=studyUID;
-		this.seriesUID=seriesUID;
-		this.aimUID=aimUID;
-	}
-	
-	public RecistReportUIDCell(String studyUID,String seriesUID,String aimUID, Integer timepoint, String type,String location){
-		this.studyUID=studyUID;
-		this.seriesUID=seriesUID;
-		this.aimUID=aimUID;
-		this.timepoint=timepoint;
-		this.type=type;
-		this.location=location;
-	}
-	
-	public RecistReportUIDCell(String studyUID,String seriesUID,String aimUID, Integer timepoint, String type,String location,String modality){
-		this.studyUID=studyUID;
-		this.seriesUID=seriesUID;
-		this.aimUID=aimUID;
-		this.timepoint=timepoint;
-		this.type=type;
-		this.location=location;
-		this.modality=modality;
+	String[] tLesionNames;
+	String[] studyDates;
+	Object[][] tTable;
+	RecistReportUIDCell[][] tUIDs;
+	Integer[] stTimepoints; 
+	public static final int numofHeaderCols=2;
+	public String[] gettLesionNames() {
+		return tLesionNames;
 	}
 
-	public RecistReportUIDCell(String studyUID,String seriesUID,String aimUID, Integer timepoint, String type,String location,String modality, String templateCode,String templateName, String shapes){
-		this.studyUID=studyUID;
-		this.seriesUID=seriesUID;
-		this.aimUID=aimUID;
-		this.timepoint=timepoint;
-		this.type=type;
-		this.location=location;
-		this.modality=modality;
-		this.templateCode=templateCode;
-		this.templateName=templateName;
-		this.shapes=shapes;
+	public String[] getStudyDates() {
+		return studyDates;
 	}
+
+	public Object[][] gettTable() {
+		return tTable;
+	}
+
+	public RecistReportUIDCell[][] gettUIDs() {
+		return tUIDs;
+	}
+
+	public Integer[] getStTimepoints() {
+		return stTimepoints;
+	}
+
+	public Integer[] gettTimepoints() {
+		return tTimepoints;
+	}
+
+
+
+
+	Integer[] tTimepoints; 
+	
+//	String[] ntLesionNames;
+//	String[] ntStudyDates;
+//	String[][] ntTable;
+//	RecistReportUIDCell[][] ntUIDs;
+	
+//	public LongitudinalReport(String[] tLesionNames,String[] studyDates,String[][] tTable,Double[] tSums,Double[] tRRBaseline,Double[] tRRMin,String[] tResponseCats, RecistReportUIDCell[][] tUIDs, String[] ntLesionNames,String[][] ntTable, RecistReportUIDCell[][] ntUIDs) {
+//		super();
+//		this.tLesionNames=tLesionNames;
+//		this.studyDates=studyDates;
+//		this.tTable=tTable;
+//		settSums(tSums);
+//		settRRBaseline(tRRBaseline);
+//		settRRMin(tRRMin);
+//		settResponseCats(tResponseCats);
+//		this.tUIDs=tUIDs;
+//		
+//		this.ntLesionNames=ntLesionNames;
+//		this.ntTable=ntTable;
+//		this.ntUIDs=ntUIDs;
+//	}
+
+	public LongitudinalReport(String[] tLesionNames,String[] studyDates,Object[][] tTable, RecistReportUIDCell[][] tUIDs){
+		super();
+		this.tLesionNames=tLesionNames;
+		this.studyDates=studyDates;
+		this.tTable=tTable;
+		this.tUIDs=tUIDs;
+	}
+	
+	public void setTimepoints(Integer[] stTimepoints){
+		this.stTimepoints=stTimepoints;
+		this.tTimepoints=cleanConsecutives(stTimepoints);
+	}
+	
+
+	
+	/**
+	 * removes null entities from the array
+	 * @param in
+	 * @return
+	 */
+	public Double[] cleanArray(Double[] in){
+		if (in==null)
+			return null;
+		int len=0;
+		for (int i=0;i<in.length;i++)
+			if (in[i]!=null)
+				len++;
+		Double[] out=new Double[len];
+		int j=0;
+		for (int i=0;i<in.length;i++)
+			if (in[i]!=null){
+				out[j++]=in[i];
+			}
+		return out;
+	}
+	
+	
+	public String[] cleanArray(String[] in){
+		int len=0;
+		for (int i=0;i<in.length;i++)
+			if (in[i]!=null)
+				len++;
+		String[] out=new String[len];
+		int j=0;
+		for (int i=0;i<in.length;i++)
+			if (in[i]!=null){
+				out[j++]=in[i];
+			}
+		return out;
+	}
+	
+	public Integer[] cleanConsecutives(Integer[] in){
+		if (in==null)
+			return null;
+		int len=0;
+		for (int i=0;i<in.length;i++)
+			if (i==0 || (i>0 && in[i]!=in[i-1]))
+				len++;
+		Integer[] out=new Integer[len];
+		int j=0;
+		for (int i=0;i<in.length;i++)
+			if (i==0 || (i>0 && in[i]!=in[i-1])){
+				out[j++]=in[i];
+			}
+		return out;
+	}
+	
+	
+	
 
 	public String toJSON()
 	{
 		Gson gson = new Gson();
-
+		//traverse table and convert items with { to json objects first
+		for (int i=0;i<tTable.length;i++)
+			for (int j=0;j<tTable[i].length;j++){
+				if (tTable[i][j] instanceof String && ((String)tTable[i][j]).startsWith("{")){
+					tTable[i][j]=gson.fromJson((String)tTable[i][j], Object.class);
+				}
+			}
+			
+		
 		return gson.toJson(this);
 	}
 }
