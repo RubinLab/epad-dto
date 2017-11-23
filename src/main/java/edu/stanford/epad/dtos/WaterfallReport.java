@@ -137,7 +137,8 @@ public class WaterfallReport implements Serializable
 		public int compareTo(WaterfallData compareData) {
 
 			//descending order
-			return (int) (((WaterfallData) compareData).y - this.y);
+			return (int) ((((WaterfallData) compareData).y*100) - (this.y*100));
+			
 
 		}
 		public String toJSON()
