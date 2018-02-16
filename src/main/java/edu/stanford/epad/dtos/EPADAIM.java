@@ -125,6 +125,7 @@ public class EPADAIM implements Serializable
 	public String studyDate;
 	public String comment;
 	public String xml;
+	//this is not template type, it is the code meaning of template
 	public String templateType;
 	public String dsoStatus;
 	public String color;
