@@ -123,7 +123,35 @@ public class DCM4CHEESeries implements Serializable
 	public final String bodyPart, institution, stationName, department, accessionNumber;
 	public final String createdTime;
 	public final boolean isDSO;
+	public final int seriesNo; //default 0, no series no
+	
+	public DCM4CHEESeries(String studyUID, String seriesUID, String patientID, String patientName, String seriesDate,
+			String examType, String thumbnailURL, String seriesDescription, int numberOfSeriesRelatedInstances,
+			int imagesInSeries, int seriesStatus, String bodyPart, String institution, String stationName, String department,
+			String accessionNumber, String createdTime, boolean isDSO, int seriesNo)
+	{
+		this.studyUID = studyUID;
+		this.seriesUID = seriesUID;
+		this.patientID = patientID;
+		this.patientName = patientName;
+		this.seriesDate = seriesDate;
+		this.examType = examType;
+		this.thumbnailURL = thumbnailURL;
+		this.seriesDescription = seriesDescription;
+		this.numberOfSeriesRelatedInstances = numberOfSeriesRelatedInstances;
+		this.imagesInSeries = imagesInSeries;
+		this.seriesStatus = seriesStatus;
+		this.bodyPart = bodyPart;
+		this.institution = institution;
+		this.stationName = stationName;
+		this.department = department;
+		this.accessionNumber = accessionNumber;
+		this.createdTime = createdTime;
+		this.isDSO = isDSO;
+		this.seriesNo = seriesNo;
+	}
 
+	
 	public DCM4CHEESeries(String studyUID, String seriesUID, String patientID, String patientName, String seriesDate,
 			String examType, String thumbnailURL, String seriesDescription, int numberOfSeriesRelatedInstances,
 			int imagesInSeries, int seriesStatus, String bodyPart, String institution, String stationName, String department,
@@ -147,6 +175,7 @@ public class DCM4CHEESeries implements Serializable
 		this.accessionNumber = accessionNumber;
 		this.createdTime = createdTime;
 		this.isDSO = isDSO;
+		this.seriesNo = 0;
 	}
 
 	public DCM4CHEESeries(String studyUID, String seriesUID, String patientID, String patientName, String seriesDate,
@@ -172,6 +201,7 @@ public class DCM4CHEESeries implements Serializable
 		this.accessionNumber = accessionNumber;
 		this.createdTime = createdTime;
 		this.isDSO = false;
+		this.seriesNo = 0;
 	}
 
 	public String toJSON()
