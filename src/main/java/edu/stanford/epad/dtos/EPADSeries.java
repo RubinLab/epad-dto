@@ -110,12 +110,12 @@ import java.util.Map;
 import com.google.gson.Gson;
 
 /**
- * A description of a series returned from an ePAD query. Designed to be JSON serializable.
+ * A description of a series returned from an ePAD query. Designed to be JSON
+ * serializable.
  * 
  * @author martin
  */
-public class EPADSeries implements Serializable
-{
+public class EPADSeries implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public final String projectID, patientID, patientName, studyUID, seriesUID;
@@ -129,14 +129,15 @@ public class EPADSeries implements Serializable
 	public AnnotationStatus annotationStatus;
 	public Map<String, AnnotationStatus> userStatusList;
 	public String referencedSeriesUID;
+	public final int seriesNo; // default is 0
 
-	//ml annotation status added for tracking done
+	// ml annotation status added for tracking done
 	public EPADSeries(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
 			String seriesDate, String seriesDescription, String examType, String bodyPart, String accessionNumber,
 			int numberOfImages, int numberOfSeriesRelatedInstances, int numberOfAnnotations, String institution,
 			String stationName, String department, SeriesProcessingStatus seriesProcessingStatus, String createdTime,
-			String firstImageUIDInSeries, boolean isDSO, AnnotationStatus annotationStatus, Map<String, AnnotationStatus> userStatusList)
-	{
+			String firstImageUIDInSeries, boolean isDSO, AnnotationStatus annotationStatus,
+			Map<String, AnnotationStatus> userStatusList, int seriesNo) {
 		this.projectID = projectID;
 		this.patientID = patientID;
 		this.studyUID = studyUID;
@@ -160,14 +161,16 @@ public class EPADSeries implements Serializable
 		this.isNonDicomSeries = false;
 		this.annotationStatus = annotationStatus;
 		this.userStatusList = userStatusList;
+		this.seriesNo = seriesNo;
 	}
-	
+
+	// ml annotation status added for tracking done
 	public EPADSeries(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
 			String seriesDate, String seriesDescription, String examType, String bodyPart, String accessionNumber,
 			int numberOfImages, int numberOfSeriesRelatedInstances, int numberOfAnnotations, String institution,
 			String stationName, String department, SeriesProcessingStatus seriesProcessingStatus, String createdTime,
-			String firstImageUIDInSeries, boolean isDSO)
-	{
+			String firstImageUIDInSeries, boolean isDSO, AnnotationStatus annotationStatus,
+			Map<String, AnnotationStatus> userStatusList) {
 		this.projectID = projectID;
 		this.patientID = patientID;
 		this.studyUID = studyUID;
@@ -189,17 +192,82 @@ public class EPADSeries implements Serializable
 		this.firstImageUIDInSeries = firstImageUIDInSeries;
 		this.isDSO = isDSO;
 		this.isNonDicomSeries = false;
-		
-		this.annotationStatus = AnnotationStatus.ERROR;
-		this.userStatusList = null;
+		this.annotationStatus = annotationStatus;
+		this.userStatusList = userStatusList;
+		this.seriesNo = 0;
 	}
 
 	public EPADSeries(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
 			String seriesDate, String seriesDescription, String examType, String bodyPart, String accessionNumber,
 			int numberOfImages, int numberOfSeriesRelatedInstances, int numberOfAnnotations, String institution,
 			String stationName, String department, SeriesProcessingStatus seriesProcessingStatus, String createdTime,
-			String firstImageUIDInSeries)
-	{
+			String firstImageUIDInSeries, boolean isDSO, int seriesNo) {
+		this.projectID = projectID;
+		this.patientID = patientID;
+		this.studyUID = studyUID;
+		this.seriesUID = seriesUID;
+		this.patientName = patientName;
+		this.seriesDate = seriesDate;
+		this.seriesDescription = seriesDescription;
+		this.examType = examType;
+		this.bodyPart = bodyPart;
+		this.accessionNumber = accessionNumber;
+		this.numberOfImages = numberOfImages;
+		this.numberOfSeriesRelatedInstances = numberOfSeriesRelatedInstances;
+		this.numberOfAnnotations = numberOfAnnotations;
+		this.institution = institution;
+		this.stationName = stationName;
+		this.department = department;
+		this.seriesProcessingStatus = seriesProcessingStatus;
+		this.createdTime = createdTime;
+		this.firstImageUIDInSeries = firstImageUIDInSeries;
+		this.isDSO = isDSO;
+		this.isNonDicomSeries = false;
+
+		this.annotationStatus = AnnotationStatus.ERROR;
+		this.userStatusList = null;
+
+		this.seriesNo = seriesNo;
+	}
+
+	public EPADSeries(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
+			String seriesDate, String seriesDescription, String examType, String bodyPart, String accessionNumber,
+			int numberOfImages, int numberOfSeriesRelatedInstances, int numberOfAnnotations, String institution,
+			String stationName, String department, SeriesProcessingStatus seriesProcessingStatus, String createdTime,
+			String firstImageUIDInSeries, boolean isDSO) {
+		this.projectID = projectID;
+		this.patientID = patientID;
+		this.studyUID = studyUID;
+		this.seriesUID = seriesUID;
+		this.patientName = patientName;
+		this.seriesDate = seriesDate;
+		this.seriesDescription = seriesDescription;
+		this.examType = examType;
+		this.bodyPart = bodyPart;
+		this.accessionNumber = accessionNumber;
+		this.numberOfImages = numberOfImages;
+		this.numberOfSeriesRelatedInstances = numberOfSeriesRelatedInstances;
+		this.numberOfAnnotations = numberOfAnnotations;
+		this.institution = institution;
+		this.stationName = stationName;
+		this.department = department;
+		this.seriesProcessingStatus = seriesProcessingStatus;
+		this.createdTime = createdTime;
+		this.firstImageUIDInSeries = firstImageUIDInSeries;
+		this.isDSO = isDSO;
+		this.isNonDicomSeries = false;
+
+		this.annotationStatus = AnnotationStatus.ERROR;
+		this.userStatusList = null;
+
+		this.seriesNo = 0;
+	}
+
+	public EPADSeries(String projectID, String patientID, String patientName, String studyUID, String seriesUID,
+			String seriesDate, String seriesDescription, String examType, String bodyPart, String accessionNumber,
+			int numberOfImages, int numberOfSeriesRelatedInstances, int numberOfAnnotations, String institution,
+			String stationName, String department, SeriesProcessingStatus seriesProcessingStatus, String createdTime,
+			String firstImageUIDInSeries) {
 		this.projectID = projectID;
 		this.patientID = patientID;
 		this.studyUID = studyUID;
@@ -221,13 +289,14 @@ public class EPADSeries implements Serializable
 		this.firstImageUIDInSeries = firstImageUIDInSeries;
 		this.isDSO = false;
 		this.isNonDicomSeries = false;
-		
+
 		this.annotationStatus = AnnotationStatus.ERROR;
 		this.userStatusList = null;
+
+		this.seriesNo = 0;
 	}
 
-	public String toJSON()
-	{
+	public String toJSON() {
 		Gson gson = new Gson();
 
 		return gson.toJson(this);
